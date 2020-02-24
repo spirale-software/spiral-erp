@@ -1,0 +1,11 @@
+version: '2'
+services:
+  spiralerp-postgresql:
+    image: postgres:11.6
+    # volumes:
+    #     - ~/volumes/jhipster/spiralErp/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=spiralErp
+      - POSTGRES_PASSWORD=
+    ports:
+      - 5432:5432

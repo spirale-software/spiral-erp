@@ -1,0 +1,9 @@
+application {
+	config {
+		authenticationType jwt
+		baseName spiralErp
+		devDatabaseType postgresql
+		packageName io.spiral.erp.jhipster
+		prodDatabaseType postgresql
+	}
+}
