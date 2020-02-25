@@ -16,53 +16,6 @@
                     </span>
                 </a>
             </li>
-            <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="primeng-menu">
-                    <span>
-                        <i class="fa fa-area-chart" aria-hidden="true"></i>
-                        <span jhiTranslate="global.menu.primeng.main">primeng</span>
-                        <b class="caret"></b>
-                    </span>
-                </a>
-                <ul class="dropdown-menu" ngbDropdownMenu style="max-height:500px;overflow: scroll">
-                      <li uiSrefActive="active">
-                                        <a class="dropdown-item" routerLink="autocomplete" routerLinkActive="active" (click)="collapseNavbar()">
-                                            <i class="fa fa-fw fa-circle-o" aria-hidden="true"></i>
-                                            <span jhiTranslate="global.menu.primeng.autocomplete">AutoComplete</span>
-                                        </a>
-                                      </li><li uiSrefActive="active">
-                        <a class="dropdown-item" routerLink="inputswitch" routerLinkActive="active" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-circle-o" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.primeng.inputswitch">InputSwitch</span>
-                        </a>
-                    </li><li uiSrefActive="active">
-                        <a class="dropdown-item" routerLink="inputtext" routerLinkActive="active" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-circle-o" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.primeng.inputtext">InputText</span>
-                        </a>
-                    </li><li uiSrefActive="active">
-            <a class="dropdown-item" routerLink="button" routerLinkActive="active" (click)="collapseNavbar()">
-            <i class="fa fa-fw fa-circle-o" aria-hidden="true"></i>
-            <span jhiTranslate="global.menu.primeng.button">Button</span>
-            </a>
-            </li><li uiSrefActive="active">
-                        <a class="dropdown-item" routerLink="table" routerLinkActive="active" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-circle-o" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.primeng.table">Table</span>
-                        </a>
-                    </li><li uiSrefActive="active">
-            <a class="dropdown-item" routerLink="flexgrid" routerLinkActive="active" (click)="collapseNavbar()">
-            <i class="fa fa-fw fa-circle-o" aria-hidden="true"></i>
-            <span jhiTranslate="global.menu.primeng.flexgrid">FlexGrid</span>
-            </a>
-            </li><li uiSrefActive="active">
-            <a class="dropdown-item" routerLink="panel" routerLinkActive="active" (click)="collapseNavbar()">
-            <i class="fa fa-fw fa-circle-o" aria-hidden="true"></i>
-            <span jhiTranslate="global.menu.primeng.panel">Panel</span>
-            </a>
-            </li>
-                </ul>
-            </li>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
             <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
