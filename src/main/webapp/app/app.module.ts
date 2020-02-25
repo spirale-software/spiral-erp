@@ -7,7 +7,6 @@ import { SpiralErpCoreModule } from 'app/core/core.module';
 import { SpiralErpAppRoutingModule } from './app-routing.module';
 import { SpiralErpHomeModule } from './home/home.module';
 import { SpiralErpEntityModule } from './entities/entity.module';
-import { SpiralErpprimengModule } from './primeng/primeng.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { MainComponent } from './layouts/main/main.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
@@ -23,7 +22,6 @@ import { SpiralErpModule } from 'app/spiral-erp/spiral-erp.module';
     SpiralErpSharedModule,
     SpiralErpCoreModule,
     SpiralErpHomeModule,
-    SpiralErpprimengModule,
     SpiralErpModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     SpiralErpEntityModule,
