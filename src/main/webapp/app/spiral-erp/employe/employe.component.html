@@ -1,4 +1,22 @@
+<div>
+    <h2>Listes des employés</h2>
 
-<h1>ça fonctionne !</h1>
+    <p-dataView [value]="employeList">
 
-<input pInputText>
+        <ng-template let-employe pTemplate="listItem">
+            <div class="p-grid data-item" style="padding: 10px 10px; border-bottom: solid 0.1em #eee">
+                <div class="p-col-8">
+                    <span style="font-weight: bold;">{{ employe.prenom }} {{ employe.nom | uppercase }}</span><br>
+                    <span style="margin-right: 10px"><strong>N° matr:</strong> {{ employe.matricule }}</span>
+                    <span style="margin-right: 10px"><strong>Tel:</strong> {{ employe.telephone }}</span>
+                    <span style="margin-right: 10px"><strong>Email:</strong> {{ employe.email }}</span>
+                </div>
+                <div class="p-col-4">
+                    <button pButton type="button" icon="pi pi-pencil" class="ui-button-warning" routerLink="/employes/modifier"></button>
+                    <button pButton type="button" icon="pi pi-trash" class="ui-button-danger"></button>
+                </div>
+            </div>
+        </ng-template>
+
+    </p-dataView>
+</div>
