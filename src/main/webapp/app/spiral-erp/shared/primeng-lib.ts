@@ -5,7 +5,8 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { ButtonModule } from 'primeng/button';
-import { ToolbarModule } from 'primeng/primeng';
+import { PickListModule, ToolbarModule } from 'primeng/primeng';
+import { TableModule } from 'primeng/table';
 
 export const primengLib = [
   DataViewModule,
@@ -15,5 +16,7 @@ export const primengLib = [
   InputTextareaModule,
   InputSwitchModule,
   ButtonModule,
-  ToolbarModule
+  ToolbarModule,
+  PickListModule,
+  TableModule
 ];
