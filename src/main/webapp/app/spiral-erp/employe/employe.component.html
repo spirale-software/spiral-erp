@@ -1,18 +1,25 @@
 <div>
-    <h2>Listes des employés</h2>
+    <div class="p-grid p-align-end vertical-container">
+        <div class="p-col-8">
+            <h2>Listes des employés</h2>
+        </div>
+        <div class="p-col-4">
+            <button pButton label="Nouvel employé" icon="pi pi-plus" routerLink="/employes/creer"></button>
+        </div>
+    </div>
 
     <p-dataView [value]="employeList">
-
         <ng-template let-employe pTemplate="listItem">
             <div class="p-grid data-item" style="padding: 10px 10px; border-bottom: solid 0.1em #eee">
                 <div class="p-col-8">
                     <span style="font-weight: bold;">{{ employe.prenom }} {{ employe.nom | uppercase }}</span><br>
-                    <span style="margin-right: 10px"><strong>N° matr:</strong> {{ employe.matricule }}</span>
-                    <span style="margin-right: 10px"><strong>Tel:</strong> {{ employe.telephone }}</span>
-                    <span style="margin-right: 10px"><strong>Email:</strong> {{ employe.email }}</span>
+                    <span style="margin-right: 10px; display: inline-block"><strong>N° matr:</strong> {{ employe.matricule }}</span>
+                    <span style="margin-right: 10px; display: inline-block"><strong>Tel:</strong> {{ employe.telephone }}</span>
+                    <span style="margin-right: 10px; display: inline-block"><strong>Email:</strong> {{ employe.email }}</span>
+                    <span style="margin-right: 10px; display: inline-block"><strong>Fonction:</strong> {{ employe.fonction }}</span>
                 </div>
                 <div class="p-col-4">
-                    <button pButton type="button" icon="pi pi-pencil" class="ui-button-warning" routerLink="/employes/modifier"></button>
+                    <button pButton type="button" icon="pi pi-pencil" class="ui-button-warning" [routerLink]="['./', employe.id, 'modifier']"></button>
                     <button pButton type="button" icon="pi pi-trash" class="ui-button-danger"></button>
                 </div>
             </div>

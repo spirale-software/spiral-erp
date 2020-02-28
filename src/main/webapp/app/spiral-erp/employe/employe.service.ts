@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Employe } from 'app/spiral-erp/shared/domain/employe';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 type EntityResponseType = any;
 type EntityArrayResponseType = any;
@@ -11,11 +12,11 @@ export class EmployeService {
 
   constructor(protected http: HttpClient) {}
 
-  query(req?: any) {}
+  query(req?: any): void {}
 
-  create(employe: Employe) {}
+  create(employe: Employe): void {}
 
-  update(employe: Employe) {}
+  update(employe: Employe): void {}
 
-  delete(id: number) {}
+  delete(id: number): void {}
 }

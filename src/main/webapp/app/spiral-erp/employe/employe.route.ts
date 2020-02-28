@@ -8,7 +8,11 @@ export const employeRoutes: Routes = [
     component: EmployeComponent
   },
   {
-    path: 'employes/modifier',
+    path: 'employes/:id/modifier',
+    component: EmployeUpdateComponent
+  },
+  {
+    path: 'employes/creer',
     component: EmployeUpdateComponent
   }
 ];
