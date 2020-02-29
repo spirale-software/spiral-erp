@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark navbar-expand-md bg-dark">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
-        <span class="logo-img"></span>
-        <span jhiTranslate="global.title" class="navbar-title">SpiralErp</span> <span class="navbar-version">{{version}}</span>
+<!--        <span class="logo-img"></span>-->
+        <span  class="navbar-title">Spiral-ERP</span> <span class="navbar-version">{{version}}</span>
     </a>
     <a class="navbar-toggler d-lg-none" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
         <fa-icon icon="bars"></fa-icon>
@@ -10,6 +10,39 @@
         <ul class="navbar-nav ml-auto">
 
 
+
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="/tableau-de-bord" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="chart-line"></fa-icon>
+                        <span>Tableau de bord</span>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="/achats" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="money-bill-wave"></fa-icon>
+                        <span>Achat</span>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="/ventes" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="landmark"></fa-icon>
+                        <span>Vente</span>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="/projets" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="project-diagram"></fa-icon>
+                        <span>Projet</span>
+                    </span>
+                </a>
+            </li>
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="/employes" (click)="collapseNavbar()">
                     <span>
@@ -21,7 +54,7 @@
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="/gestion-des-droits" (click)="collapseNavbar()">
                     <span>
-                        <fa-icon icon="user"></fa-icon>
+                        <fa-icon icon="users-cog"></fa-icon>
                         <span>Gestion des droits</span>
                     </span>
                 </a>
@@ -29,14 +62,15 @@
 
 
 
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
-                    <span>
-                        <fa-icon icon="home"></fa-icon>
-                        <span jhiTranslate="global.menu.home">Home</span>
-                    </span>
-                </a>
-            </li>
+
+<!--            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">-->
+<!--                <a class="nav-link" routerLink="/" (click)="collapseNavbar()">-->
+<!--                    <span>-->
+<!--                        <fa-icon icon="home"></fa-icon>-->
+<!--                        <span jhiTranslate="global.menu.home">Home</span>-->
+<!--                    </span>-->
+<!--                </a>-->
+<!--            </li>-->
 
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
             <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
