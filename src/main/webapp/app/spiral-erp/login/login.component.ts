@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Renderer, ViewChild } from '@angular/core';
 import { LoginService } from 'app/core/login/login.service';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
@@ -7,7 +7,7 @@ import { FormBuilder } from '@angular/forms';
   selector: 'erp-login',
   templateUrl: './login.component.html'
 })
-export class LoginComponent {
+export class LoginComponent implements AfterViewInit {
   @ViewChild('username', { static: false })
   username?: ElementRef;
 
@@ -45,25 +45,13 @@ export class LoginComponent {
       .subscribe(
         () => {
           this.authenticationError = false;
-          // this.activeModal.close();
-          if (
-            this.router.url === '/account/register' ||
-            this.router.url.startsWith('/account/activate') ||
-            this.router.url.startsWith('/account/reset/')
-          ) {
-            this.router.navigate(['']);
-          }
+          this.router.navigate(['/tableau-de-bord']);
         },
         () => (this.authenticationError = true)
       );
   }
 
-  register(): void {
-    this.router.navigate(['/account/register']);
-  }
-
   requestResetPassword(): void {
-    // this.activeModal.dismiss('to state requestReset');
     this.router.navigate(['/account/reset', 'request']);
   }
 }

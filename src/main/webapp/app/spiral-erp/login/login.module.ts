@@ -7,4 +7,4 @@ import { SpiralErpSharedModule } from 'app/shared/shared.module';
   exports: [LoginComponent],
   declarations: [LoginComponent]
 })
-export class LoginModuleComponent {}
+export class LoginModule {}

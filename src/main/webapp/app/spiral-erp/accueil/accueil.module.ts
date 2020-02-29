@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { AccueilComponent } from 'app/spiral-erp/accueil/accueil.component';
 import { SpiralErpSharedModule } from 'app/shared/shared.module';
-import { LoginModuleComponent } from 'app/spiral-erp/login/login.module.component';
+import { LoginModule } from 'app/spiral-erp/login/login.module';
 
 @NgModule({
-  imports: [SpiralErpSharedModule, LoginModuleComponent],
+  imports: [SpiralErpSharedModule, LoginModule],
   declarations: [AccueilComponent],
   exports: []
 })

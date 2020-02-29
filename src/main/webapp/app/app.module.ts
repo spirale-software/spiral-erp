@@ -5,7 +5,6 @@ import './vendor';
 import { SpiralErpSharedModule } from 'app/shared/shared.module';
 import { SpiralErpCoreModule } from 'app/core/core.module';
 import { SpiralErpAppRoutingModule } from './app-routing.module';
-import { SpiralErpHomeModule } from './home/home.module';
 import { SpiralErpEntityModule } from './entities/entity.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { MainComponent } from './layouts/main/main.component';

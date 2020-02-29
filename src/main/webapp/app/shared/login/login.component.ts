@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { LoginService } from 'app/core/login/login.service';
 
 @Component({
-  selector: 'jhi-login-modal',
+  selector: 'erp-login-modal',
   templateUrl: './login.component.html'
 })
 export class LoginModalComponent implements AfterViewInit {
@@ -25,7 +25,7 @@ export class LoginModalComponent implements AfterViewInit {
     private loginService: LoginService,
     private renderer: Renderer,
     private router: Router,
-    // public activeModal: NgbActiveModal,
+    public activeModal: NgbActiveModal,
     private fb: FormBuilder
   ) {}
 
@@ -41,7 +41,7 @@ export class LoginModalComponent implements AfterViewInit {
       username: '',
       password: ''
     });
-    //  this.activeModal.dismiss('cancel');
+    this.activeModal.dismiss('cancel');
   }
 
   login(): void {
@@ -54,7 +54,7 @@ export class LoginModalComponent implements AfterViewInit {
       .subscribe(
         () => {
           this.authenticationError = false;
-          // this.activeModal.close();
+          this.activeModal.close();
           if (
             this.router.url === '/account/register' ||
             this.router.url.startsWith('/account/activate') ||
