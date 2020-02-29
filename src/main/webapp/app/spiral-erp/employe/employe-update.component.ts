@@ -6,7 +6,7 @@ import { SelectItem } from 'primeng/api';
 import { Fonction } from 'app/spiral-erp/shared/domain/fonction';
 
 @Component({
-  selector: 'jhi-employe-update',
+  selector: 'erp-employe-update',
   templateUrl: './employe-update.component.html',
   styles: ['.form-group {margin-bottom: 10px }']
 })
@@ -16,6 +16,7 @@ export class EmployeUpdateComponent implements OnInit {
 
   constructor(protected employeService: EmployeService, protected route: ActivatedRoute) {
     this.employe = {} as Employe;
+    this.fonctionOptions = [];
     this.initArrayFonction();
   }
 
@@ -36,7 +37,7 @@ export class EmployeUpdateComponent implements OnInit {
     // this.employeService.create(this.employe);
   }
 
-  initArrayFonction() {
+  initArrayFonction(): void {
     this.fonctionOptions = [
       { label: Fonction.EMPLOYE, value: Fonction.EMPLOYE },
       { label: Fonction.MANAGER, value: Fonction.MANAGER },
