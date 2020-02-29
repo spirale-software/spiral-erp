@@ -1,15 +1,13 @@
-import { Component, AfterViewInit, Renderer, ElementRef, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from '@angular/router';
-
+import { Component, ElementRef, Renderer, ViewChild } from '@angular/core';
 import { LoginService } from 'app/core/login/login.service';
+import { Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'jhi-login-modal',
+  selector: 'erp-login',
   templateUrl: './login.component.html'
 })
-export class LoginModalComponent implements AfterViewInit {
+export class LoginComponent {
   @ViewChild('username', { static: false })
   username?: ElementRef;
 
@@ -21,13 +19,7 @@ export class LoginModalComponent implements AfterViewInit {
     rememberMe: [false]
   });
 
-  constructor(
-    private loginService: LoginService,
-    private renderer: Renderer,
-    private router: Router,
-    // public activeModal: NgbActiveModal,
-    private fb: FormBuilder
-  ) {}
+  constructor(private loginService: LoginService, private renderer: Renderer, private router: Router, private fb: FormBuilder) {}
 
   ngAfterViewInit(): void {
     if (this.username) {
@@ -41,7 +33,6 @@ export class LoginModalComponent implements AfterViewInit {
       username: '',
       password: ''
     });
-    //  this.activeModal.dismiss('cancel');
   }
 
   login(): void {
@@ -68,7 +59,6 @@ export class LoginModalComponent implements AfterViewInit {
   }
 
   register(): void {
-    // this.activeModal.dismiss('to state register');
     this.router.navigate(['/account/register']);
   }
 

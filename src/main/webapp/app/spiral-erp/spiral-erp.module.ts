@@ -8,6 +8,7 @@ import { AchatModule } from 'app/spiral-erp/achat/achat.module';
 import { ProjetModule } from 'app/spiral-erp/projet/projet.module';
 import { TableauDeBordModule } from 'app/spiral-erp/tableau-de-bord/tableau-de-bord.module';
 import { VenteModule } from 'app/spiral-erp/vente/vente.module';
+import { AccueilModule } from 'app/spiral-erp/accueil/accueil.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { VenteModule } from 'app/spiral-erp/vente/vente.module';
     AchatModule,
     ProjetModule,
     TableauDeBordModule,
-    VenteModule
+    VenteModule,
+    AccueilModule
   ],
   declarations: [SpiralErpComponent],
   exports: [RouterModule]

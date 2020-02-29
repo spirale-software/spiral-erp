@@ -21,7 +21,7 @@ import { SpiralErpModule } from 'app/spiral-erp/spiral-erp.module';
     BrowserModule,
     SpiralErpSharedModule,
     SpiralErpCoreModule,
-    SpiralErpHomeModule,
+    //  SpiralErpHomeModule,
     SpiralErpModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     SpiralErpEntityModule,
