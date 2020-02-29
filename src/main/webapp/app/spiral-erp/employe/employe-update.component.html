@@ -1,0 +1,38 @@
+<div>
+    <h2>Modifier l'employé</h2>
+    <hr>
+
+    <div class="ui-fluid form-group">
+        <span>Matricule</span><br>
+        <span>0465989</span>
+    </div>
+
+    <div class="ui-fluid form-group">
+        <span>Nom</span>
+        <input pInputText>
+    </div>
+    <div class="ui-fluid form-group">
+        <span>Prénom</span>
+        <input pInputText>
+    </div>
+    <div class="ui-fluid form-group">
+        <span>Numéro de téléphone</span>
+        <input pInputText>
+    </div>
+    <div class="ui-fluid form-group">
+        <span>Email</span>
+        <input pInputText>
+    </div>
+    <div class="ui-fluid form-group">
+        <span>Fonction</span>
+        <p-dropdown [options]="fonctionOptions"></p-dropdown>
+    </div>
+
+    <p-toolbar [style]="{'margin-top':'25px'}">
+        <div class="ui-toolbar-group-right">
+            <button pButton type="button" icon="pi pi-chevron-left" label="Retour" (click)="back()"></button>
+            <button pButton type="button" icon="pi pi-save" class="ui-button-success" label="Enregistrer" (click)="save()"></button>
+        </div>
+    </p-toolbar>
+
+</div>
