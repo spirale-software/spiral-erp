@@ -1,8 +1,118 @@
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
 <div>
     <h2>Tableau de bord</h2>
     <hr>
 
+    <div class="p-grid" style="margin-bottom: 10px;">
+        <div class="p-col">
+            <p-card header="Employé">
+                <div>Nombre d'employé</div>
+            </p-card>
+        </div>
+        <div class="p-col">
+            <p-card header="Articles vendus">
+                <div>Nombre d'articles vendus dans le mois</div>
+            </p-card>
+        </div>
+        <div class="p-col">
+            <p-card header="Tâches">
+                <div>Nombre de tâches à faire et en cours</div>
+            </p-card>
+        </div>
+    </div>
     <div>
+        <div class="p-grid">
+            <div class="p-col">
+                <p-panel header="Ventes récentes">
+                    <table>
+                        <tr>
+                            <th>Company</th>
+                            <th>Contact</th>
+                            <th>Country</th>
+                        </tr>
+                        <tr>
+                            <td>Alfreds Futterkiste</td>
+                            <td>Maria Anders</td>
+                            <td>Germany</td>
+                        </tr>
+                        <tr>
+                            <td>Centro comercial Moctezuma</td>
+                            <td>Francisco Chang</td>
+                            <td>Mexico</td>
+                        </tr>
+                        <tr>
+                            <td>Ernst Handel</td>
+                            <td>Roland Mendel</td>
+                            <td>Austria</td>
+                        </tr>
+                        <tr>
+                            <td>Island Trading</td>
+                            <td>Helen Bennett</td>
+                            <td>UK</td>
+                        </tr>
+                        <tr>
+                            <td>Laughing Bacchus Winecellars</td>
+                            <td>Yoshi Tannamuri</td>
+                            <td>Canada</td>
+                        </tr>
+                        <tr>
+                            <td>Magazzini Alimentari Riuniti</td>
+                            <td>Giovanni Rovelli</td>
+                            <td>Italy</td>
+                        </tr>
+                    </table>
+                </p-panel>
+            </div>
+            <div class="p-col">
+                <p-panel header="Tâches">
+                    <div class="p-grid" style="margin-bottom: 10px">
+                        <div class="p-col-8">
+                            <p>Achat des produits</p>
+                            <span><fa-icon icon="user"></fa-icon> La verlosienne</span>
+                        </div>
+                        <div class="p-col-4">
+                            <span style="background-color: #7f7f7f; border-radius: 50%; padding: 7px; color: white">A faire</span>
+                        </div>
+                    </div>
 
+                    <div class="p-grid" style="margin-bottom: 10px">
+                        <div class="p-col-8">
+                            <p>Achat des produits</p>
+                            <span><fa-icon icon="user"></fa-icon> Casimir</span>
+                        </div>
+                        <div class="p-col-4">
+                            <span style="background-color: #7f7f7f; border-radius: 50%; padding: 7px; color: white">A faire</span>
+                        </div>
+                    </div>
+
+                    <div class="p-grid">
+                        <div class="p-col-8">
+                            <p>Achat des produits</p>
+                            <span><fa-icon icon="user"></fa-icon> Gyle</span>
+                        </div>
+                        <div class="p-col-4">
+                            <span style="background-color: #7f7f7f; border-radius: 50%; padding: 7px; color: white">En cours</span>
+                        </div>
+                    </div>
+                </p-panel>
+            </div>
+        </div>
     </div>
 </div>
