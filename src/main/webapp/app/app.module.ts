@@ -29,6 +29,7 @@ import { SharedModule } from 'app/spiral-erp/shared/shared.module';
     SharedModule
   ],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
+  exports: [ActiveMenuDirective],
   bootstrap: [MainComponent]
 })
 export class SpiralErpAppModule {}
