@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { primengLib } from 'app/spiral-erp/shared/primeng-lib';
+import { primengLib } from 'app/spiral-erp/shared/const/primeng-lib';
 import { AchatComponent } from 'app/spiral-erp/achat/achat.component';
 
 @NgModule({

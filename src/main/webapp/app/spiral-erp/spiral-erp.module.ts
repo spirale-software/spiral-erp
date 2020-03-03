@@ -9,6 +9,7 @@ import { ProjetModule } from 'app/spiral-erp/projet/projet.module';
 import { TableauDeBordModule } from 'app/spiral-erp/tableau-de-bord/tableau-de-bord.module';
 import { VenteModule } from 'app/spiral-erp/vente/vente.module';
 import { AccueilModule } from 'app/spiral-erp/accueil/accueil.module';
+import { SharedModule } from 'app/spiral-erp/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { AccueilModule } from 'app/spiral-erp/accueil/accueil.module';
     ProjetModule,
     TableauDeBordModule,
     VenteModule,
-    AccueilModule
+    AccueilModule,
+    SharedModule
   ],
   declarations: [SpiralErpComponent],
   exports: [RouterModule]
