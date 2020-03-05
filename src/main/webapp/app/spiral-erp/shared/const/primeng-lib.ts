@@ -5,7 +5,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { ButtonModule } from 'primeng/button';
-import { CardModule, DragDropModule, ListboxModule, PanelModule, PickListModule, ToolbarModule } from 'primeng/primeng';
+import { CardModule, ChartModule, DragDropModule, ListboxModule, PanelModule, PickListModule, ToolbarModule } from 'primeng/primeng';
 import { TableModule } from 'primeng/table';
 
 export const primengLib = [
@@ -22,5 +22,6 @@ export const primengLib = [
   ListboxModule,
   DragDropModule,
   CardModule,
-  PanelModule
+  PanelModule,
+  ChartModule
 ];
