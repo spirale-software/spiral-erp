@@ -1,1 +1,29 @@
-<h2>Achat fonctionne!</h2>
+<div>
+    <div class="p-grid p-align-end vertical-container">
+        <div class="p-col-8">
+            <h2>Listes des achats</h2>
+        </div>
+        <div class="p-col-4">
+            <button pButton label="Nouvel Achat" icon="pi pi-plus"></button>
+        </div>
+    </div>
+
+    <p-dataView [value]="achatList">
+        <ng-template let-achat pTemplate="listItem">
+            <div class="p-grid data-item" style="padding: 10px 10px; border-bottom: solid 0.1em #eee">
+                <div class="p-col-8">
+                    <span style="font-weight: bold;">{{ achat.libelleProduit }} - {{ achat.prixAchat }} FCFA</span><br>
+                    <span style="margin-right: 10px; display: inline-block"><strong>N°:</strong> {{ achat.numeroProduit }}</span>
+                    <span style="margin-right: 10px; display: inline-block"><strong>Type de produit:</strong> {{ achat.typeProduit }}</span>
+                    <span style="margin-right: 10px; display: inline-block"><strong>Acheteur:</strong> {{ achat.acheteur }}</span>
+                    <span style="margin-right: 10px; display: inline-block"><strong>Date:</strong> {{ achat.dateAchat }}</span>
+                </div>
+                <div class="p-col-4">
+                    <button pButton type="button" icon="pi pi-pencil" class="ui-button-warning"></button>
+                    <button pButton type="button" icon="pi pi-trash" class="ui-button-danger"></button>
+                </div>
+            </div>
+        </ng-template>
+
+    </p-dataView>
+</div>

@@ -3,7 +3,7 @@ import { Employe } from 'app/spiral-erp/shared/domain/employe';
 import { Fonction } from 'app/spiral-erp/shared/domain/fonction';
 
 @Component({
-  selector: 'jhi-employe',
+  selector: 'erp-employe',
   templateUrl: './employe.component.html'
 })
 export class EmployeComponent implements OnInit {

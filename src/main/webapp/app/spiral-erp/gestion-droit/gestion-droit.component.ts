@@ -24,7 +24,7 @@ export class GestionDroitComponent implements OnInit {
     this.initSourceList();
   }
 
-  initDomaine() {
+  initDomaine(): void {
     this.domaineList = [
       { id: 1, libelle: 'Achat' },
       { id: 2, libelle: 'Vente' },
@@ -32,7 +32,7 @@ export class GestionDroitComponent implements OnInit {
     ];
   }
 
-  initSourceList() {
+  initSourceList(): void {
     this.sourceList = ['Visualiser', 'Creer', 'Modifier', 'Supprimer'];
   }
 }

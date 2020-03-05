@@ -5,7 +5,6 @@ import './vendor';
 import { SpiralErpSharedModule } from 'app/shared/shared.module';
 import { SpiralErpCoreModule } from 'app/core/core.module';
 import { SpiralErpAppRoutingModule } from './app-routing.module';
-import { SpiralErpHomeModule } from './home/home.module';
 import { SpiralErpEntityModule } from './entities/entity.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { MainComponent } from './layouts/main/main.component';
@@ -15,19 +14,22 @@ import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 import { SpiralErpModule } from 'app/spiral-erp/spiral-erp.module';
+import { SharedModule } from 'app/spiral-erp/shared/shared.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     SpiralErpSharedModule,
     SpiralErpCoreModule,
-    SpiralErpHomeModule,
+    //  SpiralErpHomeModule,
     SpiralErpModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     SpiralErpEntityModule,
-    SpiralErpAppRoutingModule
+    SpiralErpAppRoutingModule,
+    SharedModule
   ],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
+  exports: [ActiveMenuDirective],
   bootstrap: [MainComponent]
 })
 export class SpiralErpAppModule {}
