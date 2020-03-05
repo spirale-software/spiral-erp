@@ -15,7 +15,7 @@ export class TableauDeBordComponent implements OnInit {
       datasets: [
         {
           label: 'Nombre de produits vendus dans la semaine',
-          backgroundColor: '#42A5F5',
+          backgroundColor: '#55ACEE',
           borderColor: '#1E88E5',
           data: [65, 59, 80, 81, 56, 55, 40]
         }
@@ -26,8 +26,8 @@ export class TableauDeBordComponent implements OnInit {
       datasets: [
         {
           label: "Chiffre d'affaire de la semaine",
-          backgroundColor: '#34A853',
-          borderColor: '#34A853',
+          backgroundColor: '#66757F',
+          borderColor: '#66757F',
           data: [65, 59, 80, 81, 56, 55, 40]
         }
       ]
