@@ -9,10 +9,10 @@
             <erp-panel-dashboard [titre]="'Employés'" [detail]="'Nombre d\'employés connectés'" [value]="12"></erp-panel-dashboard>
         </div>
         <div class="p-col">
-            <erp-panel-dashboard [titre]="'Articles vendus'" [detail]="'Nombre d\'articles vendus dans le mois'" [value]="21"></erp-panel-dashboard>
+            <erp-panel-dashboard [titre]="'Articles vendus'" [detail]="'Nombre d\'articles vendus dans le mois'" [value]="21" [backgroundColor]="'#FBBC05'"></erp-panel-dashboard>
         </div>
         <div class="p-col">
-            <erp-panel-dashboard [titre]="'Tâches'" [detail]="'Nombre de tâches à faire et en cours'" [value]="30"></erp-panel-dashboard>
+            <erp-panel-dashboard [titre]="'Tâches'" [detail]="'Nombre de tâches à faire et en cours'" [value]="30" [backgroundColor]="'#34A853'"></erp-panel-dashboard>
         </div>
     </div>
     <div>
@@ -89,12 +89,12 @@
 
     <div class="p-grid">
         <div class="p-col">
-            <div style="border: solid 1px #eee">
+            <div style="border: solid 1px">
                 <p-chart type="bar" [data]="data" width="95%" height="400px" [responsive]="true"></p-chart>
             </div>
         </div>
         <div class="p-col">
-            <div style="border: solid 1px #eee">
+            <div style="border: solid 1px">
                 <p-chart type="bar" [data]="chiffreAffaireData" width="95%" height="400px" [responsive]="true"></p-chart>
             </div>
         </div>
