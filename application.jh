@@ -5,5 +5,6 @@ application {
 		devDatabaseType postgresql
 		packageName io.spiral.erp.jhipster
 		prodDatabaseType postgresql
+		nativeLanguage fr
 	}
 }

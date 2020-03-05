@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { LoginService } from 'app/core/login/login.service';
 
 @Component({
-  selector: 'erp-login-modal',
+  selector: 'jhi-login-modal',
   templateUrl: './login.component.html'
 })
 export class LoginModalComponent implements AfterViewInit {
@@ -68,12 +68,12 @@ export class LoginModalComponent implements AfterViewInit {
   }
 
   register(): void {
-    // this.activeModal.dismiss('to state register');
+    this.activeModal.dismiss('to state register');
     this.router.navigate(['/account/register']);
   }
 
   requestResetPassword(): void {
-    // this.activeModal.dismiss('to state requestReset');
+    this.activeModal.dismiss('to state requestReset');
     this.router.navigate(['/account/reset', 'request']);
   }
 }

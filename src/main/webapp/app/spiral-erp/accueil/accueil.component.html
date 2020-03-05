@@ -1,12 +1,6 @@
 <!--
 -->
 <div class="container">
-    <div style="text-align: center">
-        <h2 class="display-5">Spiral-ERP</h2>
-        <p class="lead">Progiciel de gestion d'entreprise</p>
-    </div>
-
-
     <div [ngSwitch]="isAuthenticated()">
         <div class="alert alert-success" *ngSwitchCase="true">
                 <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"

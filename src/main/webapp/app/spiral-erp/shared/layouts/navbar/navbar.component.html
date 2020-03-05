@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark navbar-expand-md" style="background-color: #00A1F1">
+<nav class="navbar navbar-dark navbar-expand-md" style="background-color: #4285F4">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
         <!--        <span class="logo-img"></span>-->
         <span  class="navbar-title">Spiral-ERP</span> <span class="navbar-version">{{version}}</span>
@@ -8,6 +8,7 @@
     </a>
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
         <ul class="navbar-nav ml-auto">
+            <ng-template [ngIf]="isAuthenticated()">
 
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="/tableau-de-bord" (click)="collapseNavbar()">
@@ -57,6 +58,7 @@
                     </span>
                 </a>
             </li>
+            </ng-template>
 
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
             <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
