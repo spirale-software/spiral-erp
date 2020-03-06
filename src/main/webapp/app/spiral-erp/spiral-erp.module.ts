@@ -10,6 +10,9 @@ import { TableauDeBordModule } from 'app/spiral-erp/tableau-de-bord/tableau-de-b
 import { VenteModule } from 'app/spiral-erp/vente/vente.module';
 import { AccueilModule } from 'app/spiral-erp/accueil/accueil.module';
 import { SharedModule } from 'app/spiral-erp/shared/shared.module';
+import { StockModule } from 'app/spiral-erp/stock/stock.module';
+import { DepenseModule } from 'app/spiral-erp/depense/depense.module';
+import { BilanModule } from 'app/spiral-erp/bilan/bilan.module';
 
 @NgModule({
   imports: [
@@ -21,7 +24,10 @@ import { SharedModule } from 'app/spiral-erp/shared/shared.module';
     TableauDeBordModule,
     VenteModule,
     AccueilModule,
-    SharedModule
+    SharedModule,
+    StockModule,
+    DepenseModule,
+    BilanModule
   ],
   declarations: [SpiralErpComponent],
   exports: [RouterModule]

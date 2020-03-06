@@ -7,6 +7,9 @@ import { projetRoutes } from 'app/spiral-erp/projet/projet.route';
 import { tableauDeBordRoutes } from 'app/spiral-erp/tableau-de-bord/tableau-de-bord.route';
 import { venteRoutes } from 'app/spiral-erp/vente/vente.route';
 import { accueilRoutes } from 'app/spiral-erp/accueil/accueil.route';
+import { stockRoutes } from 'app/spiral-erp/stock/stock.route';
+import { depenseRoutes } from 'app/spiral-erp/depense/depense.route';
+import { bilanRoutes } from 'app/spiral-erp/bilan/bilan.route';
 
 export const spiraleErpRoutes: Routes = [
   {
@@ -19,7 +22,10 @@ export const spiraleErpRoutes: Routes = [
       ...achatRoutes,
       ...projetRoutes,
       ...tableauDeBordRoutes,
-      ...venteRoutes
+      ...venteRoutes,
+      ...stockRoutes,
+      ...depenseRoutes,
+      ...bilanRoutes
     ]
   }
 ];
