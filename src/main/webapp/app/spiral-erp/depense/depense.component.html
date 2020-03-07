@@ -1,1 +1,27 @@
-<h2>Dépense fonctionne!</h2>
+<div>
+    <div class="p-grid p-align-end vertical-container">
+        <div class="p-col-8">
+            <h2>Listes des dépenses</h2>
+        </div>
+        <div class="p-col-4">
+            <button pButton label="Nouvelle dépense" icon="pi pi-plus"></button>
+        </div>
+    </div>
+
+    <p-dataView [value]="depenseList">
+        <ng-template let-depense pTemplate="listItem">
+            <div class="p-grid data-item" style="padding: 10px 10px; border-bottom: solid 0.1em #eee">
+                <div class="p-col-8">
+                    <span style="font-weight: bold;">{{ depense.libelle }} - {{ depense.montant }} FCFA</span><br>
+                    <span style="margin-right: 10px; display: inline-block"><strong>Type de dépense:</strong> {{ depense.typeDepense }}</span>
+                    <span style="margin-right: 10px; display: inline-block"><strong>Date:</strong> {{ depense.dateDepense }}</span>
+                </div>
+                <div class="p-col-4">
+                    <button pButton type="button" icon="pi pi-pencil" class="ui-button-warning"></button>
+                    <button pButton type="button" icon="pi pi-trash" class="ui-button-danger"></button>
+                </div>
+            </div>
+        </ng-template>
+
+    </p-dataView>
+</div>
