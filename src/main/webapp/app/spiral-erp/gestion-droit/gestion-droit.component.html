@@ -4,22 +4,24 @@
     <h2>Gestion des droits et des accès</h2>
     <hr>
 
-    <div class="ui-fluid" style="margin-bottom: 35px">
-        <label>Employe</label>
-        <p-dropdown></p-dropdown>
+    <div style="margin-bottom: 35px">
+        <label>Sélectionner un employé</label><br>
+        <p-dropdown [options]="employeOptions" [style]="{'width':'55%'}"></p-dropdown>
     </div>
 
+    <span style="font-size: 16px"><strong>Attribuer des droits d'accès aux fonctionnalités</strong></span>
+    <hr style="margin-right: 20%">
     <div class="p-grid">
         <div class="p-col-4">
             <h3></h3>
-            <p-listbox [options]="domaineList" [(ngModel)]="domainSelected" optionLabel="libelle" [style]="{'width':'100%'}">
-                <p-header>Liste des domaines</p-header>
+            <p-listbox [options]="domaineList" [(ngModel)]="domainSelected" optionLabel="libelle" [style]="{'width':'100%'}" (onClick)="chargerDroitFonctionnalites($event)">
+                <p-header>Liste des fonctionnalités</p-header>
             </p-listbox>
         </div><!--[/col]-->
 
         <div class="p-col-8">
             <p-pickList [source]="sourceList" [target]="targetList" [responsive]="true" [showSourceControls]="false"
-                        [showTargetControls]="false" sourceHeader="Droits du domaine" targetHeader="Droits accordés">
+                        [showTargetControls]="false" sourceHeader="Droits sur la fonctionnalité" targetHeader="Droits accordés">
                 <ng-template let-droit pTemplate="item">
                     <div>{{droit}}</div>
 <!--                    <div class="ui-helper-clearfix">-->

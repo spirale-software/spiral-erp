@@ -11,28 +11,46 @@ export class GestionDroitComponent implements OnInit {
   sourceList: any[];
   targetList: any[];
 
+  employeOptions: any[];
+
   constructor() {
     this.domaineList = [];
     this.domainSelected = [];
 
     this.sourceList = [];
     this.targetList = [];
+
+    this.employeOptions = [
+      { label: 'Guy', value: '1' },
+      { label: 'La verlosienne', value: '2' },
+      { label: 'Jules', value: '3' },
+      { label: 'Joseph', value: '4' },
+      { label: 'Vanessa', value: '5' }
+    ];
   }
 
   ngOnInit(): void {
     this.initDomaine();
-    this.initSourceList();
   }
 
   initDomaine(): void {
     this.domaineList = [
-      { id: 1, libelle: 'Achat' },
-      { id: 2, libelle: 'Vente' },
-      { id: 3, libelle: 'Employe' }
+      { id: 1, libelle: 'Gestion des achats' },
+      { id: 2, libelle: 'Gestion des ventes' },
+      { id: 3, libelle: 'Gestion des employés' },
+      { id: 3, libelle: 'Dépense' },
+      { id: 3, libelle: 'Stock' },
+      { id: 3, libelle: 'Bilan' }
     ];
   }
 
   initSourceList(): void {
     this.sourceList = ['Visualiser', 'Creer', 'Modifier', 'Supprimer'];
+  }
+
+  chargerDroitFonctionnalites(event: any): void {
+    console.log('chargerDroitFonctionnalites: ', event);
+    this.initSourceList();
+    this.targetList = [];
   }
 }
