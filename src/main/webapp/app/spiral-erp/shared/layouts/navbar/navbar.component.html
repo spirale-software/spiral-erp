@@ -29,35 +29,35 @@
                     </span>
                     </a>
                 </li>
-                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                    <a class="nav-link" routerLink="/depenses" (click)="collapseNavbar()">
-                    <span>
-                        <fa-icon icon="money-bill-wave"></fa-icon>
-                        <span>Dépense</span>
-                    </span>
-                    </a>
-                </li>
-                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                    <a class="nav-link" routerLink="/stocks" (click)="collapseNavbar()">
-                    <span>
-                        <fa-icon icon="money-bill-wave"></fa-icon>
-                        <span>Stock</span>
-                    </span>
-                    </a>
-                </li>
-                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                    <a class="nav-link" routerLink="/bilans" (click)="collapseNavbar()">
-                    <span>
-                        <fa-icon icon="money-bill-wave"></fa-icon>
-                        <span>Bilan</span>
-                    </span>
-                    </a>
-                </li>
+<!--                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">-->
+<!--                    <a class="nav-link" routerLink="/depenses" (click)="collapseNavbar()">-->
+<!--                    <span>-->
+<!--                        <fa-icon icon="money-bill-wave"></fa-icon>-->
+<!--                        <span>Dépense</span>-->
+<!--                    </span>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">-->
+<!--                    <a class="nav-link" routerLink="/stocks" (click)="collapseNavbar()">-->
+<!--                    <span>-->
+<!--                        <fa-icon icon="money-bill-wave"></fa-icon>-->
+<!--                        <span>Stock</span>-->
+<!--                    </span>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">-->
+<!--                    <a class="nav-link" routerLink="/bilans" (click)="collapseNavbar()">-->
+<!--                    <span>-->
+<!--                        <fa-icon icon="money-bill-wave"></fa-icon>-->
+<!--                        <span>Bilan</span>-->
+<!--                    </span>-->
+<!--                    </a>-->
+<!--                </li>-->
 
                 <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                     <a class="nav-link" routerLink="/ventes" (click)="collapseNavbar()">
                     <span>
-                        <fa-icon icon="landmark"></fa-icon>
+                        <fa-icon icon="cash-register"></fa-icon>
                         <span>Vente</span>
                     </span>
                     </a>
@@ -70,22 +70,90 @@
                     </span>
                     </a>
                 </li>
-                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                    <a class="nav-link" routerLink="/employes" (click)="collapseNavbar()">
+
+
+
+
+                <!--[Gestion des employés]-->
+                <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">
                     <span>
-                        <fa-icon icon="user"></fa-icon>
-                        <span>Employés</span>
+                        <fa-icon icon="user-plus"></fa-icon>
+                        <span>Gestion employés</span>
                     </span>
                     </a>
+
+                    <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="admin-menu">
+                        <li>
+                            <a class="dropdown-item" routerLink="/employes" routerLinkActive="active"
+                               (click)="collapseNavbar()">
+                                <fa-icon icon="user" fixedWidth="true"></fa-icon>
+                                <span>Employés</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" routerLink="/gestion-des-droits" routerLinkActive="active"
+                               (click)="collapseNavbar()">
+                                <fa-icon icon="users-cog" fixedWidth="true"></fa-icon>
+                                <span>Gestion des droits</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                    <a class="nav-link" routerLink="/gestion-des-droits" (click)="collapseNavbar()">
+
+                <!--[Comptabilité]-->
+                <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">
                     <span>
-                        <fa-icon icon="users-cog"></fa-icon>
-                        <span>Gestion des droits</span>
+                        <fa-icon icon="file-invoice"></fa-icon>
+                        <span>Comptabilité</span>
                     </span>
                     </a>
+
+                    <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="admin-menu">
+                        <li>
+                            <a class="dropdown-item" routerLink="/depenses" routerLinkActive="active"
+                               (click)="collapseNavbar()">
+                                <fa-icon icon="file-invoice-dollar" fixedWidth="true"></fa-icon>
+                                <span>Dépense</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" routerLink="/stocks" routerLinkActive="active"
+                               (click)="collapseNavbar()">
+                                <fa-icon icon="store" fixedWidth="true"></fa-icon>
+                                <span>Stock</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" routerLink="/bilans" routerLinkActive="active"
+                               (click)="collapseNavbar()">
+                                <fa-icon icon="balance-scale" fixedWidth="true"></fa-icon>
+                                <span>Bilan</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
+
+<!--                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">-->
+<!--                    <a class="nav-link" routerLink="/employes" (click)="collapseNavbar()">-->
+<!--                    <span>-->
+<!--                        <fa-icon icon="user"></fa-icon>-->
+<!--                        <span>Employés</span>-->
+<!--                    </span>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">-->
+<!--                    <a class="nav-link" routerLink="/gestion-des-droits" (click)="collapseNavbar()">-->
+<!--                    <span>-->
+<!--                        <fa-icon icon="users-cog"></fa-icon>-->
+<!--                        <span>Gestion des droits</span>-->
+<!--                    </span>-->
+<!--                    </a>-->
+<!--                </li>-->
             </ng-template>
 
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
