@@ -12,14 +12,14 @@
     <span style="font-size: 16px"><strong>Attribuer des droits d'accès aux fonctionnalités</strong></span>
     <hr style="margin-right: 20%">
     <div class="p-grid">
-        <div class="p-col-4">
+        <div class="p-col-12 p-md-4">
             <h3></h3>
             <p-listbox [options]="domaineList" [(ngModel)]="domainSelected" optionLabel="libelle" [style]="{'width':'100%'}" (onClick)="chargerDroitFonctionnalites($event)">
                 <p-header>Liste des fonctionnalités</p-header>
             </p-listbox>
         </div><!--[/col]-->
 
-        <div class="p-col-8">
+        <div class="p-col-12 p-md-8">
             <p-pickList [source]="sourceList" [target]="targetList" [responsive]="true" [showSourceControls]="false"
                         [showTargetControls]="false" sourceHeader="Droits sur la fonctionnalité" targetHeader="Droits accordés">
                 <ng-template let-droit pTemplate="item">

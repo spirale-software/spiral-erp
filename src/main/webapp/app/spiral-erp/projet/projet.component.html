@@ -1,16 +1,33 @@
+<style>
+    @media only screen and (max-width: 760px) {
+        .tache-a-faire {
+            margin-bottom: 10px;
+            background-color: #3e8acc !important;
+        }
+        .tache-en-cours {
+            margin-bottom: 10px;
+            background-color: orange !important;
+        }
+        .tache-terminner {
+            margin-bottom: 10px;
+            background-color: green !important;
+        }
+    }
+</style>
+
 <div>
     <div class="p-grid p-align-end vertical-container">
-        <div class="p-col-8">
+        <div class="p-col-12 p-md-8">
             <h2>Gestion de projet</h2>
         </div>
-        <div class="p-col-4">
+        <div class="p-col-12 p-md-4">
             <button pButton label="Nouvelle tâche" icon="pi pi-plus"></button>
         </div>
     </div>
     <hr>
 
     <div class="p-grid">
-        <div class="p-col" style="background-color: #eee; margin-right: 10px">
+        <div class="p-col-12 p-md-4 tache-a-faire" style="background-color: #eee; margin-right: 10px;">
             <h3>A faire</h3>
 
             <div style="margin-bottom: 7px; width: 95%" pDraggable="taches">
@@ -44,7 +61,7 @@
             </div>
         </div><!--[/p-col]-->
 
-        <div class="p-col" pDroppable="taches" style="background-color: #eee; margin-right: 10px">
+        <div class="p-col-12 p-md-4 tache-en-cours" pDroppable="taches" style="background-color: #eee; margin-right: 10px">
             <h3>En cours</h3>
             <div style="margin-bottom: 7px; width: 95%" pDraggable="taches">
                 <p-card header="Formation du stagiaire">
@@ -59,7 +76,7 @@
         </div>
 
 
-        <div class="p-col" style="background-color: #eee; margin-right: 10px">
+        <div class="p-col-12 p-md-4 tache-terminner" style="background-color: #eee; margin-right: 10px">
             <h3>Terminer</h3>
             <div style="margin-bottom: 7px; width: 95%" pDraggable="taches">
                 <p-card header="Déposer recette du jour">
