@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'jhi-spiral-erp-component',
+  selector: 'erp-spiral-component',
   template: `
     <router-outlet></router-outlet>
   `
