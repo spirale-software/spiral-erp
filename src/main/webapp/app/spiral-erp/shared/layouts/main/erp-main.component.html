@@ -23,20 +23,32 @@
 
 </style>
 
-<div class="navbar">
-    <fa-icon icon="bars" style="color: white" (click)="display=true"></fa-icon>
-<!--    <p-menubar [model]="items"></p-menubar>-->
-</div>
-<div class="p-grid">
+<!--<div class="navbar">
+&lt;!&ndash;    <fa-icon icon="bars" style="color: white" (click)="display=true"></fa-icon>&ndash;&gt;
+    <span style="font-weight: bold; color: white">Spiral-ERP</span>
+&lt;!&ndash;    <p-menubar [model]="items"></p-menubar>&ndash;&gt;
+</div>-->
+<!--<div style="background-color: black; height: 20px"></div>-->
+<!--<div class="p-grid">-->
 <!--    <p-menu [model]="items" [style]="{'width':'260px', 'heigth':'500px', 'margin-top':'60px'}"></p-menu>-->
-    <div class="sidenav" style="margin: 0px; padding: 0px; width: 20%">
-        <p-menu [model]="items" [style]="{'border':'0px', 'width':'100%'}"></p-menu>
-    </div>
-    <div class="p-col-12 p-md-8">
-        <router-outlet></router-outlet>
-    </div>
-</div>
+<!--    <div class="sidenav" style="margin: 0px; padding: 0px; width: 20%">-->
+<!--        <p-menu [model]="items" [style]="{'border':'0px', 'width':'100%'}"></p-menu>-->
+<!--    </div>-->
+<!--    <div class="p-md-2" style="border: solid 1px"><p-menu [model]="items"></p-menu></div>-->
+<!--    <div class="p-col-12 p-md-10">-->
+<!--        <router-outlet></router-outlet>-->
+<!--    </div>-->
+<!--</div>-->
 
-<p-sidebar [(visible)]="display" position="left">
-    <p-menu [model]="items"></p-menu>
-</p-sidebar>
+<!--<p-sidebar [(visible)]="display" position="left">-->
+<!--    <p-menu [model]="items"></p-menu>-->
+<!--</p-sidebar>-->
+
+<div class="navbar"></div>
+
+<div class="p-grid">
+    <div *ngIf="isLargeScreen()" class="p-col-2" style="background-color: white; box-shadow: 0 0 5px 0 rgba(0,0,0,.3); padding-top: 0px; margin-top: 7px">
+        <p-menu [model]="items" [baseZIndex]="1" [style]="{'border':'0px','position':'fixed','width':'257px','margin-top':'60px'}"></p-menu>
+    </div>
+    <div [className]="isLargeScreen()? 'p-col-10':'p-col-12'"><router-outlet></router-outlet></div>
+</div>

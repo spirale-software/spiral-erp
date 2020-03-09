@@ -11,6 +11,11 @@ export class ErpMainComponent implements OnInit {
 
   constructor() {
     this.items = [];
+    console.log('innerWidth: ', window.innerWidth);
+  }
+
+  isLargeScreen(): boolean {
+    return window.innerWidth > 1024;
   }
 
   ngOnInit(): void {
