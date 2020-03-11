@@ -1,5 +1,5 @@
-<div>
-    <div class="p-grid p-align-end vertical-container">
+<div style="margin-top: 60px">
+    <div class="p-grid p-align-center vertical-container">
         <div class="p-col-12 p-md-8">
             <h2>Listes des achats</h2>
         </div>
@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <p-dataView [value]="achatList">
+    <p-dataView [value]="achatList" [style]="{'width':'100%'}">
         <ng-template let-achat pTemplate="listItem">
             <div class="p-grid data-item" style="padding: 10px 10px; border-bottom: solid 0.1em #eee">
                 <div class="p-col-8">
@@ -24,6 +24,5 @@
                 </div>
             </div>
         </ng-template>
-
     </p-dataView>
 </div>

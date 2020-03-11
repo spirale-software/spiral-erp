@@ -40,15 +40,24 @@
 <!--    </div>-->
 <!--</div>-->
 
-<!--<p-sidebar [(visible)]="display" position="left">-->
-<!--    <p-menu [model]="items"></p-menu>-->
-<!--</p-sidebar>-->
+<p-sidebar [(visible)]="display" position="left" [style]="{'padding':'0px'}">
+    <p-menu [model]="items" [baseZIndex]="1" [style]="{'position':'fixed','width':'19.8em','margin-top':'30px', 'border':'0px'}"></p-menu>
+</p-sidebar>
 
-<div class="navbar"></div>
+<div class="navbar">
+    <fa-icon icon="bars" style="color: white" (click)="display=true" class="big-screen-hidden"></fa-icon>
+    <span style="color: white; font-weight: bold">Spiral-ERP</span>
+    <span style="color: white;" class="small-screen-hidden">Connexion</span>
+    <fa-icon icon="bars" style="color: white" (click)="display=true" class="big-screen-hidden"></fa-icon>
+</div>
 
 <div class="p-grid">
-    <div *ngIf="isLargeScreen()" class="p-col-2" style="background-color: white; box-shadow: 0 0 5px 0 rgba(0,0,0,.3); padding-top: 0px; margin-top: 7px">
-        <p-menu [model]="items" [baseZIndex]="1" [style]="{'border':'0px','position':'fixed','width':'257px','margin-top':'60px'}"></p-menu>
+    <div class="p-col-2 small-screen-hidden">
+        <p-menu [model]="items" [baseZIndex]="1"
+                [style]="{'border':'0px','position':'fixed','width':'258.5px','margin-top':'60px', 'padding-bottom':'170px', 'box-shadow':'0 0 5px 0 rgba(0,0,0,.3)'}">
+
+        </p-menu>
     </div>
-    <div [className]="isLargeScreen()? 'p-col-10':'p-col-12'"><router-outlet></router-outlet></div>
+<!--    <div [className]="isLargeScreen()? 'p-col-10':'p-col-12'" style="display: block"><router-outlet></router-outlet></div>-->
+    <div class="div-container"><router-outlet></router-outlet></div>
 </div>

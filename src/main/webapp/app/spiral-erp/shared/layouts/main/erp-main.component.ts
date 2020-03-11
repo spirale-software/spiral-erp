@@ -22,32 +22,32 @@ export class ErpMainComponent implements OnInit {
     this.items = [
       {
         label: '',
-        items: [{ label: 'Tableau de bord', icon: 'pi pi-chart-bar' }]
+        items: [{ label: 'Tableau de bord', icon: 'pi pi-chart-bar', routerLink: 'tableau-de-bord' }]
       },
       {
         label: "Gestion d'entreprise",
         items: [
-          { label: 'Achat', icon: 'pi pi-fw pi-shopping-cart' },
-          { label: 'Vente', icon: 'pi pi-dollar' },
-          { label: 'Dépense', icon: 'pi pi-minus' }
+          { label: 'Achat', icon: 'pi pi-fw pi-shopping-cart', routerLink: 'achats' },
+          { label: 'Vente', icon: 'pi pi-dollar', routerLink: 'ventes' },
+          { label: 'Dépense', icon: 'pi pi-minus', routerLink: 'depenses' }
         ]
       },
       {
         label: 'Gestion de projet',
-        items: [{ label: 'Projet', icon: 'pi pi-fw pi-share-alt' }]
+        items: [{ label: 'Projet', icon: 'pi pi-fw pi-share-alt', routerLink: 'projets' }]
       },
       {
         label: 'Employés',
         items: [
-          { label: 'Gestion des employés', icon: 'pi pi-users' },
-          { label: 'Gestion des droits et accès', icon: 'pi pi-user-plus' }
+          { label: 'Gestion des employés', icon: 'pi pi-users', routerLink: 'employes' },
+          { label: 'Gestion des droits et accès', icon: 'pi pi-user-plus', routerLink: 'gestion-des-droits' }
         ]
       },
       {
         label: 'Comptabilité',
         items: [
-          { label: 'Stocks', icon: 'pi pi-home' },
-          { label: 'Bilan', icon: 'pi pi-table' }
+          { label: 'Stocks', icon: 'pi pi-home', routerLink: 'stocks' },
+          { label: 'Bilan', icon: 'pi pi-table', routerLink: 'bilans' }
         ]
       }
     ];
