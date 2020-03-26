@@ -50,6 +50,20 @@ export class ErpMainComponent implements OnInit {
           { label: 'Bilan', icon: 'pi pi-table', routerLink: 'bilans' }
         ]
       }
+      /* {
+        label: 'Administration',
+        items: [
+          { label: 'Gestion des utilisateurs', icon: 'pi pi-home', routerLink: 'stocks' },
+          { label: 'Suivi des utilisateurs', icon: 'pi pi-table', routerLink: 'bilans' },
+          { label: 'Métriques', icon: 'pi pi-table', routerLink: 'bilans' },
+          { label: 'Diagnostics', icon: 'pi pi-table', routerLink: 'bilans' },
+          { label: 'Configuration', icon: 'pi pi-table', routerLink: 'bilans' },
+          { label: 'Logs', icon: 'pi pi-table', routerLink: 'bilans' },
+          { label: 'Audits', icon: 'pi pi-table', routerLink: 'bilans' },
+          { label: 'API', icon: 'pi pi-table', routerLink: 'bilans' },
+          { label: 'Base de données', icon: 'pi pi-table', routerLink: 'bilans' }
+        ]
+      }*/
     ];
   }
 }
