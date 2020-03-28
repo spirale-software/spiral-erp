@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { AccountService } from 'app/core/auth/account.service';
-import { OverlayPanel } from 'primeng/overlaypanel';
+import { LoginService } from 'app/core/login/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'erp-main',
@@ -11,7 +12,7 @@ export class ErpMainComponent implements OnInit {
   items: MenuItem[];
   display = false;
 
-  constructor(private accountService: AccountService) {
+  constructor(private accountService: AccountService, private loginService: LoginService, private router: Router) {
     this.items = [];
   }
 
@@ -21,6 +22,11 @@ export class ErpMainComponent implements OnInit {
 
   isAuthenticated(): boolean {
     return this.accountService.isAuthenticated();
+  }
+
+  deconnexion(): void {
+    this.loginService.logout();
+    this.router.navigate(['']);
   }
 
   ngOnInit(): void {

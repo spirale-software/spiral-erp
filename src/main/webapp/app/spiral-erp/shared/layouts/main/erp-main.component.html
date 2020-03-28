@@ -16,11 +16,11 @@
     }
 </style>
 
-<!--<ng-template [ngIf]="!isAuthenticated()">-->
-<!--    <erp-login></erp-login>-->
-<!--</ng-template>-->
-
 <ng-template [ngIf]="!isAuthenticated()">
+    <erp-login></erp-login>
+</ng-template>
+
+<ng-template [ngIf]="isAuthenticated()">
 
 <p-sidebar [(visible)]="display" position="left" [style]="{'padding':'0px'}">
     <p-menu [model]="items" [baseZIndex]="1"
@@ -31,8 +31,9 @@
 <div class="navbar">
     <div class="p-col big-screen-hidden">    <fa-icon icon="bars" style="color: white" (click)="display=true" class="big-screen-hidden"></fa-icon>
     </div>
-    <div class="p-col"><span style="color: white; font-weight: bold">Spiral-ERP</span></div>
+    <div class="p-col"><a href="javascript:void(0)" routerLink="tableau-de-bord"><span style="color: white; font-weight: bold">Spiral-ERP</span></a></div>
     <div class="p-col" >
+
         <div style="float: right" (click)="op.toggle($event)">
             <span class="small-screen-hidden" style="color: white">Lapi Gérard</span>
             <span style="background-color: white; padding: 3px; border-radius: 50%; display: inline-block;
@@ -66,7 +67,7 @@
             <ul style="padding:0px">
                 <li>Gerard LAPI</li>
                 <li><a href="javascript:void(0)">Parametres</a></li>
-                <li><a href="javascript:void(0)">Déconnexion</a></li>
+                <li><a href="javascript:void(0)" (click)="deconnexion()">Déconnexion</a></li>
             </ul>
         </p-overlayPanel>
         <router-outlet></router-outlet>
