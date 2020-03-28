@@ -17,6 +17,7 @@ import { SharedModule } from 'app/spiral-erp/shared/shared.module';
 import { ErpMainComponent } from 'app/spiral-erp/shared/layouts/main/erp-main.component';
 import { MainComponent } from 'app/layouts/main/main.component';
 import { primengLib } from 'app/spiral-erp/shared/const/primeng-lib';
+import { LoginModule } from 'app/spiral-erp/login/login.module';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { primengLib } from 'app/spiral-erp/shared/const/primeng-lib';
     // jhipster-needle-angular-add-module JHipster will add new module here
     SpiralErpEntityModule,
     SpiralErpAppRoutingModule,
-    SharedModule
+    SharedModule,
+    LoginModule
   ],
   declarations: [
     ErpMainComponent,

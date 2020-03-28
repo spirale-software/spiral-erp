@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { AccountService } from 'app/core/auth/account.service';
+import { OverlayPanel } from 'primeng/overlaypanel';
 
 @Component({
   selector: 'erp-main',
@@ -9,14 +11,17 @@ export class ErpMainComponent implements OnInit {
   items: MenuItem[];
   display = false;
 
-  constructor() {
+  constructor(private accountService: AccountService) {
     this.items = [];
-    console.log('innerWidth: ', window.innerWidth);
   }
 
   closeSidebar = () => {
     this.display = false;
   };
+
+  isAuthenticated(): boolean {
+    return this.accountService.isAuthenticated();
+  }
 
   ngOnInit(): void {
     this.items = [

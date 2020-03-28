@@ -8,10 +8,12 @@ import { ButtonModule } from 'primeng/button';
 import {
   CardModule,
   ChartModule,
+  DialogModule,
   DragDropModule,
   ListboxModule,
   MenubarModule,
   MenuModule,
+  OverlayPanelModule,
   PanelModule,
   PickListModule,
   SidebarModule,
@@ -37,5 +39,7 @@ export const primengLib = [
   ChartModule,
   MenubarModule,
   MenuModule,
-  SidebarModule
+  SidebarModule,
+  OverlayPanelModule,
+  DialogModule
 ];
