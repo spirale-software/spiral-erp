@@ -3,6 +3,7 @@ import { MenuItem } from 'primeng/api';
 import { AccountService } from 'app/core/auth/account.service';
 import { LoginService } from 'app/core/login/login.service';
 import { Router } from '@angular/router';
+import { Account } from 'app/core/user/account.model';
 
 @Component({
   selector: 'erp-main',
@@ -11,9 +12,12 @@ import { Router } from '@angular/router';
 export class ErpMainComponent implements OnInit {
   items: MenuItem[];
   display = false;
+  isVisible = false;
+  account: Account | null;
 
   constructor(private accountService: AccountService, private loginService: LoginService, private router: Router) {
     this.items = [];
+    this.account = {} as Account;
   }
 
   closeSidebar = () => {
@@ -29,7 +33,23 @@ export class ErpMainComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  setCurrentAcount(): void {
+    this.accountService.identity(true).subscribe(account => {
+      this.account = account;
+      if (this.account) {
+        console.log('ACCOUNT: ', this.account);
+        this.isVisible = this.account.authorities.includes('ROLE_ADMIN');
+        this.setItems();
+        console.log('isVisible: ', this.isVisible);
+      }
+    });
+  }
+
   ngOnInit(): void {
+    this.setCurrentAcount();
+  }
+
+  setItems(): void {
     this.items = [
       {
         label: '',
@@ -63,6 +83,7 @@ export class ErpMainComponent implements OnInit {
       },
       {
         label: 'Administration',
+        visible: this.isVisible,
         items: [
           { label: 'Gestion des utilisateurs', icon: 'pi pi-user', routerLink: 'admin/user-management', command: this.closeSidebar },
           { label: 'Métriques', icon: 'pi pi-th-large', routerLink: 'admin/metrics', command: this.closeSidebar },

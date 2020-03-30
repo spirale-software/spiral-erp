@@ -36,7 +36,7 @@
 
         <div style="float: right" (click)="op.toggle($event)">
             <a href="javascript:void(0)">
-            <span class="small-screen-hidden" style="color: white">Lapi Gérard</span>
+            <span class="small-screen-hidden" style="color: white">{{ account.lastName }}</span>
             <span style="background-color: white; padding: 3px; border-radius: 50%; display: inline-block;
             text-align: center; width: 30px; height: 30px"><fa-icon icon="user" style="color: #4285F4"></fa-icon></span>
             <span><fa-icon icon="caret-down" style="color: white"></fa-icon></span>
@@ -67,8 +67,8 @@
     <div class="div-container" style="margin-top: 70px">
         <p-overlayPanel #op [style]="{'float':'left'}">
             <ul style="padding:0px">
-                <li> <fa-icon icon="user" style="color: #3e8acc"></fa-icon> Gerard LAPI</li>
-                <li> <fa-icon icon="cog" style="color: #3e8acc"></fa-icon> <a href="javascript:void(0)">Parametres</a></li>
+                <li> <fa-icon icon="user" style="color: #3e8acc"></fa-icon>{{ account.lastName + ' ' + account.firstName }}</li>
+                <li> <fa-icon icon="cog" style="color: #3e8acc"></fa-icon> <a href="javascript:void(0)" routerLink="account/settings">Parametres</a></li>
                 <li><fa-icon icon="sign-out-alt" style="color: #3e8acc"></fa-icon> <a href="javascript:void(0)" (click)="deconnexion()">Déconnexion</a></li>
             </ul>
         </p-overlayPanel>
