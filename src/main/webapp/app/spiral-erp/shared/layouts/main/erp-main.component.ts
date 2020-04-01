@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { AccountService } from 'app/core/auth/account.service';
 import { LoginService } from 'app/core/login/login.service';
 import { Router } from '@angular/router';
 import { Account } from 'app/core/user/account.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'erp-main',
   templateUrl: './erp-main.component.html'
 })
-export class ErpMainComponent implements OnInit {
+export class ErpMainComponent implements OnInit, OnDestroy {
   items: MenuItem[];
   display = false;
   isVisible = false;
   account: Account | null;
+  authSubscription?: Subscription;
 
   constructor(private accountService: AccountService, private loginService: LoginService, private router: Router) {
     this.items = [];
@@ -34,15 +36,19 @@ export class ErpMainComponent implements OnInit {
   }
 
   setCurrentAcount(): void {
-    this.accountService.identity(true).subscribe(account => {
+    this.authSubscription = this.accountService.getAuthenticationState().subscribe(account => {
       this.account = account;
       if (this.account) {
-        console.log('ACCOUNT: ', this.account);
-        this.isVisible = this.account.authorities.includes('ROLE_ADMIN');
+        this.isVisible = this.accountService.hasAnyAuthority('ROLE_ADMIN');
         this.setItems();
-        console.log('isVisible: ', this.isVisible);
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.authSubscription) {
+      this.authSubscription.unsubscribe();
+    }
   }
 
   ngOnInit(): void {
