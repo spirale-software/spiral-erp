@@ -6,117 +6,90 @@
 
     <div class="p-grid" style="margin-bottom: 10px;">
         <div class="p-col-12 p-md-4">
-            <erp-panel-dashboard [titre]="'Employés'" [detail]="'Nombre d\'employés connectés'" [value]="12"></erp-panel-dashboard>
+            <erp-panel-dashboard [titre]="'Employés'" [detail]="'Nombre d\'employés connectés'"
+                                 [value]="12"></erp-panel-dashboard>
         </div>
         <div class="p-col-12 p-md-4">
-            <erp-panel-dashboard [titre]="'Articles vendus'" [detail]="'Nombre d\'articles vendus dans le mois'" [value]="21" [backgroundColor]="'#FBBC05'"></erp-panel-dashboard>
+            <erp-panel-dashboard [titre]="'Articles vendus'" [detail]="'Nombre d\'articles vendus dans le mois'"
+                                 [value]="21" [backgroundColor]="'#FBBC05'"></erp-panel-dashboard>
         </div>
         <div class="p-col-12 p-md-4">
-            <erp-panel-dashboard [titre]="'Tâches'" [detail]="'Nombre de tâches à faire et en cours'" [value]="30" [backgroundColor]="'#34A853'"></erp-panel-dashboard>
-        </div>
-    </div>
-    <div>
-        <div class="p-grid">
-            <div class="p-col">
-                <p-panel header="Ventes récentes">
-                    <table>
-                        <tr>
-                            <th>Article</th>
-                            <th>Prix de vente</th>
-                            <th>Quantité</th>
-                            <th>Vendeur</th>
-                            <th>Date vente</th>
-                        </tr>
-                        <tr>
-                            <td>Robe</td>
-                            <td>1 200 FCFA</td>
-                            <td>1</td>
-                            <td><fa-icon icon="user"></fa-icon> Gyle</td>
-                            <td>10/12/2020 à 12h30</td>
-                        </tr>
-                        <tr>
-                            <td>Chaussures</td>
-                            <td>10 000 FCFA</td>
-                            <td>2</td>
-                            <td><fa-icon icon="user"></fa-icon> Simplice</td>
-                            <td>10/12/2020 à 13h30</td>
-                        </tr>
-                        <tr>
-                            <td>Tennis</td>
-                            <td>15 000 FCFA</td>
-                            <td>2</td>
-                            <td><fa-icon icon="user"></fa-icon> Aimé</td>
-                            <td>10/10/2020 à 13h30</td>
-                        </tr>
-                        <tr>
-                            <td>Cahier</td>
-                            <td>15 000 FCFA</td>
-                            <td>2</td>
-                            <td><fa-icon icon="user"></fa-icon> Casimir</td>
-                            <td>10/10/2020 à 13h30</td>
-                        </tr>
-                        <tr>
-                            <td>Livre</td>
-                            <td>7 000 FCFA</td>
-                            <td>2</td>
-                            <td><fa-icon icon="user"></fa-icon> La Verlosienne</td>
-                            <td>10/10/2020 à 13h30</td>
-                        </tr>
-                    </table>
-                    <div style="margin-top: 15px;">
-                        <a routerLink="/ventes" style="margin-left: 75%; text-decoration: underline">Voir toutes les ventes</a>
-                    </div>
-                </p-panel>
-            </div>
-            <div class="p-col">
-                <p-panel header="Tâches">
-                    <div class="p-grid" style="margin-bottom: 10px">
-                        <div class="p-col-8">
-                            <p>Achat des produits</p>
-                            <span><fa-icon icon="user"></fa-icon> La verlosienne</span>
-                        </div>
-                        <div class="p-col-4">
-                            <span style="background-color: #4285F4; border-radius: 50%; padding: 7px; color: white">A faire</span>
-                        </div>
-                    </div>
-
-                    <div class="p-grid" style="margin-bottom: 10px">
-                        <div class="p-col-8">
-                            <p>Achat des produits</p>
-                            <span><fa-icon icon="user"></fa-icon> Casimir</span>
-                        </div>
-                        <div class="p-col-4">
-                            <span style="background-color: #4285F4; border-radius: 50%; padding: 7px; color: white">A faire</span>
-                        </div>
-                    </div>
-
-                    <div class="p-grid">
-                        <div class="p-col-8">
-                            <p>Achat des produits</p>
-                            <span><fa-icon icon="user"></fa-icon> Gyle</span>
-                        </div>
-                        <div class="p-col-4">
-                            <span style="background-color: #4285F4; border-radius: 50%; padding: 7px; color: white">En cours</span>
-                        </div>
-                    </div>
-                    <div style="margin-top: 15px;">
-                        <a routerLink="/projets" style="margin-left: 75%; text-decoration: underline">Voir toutes les tâches</a>
-                    </div>
-                </p-panel>
-            </div>
+            <erp-panel-dashboard [titre]="'Tâches'" [detail]="'Nombre de tâches à faire et en cours'" [value]="30"
+                                 [backgroundColor]="'#34A853'"></erp-panel-dashboard>
         </div>
     </div>
 
     <div class="p-grid">
         <div class="p-col-12 p-md-6">
-            <div style="border: solid 1px">
-                <p-chart type="bar" [data]="data" width="95%" height="400px" [responsive]="true"></p-chart>
-            </div>
+            <p-dataView [value]="venteList">
+                <p-header>Ventes récentes</p-header>
+                <ng-template let-vente pTemplate="listItem">
+                    <div class="p-grid" style="padding: 10px 10px; border-bottom: solid 0.1em #eee">
+                        <div class="p-col-12">
+                            <span style="font-weight: bold;">{{ vente.libelleProduit }} - {{ vente.prixVente }} FCFA</span><br>
+                            <span style="margin-right: 10px; display: inline-block"><strong>N° d'article:</strong> {{ vente.numeroProduit }}</span>
+                            <span style="margin-right: 10px; display: inline-block"><strong>Type de produit:</strong> {{ vente.typeProduit }}</span>
+                            <span style="margin-right: 10px; display: inline-block"><strong>Vendeur:</strong> {{ vente.vendeur }}</span>
+                            <span style="margin-right: 10px; display: inline-block"><strong>Date:</strong> {{ vente.dateVente }}</span>
+                        </div>
+                    </div>
+                </ng-template>
+                <p-footer>
+                    <div style="margin-top: 15px;">
+                        <a routerLink="/ventes" style="margin-left: 75%; text-decoration: underline">
+                            Voir toutes les ventes
+                        </a>
+                    </div>
+                </p-footer>
+            </p-dataView>
+
         </div>
+
         <div class="p-col-12 p-md-6">
-            <div style="border: solid 1px">
-                <p-chart type="bar" [data]="chiffreAffaireData" width="95%" height="400px" [responsive]="true"></p-chart>
-            </div>
+            <p-panel header="Tâches">
+                <div class="p-grid" style="margin-bottom: 10px">
+                    <div class="p-col-8">
+                        <p>Achat des produits</p>
+                        <span><fa-icon icon="user"></fa-icon> La verlosienne</span>
+                    </div>
+                    <div class="p-col-4">
+                        <span
+                            style="background-color: #4285F4; border-radius: 50%; padding: 7px; color: white">A faire</span>
+                    </div>
+                </div>
+
+                <div class="p-grid" style="margin-bottom: 10px">
+                    <div class="p-col-8">
+                        <p>Achat des produits</p>
+                        <span><fa-icon icon="user"></fa-icon> Casimir</span>
+                    </div>
+                    <div class="p-col-4">
+                        <span
+                            style="background-color: #4285F4; border-radius: 50%; padding: 7px; color: white">A faire</span>
+                    </div>
+                </div>
+
+                <div class="p-grid">
+                    <div class="p-col-8">
+                        <p>Achat des produits</p>
+                        <span><fa-icon icon="user"></fa-icon> Gyle</span>
+                    </div>
+                    <div class="p-col-4">
+                        <span
+                            style="background-color: #4285F4; border-radius: 50%; padding: 7px; color: white">En cours</span>
+                    </div>
+                </div>
+                <div style="margin-top: 15px;">
+                    <a routerLink="/projets" style="margin-left: 75%; text-decoration: underline">Voir toutes les
+                        tâches</a>
+                </div>
+            </p-panel>
+        </div>
+    </div>
+
+    <div class="p-grid" style="margin-top: 25px; margin-bottom: 200px;">
+        <div class="p-col-12 p-md-10" style=" border: solid 1px #f5f7f7;">
+        <p-chart type="bar" [data]="myData" height="400px" [responsive]="true"></p-chart>
         </div>
     </div>
 </div>

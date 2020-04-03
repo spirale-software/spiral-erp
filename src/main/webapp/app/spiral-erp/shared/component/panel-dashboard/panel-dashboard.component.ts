@@ -19,8 +19,10 @@ export class PanelDashboardComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.style = { 'background-color': this.backgroundColor };
+    // this.style = { 'background-color': this.backgroundColor };
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.style = { 'background-color': this.backgroundColor };
+  }
 }

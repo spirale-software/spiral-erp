@@ -37,7 +37,9 @@
     "entitySuffix": "",
     "dtoSuffix": "DTO",
     "blueprints": [],
-    "otherModules": []
+    "otherModules": [],
+    "herokuAppName": "spiral-erp",
+    "herokuDeployType": "jar"
   },
   "entities": []
 }

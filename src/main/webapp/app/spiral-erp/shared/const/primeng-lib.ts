@@ -5,7 +5,20 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { ButtonModule } from 'primeng/button';
-import { CardModule, ChartModule, DragDropModule, ListboxModule, PanelModule, PickListModule, ToolbarModule } from 'primeng/primeng';
+import {
+  CardModule,
+  ChartModule,
+  DialogModule,
+  DragDropModule,
+  ListboxModule,
+  MenubarModule,
+  MenuModule,
+  OverlayPanelModule,
+  PanelModule,
+  PickListModule,
+  SidebarModule,
+  ToolbarModule
+} from 'primeng/primeng';
 import { TableModule } from 'primeng/table';
 
 export const primengLib = [
@@ -23,5 +36,10 @@ export const primengLib = [
   DragDropModule,
   CardModule,
   PanelModule,
-  ChartModule
+  ChartModule,
+  MenubarModule,
+  MenuModule,
+  SidebarModule,
+  OverlayPanelModule,
+  DialogModule
 ];

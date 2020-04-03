@@ -13,10 +13,17 @@
             background-color: green !important;
         }
     }
+    .tache {
+        margin-bottom: 7px;
+    }
+    .div-tache {
+        background-color: #eee;
+        padding: 15px;
+    }
 </style>
 
 <div>
-    <div class="p-grid p-align-end vertical-container">
+    <div class="p-grid p-align-center vertical-container">
         <div class="p-col-12 p-md-8">
             <h2>Gestion de projet</h2>
         </div>
@@ -27,67 +34,70 @@
     <hr>
 
     <div class="p-grid">
-        <div class="p-col-12 p-md-4 tache-a-faire" style="background-color: #eee; margin-right: 10px;">
+        <div class="p-col-12 p-md-4 tache-a-faire">
+            <div class="div-tache">
             <h3>A faire</h3>
 
-            <div style="margin-bottom: 7px; width: 95%" pDraggable="taches">
+            <div class="tache" pDraggable="taches">
                 <p-card header="Acheter produit">
                     <div>
                         Acheter des produits de néttoyage.
                         <br>
-                        <span><fa-icon icon="user"></fa-icon><strong><em>Gyle</em></strong></span>
+                        <span><fa-icon icon="user"></fa-icon> <strong><em>Gyle</em></strong></span>
                     </div>
                 </p-card>
             </div>
 
-            <div style="margin-bottom: 7px; width: 95%" pDraggable="taches">
+            <div class="tache" pDraggable="taches">
                 <p-card header="Nettoyage des communs">
                     <div>
                         Nettoyage des communs par le stagiaire.
                         <br>
-                        <span><fa-icon icon="user"></fa-icon><strong><em>Gyle</em></strong></span>
+                        <span><fa-icon icon="user"></fa-icon> <strong><em>Gyle</em></strong></span>
                     </div>
                 </p-card>
             </div>
 
-            <div style="margin-bottom: 7px; width: 95%" pDraggable="taches">
+            <div class="tache" pDraggable="taches">
                 <p-card header="Livrer Mr. Luc">
                     <div>
                         Aller livrer 3 colis de chaussures à Mr. Luc.
                         <br>
-                        <span><fa-icon icon="user"></fa-icon><strong><em>Gyle</em></strong></span>
+                        <span><fa-icon icon="user"></fa-icon> <strong><em>Gyle</em></strong></span>
                     </div>
                 </p-card>
+            </div>
             </div>
         </div><!--[/p-col]-->
 
-        <div class="p-col-12 p-md-4 tache-en-cours" pDroppable="taches" style="background-color: #eee; margin-right: 10px">
-            <h3>En cours</h3>
-            <div style="margin-bottom: 7px; width: 95%" pDraggable="taches">
-                <p-card header="Formation du stagiaire">
-                    <div>
-                        Former le nouveau stagiaire au tâche journalière.
-                        <br>
-                        <span><fa-icon icon="user"></fa-icon><strong><em>Legy</em></strong></span>
-                    </div>
-                </p-card>
+        <div class="p-col-12 p-md-4 tache-en-cours" pDroppable="taches">
+            <div class="div-tache">
+                <h3>En cours</h3>
+                <div class="tache" pDraggable="taches">
+                    <p-card header="Formation du stagiaire">
+                        <div>
+                            Former le nouveau stagiaire au tâche journalière.
+                            <br>
+                            <span><fa-icon icon="user"></fa-icon> <strong><em>Legy</em></strong></span>
+                        </div>
+                    </p-card>
+                </div>
             </div>
-
         </div>
 
-
-        <div class="p-col-12 p-md-4 tache-terminner" style="background-color: #eee; margin-right: 10px">
-            <h3>Terminer</h3>
-            <div style="margin-bottom: 7px; width: 95%" pDraggable="taches">
-                <p-card header="Déposer recette du jour">
-                    <div>
-                        Aller déposer la recette du jour à la banque.
-                        <br>
-                        <span><fa-icon icon="user"></fa-icon><strong><em>Beaute Verlosienne</em></strong></span>
-                    </div>
-                </p-card>
+        <div class="p-col-12 p-md-4 tache-terminner">
+            <div class="div-tache">
+                <h3>Terminer</h3>
+                <div class="tache" pDraggable="taches">
+                    <p-card header="Déposer recette du jour">
+                        <div>
+                            Aller déposer la recette du jour à la banque.
+                            <br>
+                            <span><fa-icon icon="user"></fa-icon><strong><em>Beaute Verlosienne</em></strong></span>
+                        </div>
+                    </p-card>
+                </div>
             </div>
-
         </div>
     </div>
 </div>
