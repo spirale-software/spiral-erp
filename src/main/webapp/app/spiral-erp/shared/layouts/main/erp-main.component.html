@@ -57,9 +57,18 @@
     <div class="div-container" style="margin-top: 70px">
         <p-overlayPanel #op [style]="{'float':'left'}">
             <ul style="padding:0px">
-                <li> <fa-icon icon="user" style="color: #3e8acc"></fa-icon>{{ account?.lastName + ' ' + account?.firstName }}</li>
-                <li> <fa-icon icon="cog" style="color: #3e8acc"></fa-icon> <a href="javascript:void(0)" routerLink="account/settings">Parametres</a></li>
-                <li><fa-icon icon="sign-out-alt" style="color: #3e8acc"></fa-icon> <a href="javascript:void(0)" (click)="deconnexion()">Déconnexion</a></li>
+                <li>
+                    <fa-icon icon="user" style="color: #3e8acc"></fa-icon>
+                    <span>{{ account?.lastName + ' ' + account?.firstName }}</span>
+                </li>
+                <li>
+                    <fa-icon icon="cog" style="color: #3e8acc"></fa-icon>
+                    <a href="javascript:void(0)" routerLink="account/settings">Parametres</a>
+                </li>
+                <li>
+                    <fa-icon icon="sign-out-alt" style="color: #3e8acc"></fa-icon>
+                    <a href="javascript:void(0)" (click)="deconnexion()">Déconnexion</a>
+                </li>
             </ul>
         </p-overlayPanel>
         <router-outlet></router-outlet>

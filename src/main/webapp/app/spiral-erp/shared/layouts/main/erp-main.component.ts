@@ -36,7 +36,7 @@ export class ErpMainComponent implements OnInit, OnDestroy {
   }
 
   setCurrentAcount(): void {
-    this.authSubscription = this.accountService.getAuthenticationState().subscribe(account => {
+    this.authSubscription = this.accountService.identity().subscribe(account => {
       this.account = account;
       if (this.account) {
         this.isVisible = this.accountService.hasAnyAuthority('ROLE_ADMIN');
@@ -47,7 +47,7 @@ export class ErpMainComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (this.authSubscription) {
-      this.authSubscription.unsubscribe();
+      // this.authSubscription.unsubscribe();
     }
   }
 
