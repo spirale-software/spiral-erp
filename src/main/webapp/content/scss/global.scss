@@ -201,10 +201,17 @@ ui bootstrap tweaks
     display: none;
   }
 
+  .small-screen-width {
+    width: 97%;
+    margin: auto;
+  }
+
   .div-container {
+    // padding: 10px;
+    overflow: hidden;
     width: 100%;
     display: block;
-    margin-left: 10px;
+    // margin-left: 10px;
   }
 }
 
