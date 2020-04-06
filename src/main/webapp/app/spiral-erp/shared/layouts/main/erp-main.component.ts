@@ -62,22 +62,28 @@ export class ErpMainComponent implements OnInit, OnDestroy {
         items: [{ label: 'Tableau de bord', icon: 'pi pi-chart-bar', routerLink: 'tableau-de-bord', command: this.closeSidebar }]
       },
       {
-        label: "Gestion d'entreprise",
+        label: 'Gestion des achats',
         items: [
-          { label: 'Achat', icon: 'pi pi-fw pi-shopping-cart', routerLink: 'achats', command: this.closeSidebar },
+          { label: 'Article', icon: 'pi pi-fw pi-shopping-cart', routerLink: 'articles', command: this.closeSidebar },
+          { label: 'Fournisseur', icon: 'pi pi-dollar', routerLink: 'fournisseurs', command: this.closeSidebar }
+        ]
+      },
+      {
+        label: 'Vente & Dépense',
+        items: [
           { label: 'Vente', icon: 'pi pi-dollar', routerLink: 'ventes', command: this.closeSidebar },
           { label: 'Dépense', icon: 'pi pi-minus', routerLink: 'depenses', command: this.closeSidebar }
         ]
       },
-      {
-        label: 'Gestion de projet',
-        items: [{ label: 'Projet', icon: 'pi pi-fw pi-share-alt', routerLink: 'projets', command: this.closeSidebar }]
-      },
+      // {
+      //   label: 'Gestion de projet',
+      //   items: [{ label: 'Projet', icon: 'pi pi-fw pi-share-alt', routerLink: 'projets', command: this.closeSidebar }]
+      // },
       {
         label: 'Employés',
         items: [
-          { label: 'Gestion des employés', icon: 'pi pi-users', routerLink: 'employes', command: this.closeSidebar },
-          { label: 'Gestion des droits et accès', icon: 'pi pi-user-plus', routerLink: 'gestion-des-droits', command: this.closeSidebar }
+          { label: 'Gestion des employés', icon: 'pi pi-users', routerLink: 'employes', command: this.closeSidebar }
+          // { label: 'Gestion des droits et accès', icon: 'pi pi-user-plus', routerLink: 'gestion-des-droits', command: this.closeSidebar }
         ]
       },
       {

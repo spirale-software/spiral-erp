@@ -1,0 +1,28 @@
+<!--
+-->
+<div>
+<!--    <div class="p-grid p-align-center vertical-container">-->
+<!--        <div class="p-col-12 p-md-8">-->
+<!--            <h2>Listes des fournisseurs</h2>-->
+<!--        </div>-->
+<!--        <div class="p-col-12 p-md-4">-->
+<!--            <button pButton label="Nouveau fournisseur" icon="pi pi-plus"></button>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div><button pButton label="Nouveau fournisseur" icon="pi pi-plus"></button></div>
+
+    <p-dataView [value]="fournisseurList" [style]="{'width':'100%'}">
+        <p-header><span>Listes des fournisseurs</span></p-header>
+        <ng-template let-fournisseur pTemplate="listItem">
+            <div class="p-grid data-item" style=" border-bottom: solid 0.1em #eee" [routerLink]="['/fournisseurs','3','modifier']">
+                <div class="p-col-12">
+                    <span style="font-weight: bold;">{{ fournisseur.nom }}</span><br>
+                    <span style="margin-right: 10px; display: block"><strong>N°:</strong> {{ fournisseur.numero }}</span>
+                    <span style="margin-right: 10px; display: block"><strong>Téléphone:</strong> {{ fournisseur.telephone }}</span>
+                    <span style="margin-right: 10px; display: block"><strong>Adresse:</strong> {{ fournisseur.adresse }}</span>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</div>

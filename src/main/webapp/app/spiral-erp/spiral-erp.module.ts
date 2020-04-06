@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { spiraleErpRoutes } from 'app/spiral-erp/spiral-erp.route';
 import { EmployeModule } from 'app/spiral-erp/employe/employe.module';
 import { GestionDroitModule } from 'app/spiral-erp/gestion-droit/gestion-droit.module';
-import { AchatModule } from 'app/spiral-erp/achat/achat.module';
+import { ArticleModule } from 'app/spiral-erp/article/article.module';
 import { ProjetModule } from 'app/spiral-erp/projet/projet.module';
 import { TableauDeBordModule } from 'app/spiral-erp/tableau-de-bord/tableau-de-bord.module';
 import { VenteModule } from 'app/spiral-erp/vente/vente.module';
@@ -13,13 +13,15 @@ import { SharedModule } from 'app/spiral-erp/shared/shared.module';
 import { StockModule } from 'app/spiral-erp/stock/stock.module';
 import { DepenseModule } from 'app/spiral-erp/depense/depense.module';
 import { BilanModule } from 'app/spiral-erp/bilan/bilan.module';
+import { FournisseurModule } from 'app/spiral-erp/fournisseur/fournisseur.module';
 
 @NgModule({
   imports: [
     RouterModule.forChild(spiraleErpRoutes),
     EmployeModule,
     GestionDroitModule,
-    AchatModule,
+    ArticleModule,
+    FournisseurModule,
     ProjetModule,
     TableauDeBordModule,
     VenteModule,

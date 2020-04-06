@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'erp-achat',
-  templateUrl: './achat.component.html'
+  templateUrl: './article.component.html'
 })
-export class AchatComponent implements OnInit {
+export class ArticleComponent implements OnInit {
   achatList: any[];
 
   constructor() {
