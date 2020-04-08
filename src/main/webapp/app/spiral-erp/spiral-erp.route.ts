@@ -11,6 +11,7 @@ import { stockRoutes } from 'app/spiral-erp/stock/stock.route';
 import { depenseRoutes } from 'app/spiral-erp/depense/depense.route';
 import { bilanRoutes } from 'app/spiral-erp/bilan/bilan.route';
 import { fournisseurRoutes } from 'app/spiral-erp/fournisseur/fournisseur.route';
+import { achatRoutes } from 'app/spiral-erp/achat/achat.route';
 
 export const spiraleErpRoutes: Routes = [
   {
@@ -21,6 +22,7 @@ export const spiraleErpRoutes: Routes = [
       ...employeRoutes,
       ...gestionDroitRoutes,
       ...articleRoutes,
+      ...achatRoutes,
       ...fournisseurRoutes,
       ...projetRoutes,
       ...tableauDeBordRoutes,

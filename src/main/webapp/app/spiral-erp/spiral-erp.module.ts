@@ -14,6 +14,7 @@ import { StockModule } from 'app/spiral-erp/stock/stock.module';
 import { DepenseModule } from 'app/spiral-erp/depense/depense.module';
 import { BilanModule } from 'app/spiral-erp/bilan/bilan.module';
 import { FournisseurModule } from 'app/spiral-erp/fournisseur/fournisseur.module';
+import { AchatModule } from 'app/spiral-erp/achat/achat.module';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { FournisseurModule } from 'app/spiral-erp/fournisseur/fournisseur.module
     EmployeModule,
     GestionDroitModule,
     ArticleModule,
+    AchatModule,
     FournisseurModule,
     ProjetModule,
     TableauDeBordModule,
