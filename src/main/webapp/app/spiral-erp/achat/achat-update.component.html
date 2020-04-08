@@ -1,0 +1,54 @@
+<!--
+-->
+<div>
+    <div style="margin-bottom: 7px">
+        <p-button icon="pi pi-chevron-left" label="Tous les achats" routerLink="/achats"></p-button>
+    </div>
+
+    <div>
+        <p-panel>
+            <p-header>
+                <div class="ui-helper-clearfix">
+                    <span class="ui-panel-title">Nouvel achat</span>
+                </div>
+            </p-header>
+            <div class="p-grid">
+                <div class="p-col">
+                    <span style="display: block">Acheteur</span>
+                    <span style="display: block">Gyle</span>
+                </div>
+                <div class="p-col">
+                    <span style="display: block">Date</span>
+                    <span style="display: block">10/05/2020</span>
+                </div>
+            </div>
+            <div class="ui-fluid" style="margin-bottom: 13px">
+                <span>Produit</span>
+                <input pInputText>
+            </div>
+            <div class="ui-fluid" style="margin-bottom: 13px">
+                <span>Prix unitaire</span>
+                <div class="ui-inputgroup">
+                    <input type="text" pInputText>
+                    <span class="ui-inputgroup-addon">FCFA</span>
+                </div>
+            </div>
+            <div class="ui-fluid" style="margin-bottom: 13px">
+                <span>Quantité</span>
+                <input pInputText>
+            </div>
+            <div class="ui-fluid" style="margin-bottom: 13px">
+                <span style="display: block">Prix total d'achat</span>
+                <span style="font-weight: bold">1 200 000 FCFA</span>
+            </div>
+        </p-panel>
+
+        <p-toolbar [style]="{'margin-top':'7px'}">
+            <div class="ui-toolbar-group-right">
+                <button pButton type="button" icon="pi pi-save" label="Confirmer l'achat"></button>
+<!--                <button pButton type="button" icon="pi pi-times" class="ui-button-danger" label="Supprimer"></button>-->
+            </div>
+        </p-toolbar>
+    </div>
+
+</div>
