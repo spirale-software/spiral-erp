@@ -7,10 +7,10 @@
                 <div class="p-col-10"><span>Listes des fournisseurs</span></div>
                 <div class="p-col-2"><button pButton icon="pi pi-plus" routerLink="/fournisseurs/ajouter"></button></div>
             </div>
-
         </p-header>
+
         <ng-template let-fournisseur pTemplate="listItem">
-            <div class="p-grid data-item" style=" border-bottom: solid 0.1em #eee; padding-top: 7px" [routerLink]="['/fournisseurs','3','modifier']">
+            <div class="p-grid data-item data-view-item" [routerLink]="['/fournisseurs','3','modifier']">
                 <div class="p-col-12">
                     <span style="font-weight: bold;">{{ fournisseur.nom }}</span><br>
                     <span style="margin-right: 10px; display: block"><strong>N°:</strong> {{ fournisseur.numero }}</span>

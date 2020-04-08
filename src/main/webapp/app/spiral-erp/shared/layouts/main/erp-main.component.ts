@@ -71,7 +71,7 @@ export class ErpMainComponent implements OnInit, OnDestroy {
       {
         label: 'Vente & Dépense',
         items: [
-          { label: 'Vente', icon: 'pi pi-dollar', routerLink: 'ventes', command: this.closeSidebar },
+          { label: 'Vente', icon: 'pi pi-dollar', routerLink: 'ventes/creer', command: this.closeSidebar },
           { label: 'Dépense', icon: 'pi pi-minus', routerLink: 'depenses', command: this.closeSidebar }
         ]
       },
