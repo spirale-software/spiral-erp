@@ -3,9 +3,6 @@
         <div class="p-col-12 p-md-8">
             <h4>Listes des dépenses</h4>
         </div>
-<!--        <div class="p-col-12 p-md-4">-->
-<!--            <button pButton label="Nouvelle dépense" icon="pi pi-plus"></button>-->
-<!--        </div>-->
     </div>
 
     <p-dataView [value]="depenseList">
@@ -16,7 +13,7 @@
             </div>
         </p-header>
         <ng-template let-depense pTemplate="listItem">
-            <div class="p-grid data-item data-view-item">
+            <div class="p-grid data-view-item" routerLink="/depenses/creer">
                 <div class="p-col-12">
                     <span style="font-weight: bold;">{{ depense.libelle }} - {{ depense.montant }} FCFA</span><br>
                     <span style="margin-right: 10px; display: inline-block"><strong>Type de dépense:</strong> {{ depense.typeDepense }}</span>

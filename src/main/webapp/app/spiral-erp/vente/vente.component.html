@@ -1,27 +1,29 @@
-<div>
+<div style="padding-bottom: 100px">
     <div class="p-grid p-align-center vertical-container">
         <div class="p-col-12 p-md-8">
-            <h2>Listes des ventes</h2>
-        </div>
-        <div class="p-col-12 p-md-4">
-            <button pButton label="Nouvelle Vente" icon="pi pi-plus"></button>
+            <h4>Listes des ventes</h4>
         </div>
     </div>
 
     <p-dataView [value]="venteList">
+        <p-header>
+            <div class="p-grid p-align-center vertical-container">
+                <div class="p-col-10"><input pInputText placeholder="Rechercher"></div>
+                <div class="p-col-2"><button pButton icon="pi pi-plus" routerLink="/ventes/creer"></button></div>
+            </div>
+        </p-header>
         <ng-template let-vente pTemplate="listItem">
-            <div class="p-grid data-item" style="padding: 10px 10px; border-bottom: solid 0.1em #eee">
-                <div class="p-col-8">
+            <div class="p-grid data-view-item" routerLink="/ventes/creer">
+                <div class="p-col-12">
                     <span style="font-weight: bold;">{{ vente.libelleProduit }} - {{ vente.prixVente }} FCFA</span><br>
                     <span style="margin-right: 10px; display: inline-block"><strong>N° d'article:</strong> {{ vente.numeroProduit }}</span>
-                    <span style="margin-right: 10px; display: inline-block"><strong>Type de produit:</strong> {{ vente.typeProduit }}</span>
-                    <span style="margin-right: 10px; display: inline-block"><strong>Vendeur:</strong> {{ vente.vendeur }}</span>
-                    <span style="margin-right: 10px; display: inline-block"><strong>Date:</strong> {{ vente.dateVente }}</span>
+                    <span style="margin-right: 10px; display: block"><strong>Vendeur:</strong> {{ vente.vendeur }}</span>
+                    <span style="margin-right: 10px; display: block"><strong>Date:</strong> {{ vente.dateVente }}</span>
                 </div>
-                <div class="p-col-4">
-                    <button pButton type="button" icon="pi pi-pencil" class="ui-button-warning"></button>
-                    <button pButton type="button" icon="pi pi-trash" class="ui-button-danger"></button>
-                </div>
+<!--                <div class="p-col-4">-->
+<!--                    <button pButton type="button" icon="pi pi-pencil" class="ui-button-warning"></button>-->
+<!--                    <button pButton type="button" icon="pi pi-trash" class="ui-button-danger"></button>-->
+<!--                </div>-->
             </div>
         </ng-template>
 

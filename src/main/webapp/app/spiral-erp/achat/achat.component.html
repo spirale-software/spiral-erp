@@ -16,7 +16,7 @@
         </p-header>
 
         <ng-template let-vente pTemplate="listItem">
-            <div class="p-grid data-item data-view-item">
+            <div class="p-grid data-view-item" routerLink="/achats/creer">
                 <div class="p-col-12">
                     <span style="font-weight: bold;">{{ vente.libelleProduit }} - {{ vente.prixVente }} FCFA</span><br>
                     <span style="margin-right: 10px; display: inline-block"><strong>N° d'article:</strong> {{ vente.numeroProduit }}</span>
