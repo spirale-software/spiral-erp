@@ -1,10 +1,7 @@
-<div>
-    <div class="p-grid p-align-center vertical-container">
-        <div class="p-col-12 p-md-8">
-            <h4>Listes des dépenses</h4>
-        </div>
-    </div>
-
+<!--
+-->
+<div class="div-component">
+    <h4>Listes des dépenses</h4>
     <p-dataView [value]="depenseList">
         <p-header>
             <div class="p-grid p-align-center vertical-container">
@@ -19,10 +16,6 @@
                     <span style="margin-right: 10px; display: inline-block"><strong>Type de dépense:</strong> {{ depense.typeDepense }}</span>
                     <span style="margin-right: 10px; display: inline-block"><strong>Date:</strong> {{ depense.dateDepense }}</span>
                 </div>
-<!--                <div class="p-col-4">-->
-<!--                    <button pButton type="button" icon="pi pi-pencil" class="ui-button-warning"></button>-->
-<!--                    <button pButton type="button" icon="pi pi-trash" class="ui-button-danger"></button>-->
-<!--                </div>-->
             </div>
         </ng-template>
 
