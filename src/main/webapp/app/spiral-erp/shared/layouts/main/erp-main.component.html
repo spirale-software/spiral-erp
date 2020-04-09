@@ -1,4 +1,3 @@
-
 <style>
     .navbar {
         overflow: hidden;
@@ -9,9 +8,11 @@
         height: 60px;
         z-index: 100;
     }
+
     ul {
         list-style-type: none;
     }
+
     ul li {
         padding: 3px 0px;
     }
@@ -23,55 +24,57 @@
 
 <ng-template [ngIf]="isAuthenticated()">
 
-<p-sidebar [(visible)]="display" position="left" [style]="{'padding':'0px'}">
-    <p-menu [model]="items" [baseZIndex]="1"
-            [style]="{'position':'fixed','width':'19.8em','margin-top':'30px',
-                      'border':'0px', 'overflow':'scroll','height':'99%','padding-bottom':'60px'}"></p-menu>
-</p-sidebar>
-
-<div class="navbar">
-    <div class="p-col big-screen-hidden">    <fa-icon icon="bars" style="color: white" (click)="display=true" class="big-screen-hidden"></fa-icon>
-    </div>
-    <div class="p-col"><a href="javascript:void(0)" routerLink="tableau-de-bord"><span style="color: white; font-weight: bold">Spiral-ERP</span></a></div>
-    <div class="p-col" >
-
-        <div style="float: right" (click)="op.toggle($event)">
-            <a href="javascript:void(0)">
-            <span class="small-screen-hidden" style="color: white">{{ account?.lastName }}</span>
-            <span style="background-color: white; padding: 3px; border-radius: 50%; display: inline-block;
-            text-align: center; width: 30px; height: 30px"><fa-icon icon="user" style="color: #4285F4"></fa-icon></span>
-            <span><fa-icon icon="caret-down" style="color: white"></fa-icon></span>
-            </a>
-        </div>
-
-    </div>
-</div>
-
-<div class="p-grid small-screen-width">
-    <div class="p-col-2 small-screen-hidden">
+    <p-sidebar [(visible)]="display" position="left" [style]="{'padding':'0px'}">
         <p-menu [model]="items" [baseZIndex]="1"
-                [style]="{'overflow':'scroll','height':'99%','border':'0px','position':'fixed','width':'15.33%','padding-bottom':'60px',
+                [style]="{'position':'fixed','width':'19.8em','margin-top':'30px',
+                      'border':'0px', 'overflow':'scroll','height':'99%','padding-bottom':'60px'}"></p-menu>
+    </p-sidebar>
+
+    <div class="navbar">
+        <div class="p-col big-screen-hidden">
+            <fa-icon icon="bars" style="color: white" (click)="display=true" class="big-screen-hidden"></fa-icon>
+        </div>
+        <div class="p-col"><a href="javascript:void(0)" routerLink="tableau-de-bord"><span
+            style="color: white; font-weight: bold">Spiral-ERP</span></a></div>
+        <div class="p-col">
+
+            <div style="float: right" (click)="op.toggle($event)">
+                <a href="javascript:void(0)">
+                    <span class="small-screen-hidden" style="color: white">{{ account?.lastName }}</span>
+                    <span style="background-color: white; padding: 3px; border-radius: 50%; display: inline-block;
+            text-align: center; width: 30px; height: 30px"><fa-icon icon="user" style="color: #4285F4"></fa-icon></span>
+                    <span><fa-icon icon="caret-down" style="color: white"></fa-icon></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="p-grid small-screen-width">
+        <div class="p-col-2 small-screen-hidden">
+            <p-menu [model]="items" [baseZIndex]="1"
+                    [style]="{'overflow':'scroll','height':'99%','border':'0px','position':'fixed','width':'15.33%','padding-bottom':'60px',
                           'margin-top':'60px', 'box-shadow':'0 0 5px 0 rgba(0,0,0,.3)'}">
-        </p-menu>
+            </p-menu>
+        </div>
+        <div class="div-container" style="margin-top: 70px">
+            <p-overlayPanel #op [style]="{'float':'left'}">
+                <ul style="padding:0px">
+                    <li>
+                        <fa-icon icon="user" style="color: #3e8acc"></fa-icon>
+                        <span>{{ account?.lastName + ' ' + account?.firstName }}</span>
+                    </li>
+                    <li>
+                        <fa-icon icon="cog" style="color: #3e8acc"></fa-icon>
+                        <a href="javascript:void(0)" routerLink="account/settings">Parametres</a>
+                    </li>
+                    <li>
+                        <fa-icon icon="sign-out-alt" style="color: #3e8acc"></fa-icon>
+                        <a href="javascript:void(0)" (click)="deconnexion()">Déconnexion</a>
+                    </li>
+                </ul>
+            </p-overlayPanel>
+            <router-outlet></router-outlet>
+        </div>
     </div>
-    <div class="div-container" style="margin-top: 70px">
-        <p-overlayPanel #op [style]="{'float':'left'}">
-            <ul style="padding:0px">
-                <li>
-                    <fa-icon icon="user" style="color: #3e8acc"></fa-icon>
-                    <span>{{ account?.lastName + ' ' + account?.firstName }}</span>
-                </li>
-                <li>
-                    <fa-icon icon="cog" style="color: #3e8acc"></fa-icon>
-                    <a href="javascript:void(0)" routerLink="account/settings">Parametres</a>
-                </li>
-                <li>
-                    <fa-icon icon="sign-out-alt" style="color: #3e8acc"></fa-icon>
-                    <a href="javascript:void(0)" (click)="deconnexion()">Déconnexion</a>
-                </li>
-            </ul>
-        </p-overlayPanel>
-        <router-outlet></router-outlet>
-    </div>
-</div>
 </ng-template>

@@ -52,6 +52,7 @@ export class ErpMainComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.accountService.identity().subscribe();
     this.setCurrentAcount();
   }
 
@@ -59,7 +60,14 @@ export class ErpMainComponent implements OnInit, OnDestroy {
     this.items = [
       {
         label: '',
-        items: [{ label: 'Tableau de bord', icon: 'pi pi-chart-bar', routerLink: 'tableau-de-bord', command: this.closeSidebar }]
+        items: [
+          {
+            label: 'Tableau de bord',
+            icon: 'pi pi-chart-bar',
+            routerLink: 'tableau-de-bord',
+            command: this.closeSidebar
+          }
+        ]
       },
       {
         label: 'Gestion des achats',
@@ -98,7 +106,12 @@ export class ErpMainComponent implements OnInit, OnDestroy {
         label: 'Administration',
         visible: this.isVisible,
         items: [
-          { label: 'Gestion des utilisateurs', icon: 'pi pi-user', routerLink: 'admin/user-management', command: this.closeSidebar },
+          {
+            label: 'Gestion des utilisateurs',
+            icon: 'pi pi-user',
+            routerLink: 'admin/user-management',
+            command: this.closeSidebar
+          },
           { label: 'Métriques', icon: 'pi pi-th-large', routerLink: 'admin/metrics', command: this.closeSidebar },
           { label: 'Diagnostics', icon: 'pi pi-star-o', routerLink: 'admin/health', command: this.closeSidebar },
           { label: 'Configuration', icon: 'pi pi-list', routerLink: 'admin/configuration', command: this.closeSidebar },
