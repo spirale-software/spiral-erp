@@ -1,27 +1,25 @@
 <!--
 -->
 <div class="div-component">
-    <h2>Tableau de bord</h2>
-    <hr>
-
-    <div class="p-grid" style="margin-bottom: 10px;">
+    <h4 style="margin-bottom: 21px">Tableau de bord</h4>
+    <div class="p-grid" style="margin-bottom: 10px; background-color: white; padding: 0px 7px">
         <div class="p-col-12 p-md-4">
             <erp-panel-dashboard [titre]="'Chiffre d\'affaire'" [detail]="'Chiffre d\'affaire du mois'"
                                  [value]="'9.000.000'"
                                  [backgroundColor]="'#34A853'"></erp-panel-dashboard>
         </div>
         <div class="p-col-12 p-md-4">
-            <erp-panel-dashboard [titre]="'Employés'" [detail]="'Nombre d\'employés connectés'"
-                                 [value]="12"></erp-panel-dashboard>
-        </div>
-        <div class="p-col-12 p-md-4">
             <erp-panel-dashboard [titre]="'Articles vendus'" [detail]="'Nombre d\'articles vendus dans le mois'"
                                  [value]="121" [backgroundColor]="'#FBBC05'"></erp-panel-dashboard>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <erp-panel-dashboard [titre]="'Employés'" [detail]="'Nombre d\'employés connectés'"
+                                 [value]="12"></erp-panel-dashboard>
         </div>
     </div>
 
     <div>
-        <div style="margin-top: 25px; margin-bottom: 25px; border: solid 1px #f5f7f7;">
+        <div style="margin-top: 25px; margin-bottom: 25px; border: solid 1px #f5f7f7; background-color: white">
             <p-chart type="bar" [data]="myData" height="400px" [responsive]="true"></p-chart>
         </div>
         <div>
