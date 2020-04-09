@@ -1,36 +1,43 @@
 <!--
 -->
 <div class="div-component">
-    <h4 style="margin-bottom: 15px">Stocks</h4>
-    <div style="background-color: white">
-        <div class="p-grid" style="padding: 0 7px">
-            <div class="p-col-12 p-md-4">
-                <erp-panel-dashboard [titre]="'Carton de chaussure'" [detail]="'Nombre d\'unité: 10'" [value]="12"
-                                     [backgroundColor]="'#DFE3EE'"></erp-panel-dashboard>
-            </div>
-            <div class="p-col-12 p-md-4">
-                <erp-panel-dashboard [titre]="'Pantalon'" [detail]="'Nombre d\'unité: 1'" [value]="50"
-                                     [backgroundColor]="'#DFE3EE'"></erp-panel-dashboard>
-            </div>
-            <div class="p-col-12 p-md-4">
-                <erp-panel-dashboard [titre]="'Ballot de chemise'" [detail]="'Nombre d\'unité: 1'" [value]="100"
-                                     [backgroundColor]="'#DFE3EE'"></erp-panel-dashboard>
-            </div>
-        </div>
+    <h4>Stocks</h4>
+    <p-panel>
+        <p-header>
+            <input pInputText placeholder="Rechercher">
+        </p-header>
 
-        <div class="p-grid" style="padding: 0 7px">
-            <div class="p-col-12 p-md-4">
-                <erp-panel-dashboard [titre]="'Veste'" [detail]="'Nombre d\'unité: 10'" [value]="123"
-                                     [backgroundColor]="'#DFE3EE'"></erp-panel-dashboard>
+        <div>
+            <div class="p-grid">
+                <div class="p-col-12 p-md-4">
+                    <erp-panel-dashboard [titre]="'Carton de chaussure'" [detail]="'Nombre d\'unité: 10'" [value]="12"
+                                         [backgroundColor]="'#DFE3EE'"></erp-panel-dashboard>
+                </div>
+                <div class="p-col-12 p-md-4">
+                    <erp-panel-dashboard [titre]="'Pantalon'" [detail]="'Nombre d\'unité: 1'" [value]="50"
+                                         [backgroundColor]="'#DFE3EE'"></erp-panel-dashboard>
+                </div>
+                <div class="p-col-12 p-md-4">
+                    <erp-panel-dashboard [titre]="'Ballot de chemise'" [detail]="'Nombre d\'unité: 1'" [value]="100"
+                                         [backgroundColor]="'#DFE3EE'"></erp-panel-dashboard>
+                </div>
             </div>
-            <div class="p-col-12 p-md-4">
-                <erp-panel-dashboard [titre]="'Carton de Sac'" [detail]="'Nombre d\'unité: 3'" [value]="23"
-                                     [backgroundColor]="'#DFE3EE'"></erp-panel-dashboard>
-            </div>
-            <div class="p-col-12 p-md-4">
-                <erp-panel-dashboard [titre]="'Chaussette'" [detail]="'Nombre d\'unité: 5'" [value]="320"
-                                     [backgroundColor]="'#DFE3EE'"></erp-panel-dashboard>
+
+            <div class="p-grid">
+                <div class="p-col-12 p-md-4">
+                    <erp-panel-dashboard [titre]="'Veste'" [detail]="'Nombre d\'unité: 10'" [value]="123"
+                                         [backgroundColor]="'#DFE3EE'"></erp-panel-dashboard>
+                </div>
+                <div class="p-col-12 p-md-4">
+                    <erp-panel-dashboard [titre]="'Carton de Sac'" [detail]="'Nombre d\'unité: 3'" [value]="23"
+                                         [backgroundColor]="'#DFE3EE'"></erp-panel-dashboard>
+                </div>
+                <div class="p-col-12 p-md-4">
+                    <erp-panel-dashboard [titre]="'Chaussette'" [detail]="'Nombre d\'unité: 5'" [value]="320"
+                                         [backgroundColor]="'#DFE3EE'"></erp-panel-dashboard>
+                </div>
             </div>
         </div>
-    </div>
+    </p-panel>
 </div>
+
