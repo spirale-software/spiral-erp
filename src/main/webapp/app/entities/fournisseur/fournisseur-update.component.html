@@ -32,6 +32,13 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="spiralErpApp.fournisseur.audit" for="field_audit">Audit</label>
+                    <select class="form-control" id="field_audit" name="audit" formControlName="audit">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="auditOption.id === editForm.get('audit')!.value?.id ? editForm.get('audit')!.value : auditOption" *ngFor="let auditOption of audits; trackBy: trackById">{{auditOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="spiralErpApp.fournisseur.entreprise" for="field_entreprise">Entreprise</label>
                     <select class="form-control" id="field_entreprise" name="entreprise" formControlName="entreprise">
                         <option [ngValue]="null"></option>

@@ -17,6 +17,12 @@
                 <dd>
                     <span>{{fournisseur.telephone}}</span>
                 </dd>
+                <dt><span jhiTranslate="spiralErpApp.fournisseur.audit">Audit</span></dt>
+                <dd>
+                    <div *ngIf="fournisseur.audit">
+                        <a [routerLink]="['/audit', fournisseur.audit?.id, 'view']">{{fournisseur.audit?.id}}</a>
+                    </div>
+                </dd>
                 <dt><span jhiTranslate="spiralErpApp.fournisseur.entreprise">Entreprise</span></dt>
                 <dd>
                     <div *ngIf="fournisseur.entreprise">

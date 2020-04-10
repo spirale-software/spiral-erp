@@ -4,9 +4,12 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { IEntreprise, Entreprise } from 'app/shared/model/entreprise.model';
 import { EntrepriseService } from './entreprise.service';
+import { IAudit } from 'app/shared/model/audit.model';
+import { AuditService } from 'app/entities/audit/audit.service';
 
 @Component({
   selector: 'jhi-entreprise-update',
@@ -15,23 +18,56 @@ import { EntrepriseService } from './entreprise.service';
 export class EntrepriseUpdateComponent implements OnInit {
   isSaving = false;
 
+  audits: IAudit[] = [];
+
   editForm = this.fb.group({
     id: [],
-    nom: [null, [Validators.required]]
+    nom: [null, [Validators.required]],
+    audit: []
   });
 
-  constructor(protected entrepriseService: EntrepriseService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected entrepriseService: EntrepriseService,
+    protected auditService: AuditService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ entreprise }) => {
       this.updateForm(entreprise);
+
+      this.auditService
+        .query({ filter: 'entreprise-is-null' })
+        .pipe(
+          map((res: HttpResponse<IAudit[]>) => {
+            return res.body ? res.body : [];
+          })
+        )
+        .subscribe((resBody: IAudit[]) => {
+          if (!entreprise.audit || !entreprise.audit.id) {
+            this.audits = resBody;
+          } else {
+            this.auditService
+              .find(entreprise.audit.id)
+              .pipe(
+                map((subRes: HttpResponse<IAudit>) => {
+                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
+                })
+              )
+              .subscribe((concatRes: IAudit[]) => {
+                this.audits = concatRes;
+              });
+          }
+        });
     });
   }
 
   updateForm(entreprise: IEntreprise): void {
     this.editForm.patchValue({
       id: entreprise.id,
-      nom: entreprise.nom
+      nom: entreprise.nom,
+      audit: entreprise.audit
     });
   }
 
@@ -53,7 +89,8 @@ export class EntrepriseUpdateComponent implements OnInit {
     return {
       ...new Entreprise(),
       id: this.editForm.get(['id'])!.value,
-      nom: this.editForm.get(['nom'])!.value
+      nom: this.editForm.get(['nom'])!.value,
+      audit: this.editForm.get(['audit'])!.value
     };
   }
 
@@ -71,5 +108,9 @@ export class EntrepriseUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IAudit): any {
+    return item.id;
   }
 }

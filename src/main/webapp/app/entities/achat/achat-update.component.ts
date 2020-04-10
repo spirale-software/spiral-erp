@@ -10,8 +10,12 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { IAchat, Achat } from 'app/shared/model/achat.model';
 import { AchatService } from './achat.service';
+import { IAudit } from 'app/shared/model/audit.model';
+import { AuditService } from 'app/entities/audit/audit.service';
 import { IEntreprise } from 'app/shared/model/entreprise.model';
 import { EntrepriseService } from 'app/entities/entreprise/entreprise.service';
+
+type SelectableEntity = IAudit | IEntreprise;
 
 @Component({
   selector: 'jhi-achat-update',
@@ -20,6 +24,8 @@ import { EntrepriseService } from 'app/entities/entreprise/entreprise.service';
 export class AchatUpdateComponent implements OnInit {
   isSaving = false;
 
+  audits: IAudit[] = [];
+
   entreprises: IEntreprise[] = [];
 
   editForm = this.fb.group({
@@ -27,11 +33,13 @@ export class AchatUpdateComponent implements OnInit {
     dateAchat: [],
     prixUnitaire: [],
     quantite: [],
+    audit: [],
     entreprise: []
   });
 
   constructor(
     protected achatService: AchatService,
+    protected auditService: AuditService,
     protected entrepriseService: EntrepriseService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -40,6 +48,30 @@ export class AchatUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ achat }) => {
       this.updateForm(achat);
+
+      this.auditService
+        .query({ filter: 'achat-is-null' })
+        .pipe(
+          map((res: HttpResponse<IAudit[]>) => {
+            return res.body ? res.body : [];
+          })
+        )
+        .subscribe((resBody: IAudit[]) => {
+          if (!achat.audit || !achat.audit.id) {
+            this.audits = resBody;
+          } else {
+            this.auditService
+              .find(achat.audit.id)
+              .pipe(
+                map((subRes: HttpResponse<IAudit>) => {
+                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
+                })
+              )
+              .subscribe((concatRes: IAudit[]) => {
+                this.audits = concatRes;
+              });
+          }
+        });
 
       this.entrepriseService
         .query()
@@ -58,6 +90,7 @@ export class AchatUpdateComponent implements OnInit {
       dateAchat: achat.dateAchat != null ? achat.dateAchat.format(DATE_TIME_FORMAT) : null,
       prixUnitaire: achat.prixUnitaire,
       quantite: achat.quantite,
+      audit: achat.audit,
       entreprise: achat.entreprise
     });
   }
@@ -84,6 +117,7 @@ export class AchatUpdateComponent implements OnInit {
         this.editForm.get(['dateAchat'])!.value != null ? moment(this.editForm.get(['dateAchat'])!.value, DATE_TIME_FORMAT) : undefined,
       prixUnitaire: this.editForm.get(['prixUnitaire'])!.value,
       quantite: this.editForm.get(['quantite'])!.value,
+      audit: this.editForm.get(['audit'])!.value,
       entreprise: this.editForm.get(['entreprise'])!.value
     };
   }
@@ -104,7 +138,7 @@ export class AchatUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: IEntreprise): any {
+  trackById(index: number, item: SelectableEntity): any {
     return item.id;
   }
 }

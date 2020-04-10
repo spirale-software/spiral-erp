@@ -8,8 +8,12 @@ import { map } from 'rxjs/operators';
 
 import { IFournisseur, Fournisseur } from 'app/shared/model/fournisseur.model';
 import { FournisseurService } from './fournisseur.service';
+import { IAudit } from 'app/shared/model/audit.model';
+import { AuditService } from 'app/entities/audit/audit.service';
 import { IEntreprise } from 'app/shared/model/entreprise.model';
 import { EntrepriseService } from 'app/entities/entreprise/entreprise.service';
+
+type SelectableEntity = IAudit | IEntreprise;
 
 @Component({
   selector: 'jhi-fournisseur-update',
@@ -18,6 +22,8 @@ import { EntrepriseService } from 'app/entities/entreprise/entreprise.service';
 export class FournisseurUpdateComponent implements OnInit {
   isSaving = false;
 
+  audits: IAudit[] = [];
+
   entreprises: IEntreprise[] = [];
 
   editForm = this.fb.group({
@@ -25,11 +31,13 @@ export class FournisseurUpdateComponent implements OnInit {
     nom: [null, [Validators.required]],
     adresse: [],
     telephone: [],
+    audit: [],
     entreprise: []
   });
 
   constructor(
     protected fournisseurService: FournisseurService,
+    protected auditService: AuditService,
     protected entrepriseService: EntrepriseService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -38,6 +46,30 @@ export class FournisseurUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ fournisseur }) => {
       this.updateForm(fournisseur);
+
+      this.auditService
+        .query({ filter: 'fournisseur-is-null' })
+        .pipe(
+          map((res: HttpResponse<IAudit[]>) => {
+            return res.body ? res.body : [];
+          })
+        )
+        .subscribe((resBody: IAudit[]) => {
+          if (!fournisseur.audit || !fournisseur.audit.id) {
+            this.audits = resBody;
+          } else {
+            this.auditService
+              .find(fournisseur.audit.id)
+              .pipe(
+                map((subRes: HttpResponse<IAudit>) => {
+                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
+                })
+              )
+              .subscribe((concatRes: IAudit[]) => {
+                this.audits = concatRes;
+              });
+          }
+        });
 
       this.entrepriseService
         .query()
@@ -56,6 +88,7 @@ export class FournisseurUpdateComponent implements OnInit {
       nom: fournisseur.nom,
       adresse: fournisseur.adresse,
       telephone: fournisseur.telephone,
+      audit: fournisseur.audit,
       entreprise: fournisseur.entreprise
     });
   }
@@ -81,6 +114,7 @@ export class FournisseurUpdateComponent implements OnInit {
       nom: this.editForm.get(['nom'])!.value,
       adresse: this.editForm.get(['adresse'])!.value,
       telephone: this.editForm.get(['telephone'])!.value,
+      audit: this.editForm.get(['audit'])!.value,
       entreprise: this.editForm.get(['entreprise'])!.value
     };
   }
@@ -101,7 +135,7 @@ export class FournisseurUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: IEntreprise): any {
+  trackById(index: number, item: SelectableEntity): any {
     return item.id;
   }
 }

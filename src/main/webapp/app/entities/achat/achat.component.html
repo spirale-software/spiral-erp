@@ -22,6 +22,7 @@
             <th scope="col" ><span jhiTranslate="spiralErpApp.achat.dateAchat">Date Achat</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.achat.prixUnitaire">Prix Unitaire</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.achat.quantite">Quantite</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.achat.audit">Audit</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.achat.entreprise">Entreprise</span></th>
             <th scope="col"></th>
             </tr>
@@ -32,6 +33,11 @@
                 <td>{{achat.dateAchat | date:'medium'}}</td>
                 <td>{{achat.prixUnitaire}}</td>
                 <td>{{achat.quantite}}</td>
+                <td>
+                    <div *ngIf="achat.audit">
+                        <a [routerLink]="['/audit', achat.audit?.id, 'view' ]" >{{achat.audit?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="achat.entreprise">
                         <a [routerLink]="['/entreprise', achat.entreprise?.id, 'view' ]" >{{achat.entreprise?.id}}</a>

@@ -33,6 +33,10 @@ public class Fournisseur implements Serializable {
     @Column(name = "telephone")
     private String telephone;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Audit audit;
+
     @ManyToOne
     @JsonIgnoreProperties("fournisseurs")
     private Entreprise entreprise;
@@ -83,6 +87,19 @@ public class Fournisseur implements Serializable {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public Audit getAudit() {
+        return audit;
+    }
+
+    public Fournisseur audit(Audit audit) {
+        this.audit = audit;
+        return this;
+    }
+
+    public void setAudit(Audit audit) {
+        this.audit = audit;
     }
 
     public Entreprise getEntreprise() {

@@ -22,6 +22,7 @@
             <th scope="col" ><span jhiTranslate="spiralErpApp.fournisseur.nom">Nom</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.fournisseur.adresse">Adresse</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.fournisseur.telephone">Telephone</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.fournisseur.audit">Audit</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.fournisseur.entreprise">Entreprise</span></th>
             <th scope="col"></th>
             </tr>
@@ -32,6 +33,11 @@
                 <td>{{fournisseur.nom}}</td>
                 <td>{{fournisseur.adresse}}</td>
                 <td>{{fournisseur.telephone}}</td>
+                <td>
+                    <div *ngIf="fournisseur.audit">
+                        <a [routerLink]="['/audit', fournisseur.audit?.id, 'view' ]" >{{fournisseur.audit?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="fournisseur.entreprise">
                         <a [routerLink]="['/entreprise', fournisseur.entreprise?.id, 'view' ]" >{{fournisseur.entreprise?.id}}</a>

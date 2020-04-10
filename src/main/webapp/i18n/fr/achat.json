@@ -19,6 +19,7 @@
       "dateAchat": "Date Achat",
       "prixUnitaire": "Prix Unitaire",
       "quantite": "Quantite",
+      "audit": "Audit",
       "entreprise": "Entreprise"
     }
   }

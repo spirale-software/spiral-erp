@@ -28,6 +28,10 @@ public class Entreprise implements Serializable {
     @Column(name = "nom", nullable = false)
     private String nom;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Audit audit;
+
     @OneToMany(mappedBy = "entreprise")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Article> articles = new HashSet<>();
@@ -64,6 +68,19 @@ public class Entreprise implements Serializable {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public Audit getAudit() {
+        return audit;
+    }
+
+    public Entreprise audit(Audit audit) {
+        this.audit = audit;
+        return this;
+    }
+
+    public void setAudit(Audit audit) {
+        this.audit = audit;
     }
 
     public Set<Article> getArticles() {

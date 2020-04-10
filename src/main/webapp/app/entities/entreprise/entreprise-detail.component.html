@@ -9,6 +9,12 @@
                 <dd>
                     <span>{{entreprise.nom}}</span>
                 </dd>
+                <dt><span jhiTranslate="spiralErpApp.entreprise.audit">Audit</span></dt>
+                <dd>
+                    <div *ngIf="entreprise.audit">
+                        <a [routerLink]="['/audit', entreprise.audit?.id, 'view']">{{entreprise.audit?.id}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

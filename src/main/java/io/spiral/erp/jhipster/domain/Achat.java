@@ -32,6 +32,10 @@ public class Achat implements Serializable {
     @Column(name = "quantite")
     private Integer quantite;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Audit audit;
+
     @ManyToOne
     @JsonIgnoreProperties("achats")
     private Entreprise entreprise;
@@ -82,6 +86,19 @@ public class Achat implements Serializable {
 
     public void setQuantite(Integer quantite) {
         this.quantite = quantite;
+    }
+
+    public Audit getAudit() {
+        return audit;
+    }
+
+    public Achat audit(Audit audit) {
+        this.audit = audit;
+        return this;
+    }
+
+    public void setAudit(Audit audit) {
+        this.audit = audit;
     }
 
     public Entreprise getEntreprise() {

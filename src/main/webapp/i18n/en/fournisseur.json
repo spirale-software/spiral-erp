@@ -19,6 +19,7 @@
       "nom": "Nom",
       "adresse": "Adresse",
       "telephone": "Telephone",
+      "audit": "Audit",
       "entreprise": "Entreprise"
     }
   }

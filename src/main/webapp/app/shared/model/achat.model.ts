@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IAudit } from 'app/shared/model/audit.model';
 import { IEntreprise } from 'app/shared/model/entreprise.model';
 
 export interface IAchat {
@@ -6,6 +7,7 @@ export interface IAchat {
   dateAchat?: Moment;
   prixUnitaire?: number;
   quantite?: number;
+  audit?: IAudit;
   entreprise?: IEntreprise;
 }
 
@@ -15,6 +17,7 @@ export class Achat implements IAchat {
     public dateAchat?: Moment,
     public prixUnitaire?: number,
     public quantite?: number,
+    public audit?: IAudit,
     public entreprise?: IEntreprise
   ) {}
 }
