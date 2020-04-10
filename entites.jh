@@ -1,0 +1,38 @@
+
+entity Entreprise {
+    nom String required
+}
+
+entity Article {
+    nom String
+    createdAt LocalDate
+    updatedAt
+}
+
+entity Fournisseur {
+    nom String required
+    adresse String
+    telephone number
+}
+
+entity Achat {
+    dateAchat ZoneDateTime
+    prixUnitaire Double
+    quantite Integer
+}
+
+entity Utilisateur {
+
+}
+
+relationship OneToOne {
+    Utilisateur{jhiUser} to User
+}
+
+relationship OneToMany {
+    Entreprise to Article
+    Entreprise to Fournisseur
+    Entreprise to Achat
+    Entreprise to Utilisateur
+}
+
