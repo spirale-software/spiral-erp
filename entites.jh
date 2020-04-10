@@ -5,34 +5,46 @@ entity Entreprise {
 
 entity Article {
     nom String
-    createdAt LocalDate
-    updatedAt
+    numero String
+}
+
+entity Audit {
+    createdAt ZonedDateTime
+    modifiedAt ZonedDateTime
 }
 
 entity Fournisseur {
     nom String required
     adresse String
-    telephone number
+    telephone String
 }
 
 entity Achat {
-    dateAchat ZoneDateTime
+    dateAchat ZonedDateTime
     prixUnitaire Double
     quantite Integer
 }
 
 entity Utilisateur {
-
 }
 
 relationship OneToOne {
     Utilisateur{jhiUser} to User
 }
 
+// Tenant(Entreprise) pour chaque entité
 relationship OneToMany {
     Entreprise to Article
     Entreprise to Fournisseur
     Entreprise to Achat
     Entreprise to Utilisateur
+}
+
+// Audit pour chaque entite
+relationship OneToOne {
+    Article {audit} to Audit
+    Fournisseur {audit} to Audit
+    Achat {audit} to Audit
+    Entreprise {audit} to Audit
 }
 

@@ -1,0 +1,48 @@
+{
+    "name": "Entreprise",
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "article",
+            "otherEntityRelationshipName": "entreprise",
+            "relationshipName": "article"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "fournisseur",
+            "otherEntityRelationshipName": "entreprise",
+            "relationshipName": "fournisseur"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "achat",
+            "otherEntityRelationshipName": "entreprise",
+            "relationshipName": "achat"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "utilisateur",
+            "otherEntityRelationshipName": "entreprise",
+            "relationshipName": "utilisateur"
+        }
+    ],
+    "changelogDate": "20200410012159",
+    "entityTableName": "entreprise",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
