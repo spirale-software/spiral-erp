@@ -2,22 +2,25 @@
 -->
 <div class="div-component">
     <h4>Listes des achats</h4>
-    <p-dataView [value]="venteList">
+    <p-dataView [value]="achatList">
         <p-header>
             <div class="p-grid p-align-center vertical-container">
-                <div class="p-col-10"><input pInputText placeholder="Rechercher"></div>
+                <div class="p-col-10">
+                    <erp-recherche></erp-recherche>
+                </div>
                 <div class="p-col-2"><button pButton icon="pi pi-plus" routerLink="/achats/creer"></button></div>
             </div>
         </p-header>
 
-        <ng-template let-vente pTemplate="listItem">
+        <ng-template let-achat pTemplate="listItem">
             <div class="p-grid data-view-item" routerLink="/achats/creer">
                 <div class="p-col-12">
-                    <span style="font-weight: bold;">{{ vente.libelleProduit }} - {{ vente.prixVente }} FCFA</span><br>
-                    <span style="margin-right: 10px; display: inline-block"><strong>N° d'article:</strong> {{ vente.numeroProduit }}</span>
-                    <span style="margin-right: 10px; display: inline-block"><strong>Type de produit:</strong> {{ vente.typeProduit }}</span>
-                    <span style="margin-right: 10px; display: inline-block"><strong>Acheteur:</strong> {{ vente.vendeur }}</span>
-                    <span style="margin-right: 10px; display: inline-block"><strong>Date:</strong> {{ vente.dateVente }}</span>
+                    <span style="font-weight: bold;">{{ achat.libelleProduit }} - {{ achat.prixVente }} FCFA</span><br>
+                    <span style="display: block"><strong>N° d'article:</strong> {{ achat.numeroProduit }}</span>
+                    <span style="margin-right: 10px; display: inline-block"><strong>Qté:</strong> {{ '6' }}</span>
+                    <span style="margin-right: 10px; display: inline-block"><strong>PU:</strong> {{ '1000' }}</span>
+                    <span style="margin-right: 10px; display: block"><strong>Acheteur:</strong> {{ achat.vendeur }}</span>
+                    <span style="margin-right: 10px; display: inline-block"><strong>Date:</strong> {{ achat.dateVente }}</span>
                 </div>
 <!--                <div class="p-col-4">-->
 <!--                    <button pButton type="button" icon="pi pi-pencil" class="ui-button-warning"></button>-->

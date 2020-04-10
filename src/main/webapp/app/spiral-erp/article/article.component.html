@@ -6,7 +6,9 @@
     <p-dataView [value]="achatList" [style]="{'width':'100%'}">
         <p-header>
             <div class="p-grid p-align-center vertical-container">
-                <div class="p-col-10"><input pInputText placeholder="Rechercher"></div>
+                <div class="p-col-10">
+                    <erp-recherche></erp-recherche>
+                </div>
                 <div class="p-col-2"><button pButton icon="pi pi-plus" routerLink="/articles/creer"></button></div>
             </div>
         </p-header>

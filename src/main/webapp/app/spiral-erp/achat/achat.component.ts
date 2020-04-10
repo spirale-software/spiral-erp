@@ -5,10 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './achat.component.html'
 })
 export class AchatComponent implements OnInit {
-  venteList: any[];
+  achatList: any[];
 
   constructor() {
-    this.venteList = [
+    this.achatList = [
       {
         prixVente: '25 000',
         libelleProduit: 'Robe',

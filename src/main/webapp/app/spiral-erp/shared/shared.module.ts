@@ -6,10 +6,11 @@ import { NavbarComponent } from 'app/spiral-erp/shared/layouts/navbar/navbar.com
 import { SpiralErpSharedModule } from 'app/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { ActiveMenuDirective } from 'app/spiral-erp/shared/directive/active-menu.directive';
+import { ErpRechercheComponent } from 'app/spiral-erp/shared/component/erp-recherche/erp-recherche.component';
 
 @NgModule({
   imports: [...primengLib, SpiralErpSharedModule, RouterModule],
-  exports: [PanelDashboardComponent, FooterComponent, NavbarComponent],
-  declarations: [PanelDashboardComponent, FooterComponent, NavbarComponent, ActiveMenuDirective]
+  exports: [PanelDashboardComponent, FooterComponent, NavbarComponent, ErpRechercheComponent],
+  declarations: [PanelDashboardComponent, FooterComponent, NavbarComponent, ActiveMenuDirective, ErpRechercheComponent]
 })
 export class SharedModule {}
