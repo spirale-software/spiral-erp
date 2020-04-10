@@ -29,6 +29,7 @@ export class ArticleUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     nom: [],
+    code: [],
     numero: [],
     audit: [],
     entreprise: []
@@ -85,6 +86,7 @@ export class ArticleUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: article.id,
       nom: article.nom,
+      code: article.code,
       numero: article.numero,
       audit: article.audit,
       entreprise: article.entreprise
@@ -110,6 +112,7 @@ export class ArticleUpdateComponent implements OnInit {
       ...new Article(),
       id: this.editForm.get(['id'])!.value,
       nom: this.editForm.get(['nom'])!.value,
+      code: this.editForm.get(['code'])!.value,
       numero: this.editForm.get(['numero'])!.value,
       audit: this.editForm.get(['audit'])!.value,
       entreprise: this.editForm.get(['entreprise'])!.value

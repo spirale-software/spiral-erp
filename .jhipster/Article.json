@@ -6,6 +6,10 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "numero",
             "fieldType": "String"
         }

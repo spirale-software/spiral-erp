@@ -36,6 +36,9 @@ public class ArticleResourceIT {
     private static final String DEFAULT_NOM = "AAAAAAAAAA";
     private static final String UPDATED_NOM = "BBBBBBBBBB";
 
+    private static final String DEFAULT_CODE = "AAAAAAAAAA";
+    private static final String UPDATED_CODE = "BBBBBBBBBB";
+
     private static final String DEFAULT_NUMERO = "AAAAAAAAAA";
     private static final String UPDATED_NUMERO = "BBBBBBBBBB";
 
@@ -82,6 +85,7 @@ public class ArticleResourceIT {
     public static Article createEntity(EntityManager em) {
         Article article = new Article()
             .nom(DEFAULT_NOM)
+            .code(DEFAULT_CODE)
             .numero(DEFAULT_NUMERO);
         return article;
     }
@@ -94,6 +98,7 @@ public class ArticleResourceIT {
     public static Article createUpdatedEntity(EntityManager em) {
         Article article = new Article()
             .nom(UPDATED_NOM)
+            .code(UPDATED_CODE)
             .numero(UPDATED_NUMERO);
         return article;
     }
@@ -119,6 +124,7 @@ public class ArticleResourceIT {
         assertThat(articleList).hasSize(databaseSizeBeforeCreate + 1);
         Article testArticle = articleList.get(articleList.size() - 1);
         assertThat(testArticle.getNom()).isEqualTo(DEFAULT_NOM);
+        assertThat(testArticle.getCode()).isEqualTo(DEFAULT_CODE);
         assertThat(testArticle.getNumero()).isEqualTo(DEFAULT_NUMERO);
     }
 
@@ -154,6 +160,7 @@ public class ArticleResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(article.getId().intValue())))
             .andExpect(jsonPath("$.[*].nom").value(hasItem(DEFAULT_NOM)))
+            .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)))
             .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO)));
     }
     
@@ -169,6 +176,7 @@ public class ArticleResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(article.getId().intValue()))
             .andExpect(jsonPath("$.nom").value(DEFAULT_NOM))
+            .andExpect(jsonPath("$.code").value(DEFAULT_CODE))
             .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO));
     }
 
@@ -194,6 +202,7 @@ public class ArticleResourceIT {
         em.detach(updatedArticle);
         updatedArticle
             .nom(UPDATED_NOM)
+            .code(UPDATED_CODE)
             .numero(UPDATED_NUMERO);
 
         restArticleMockMvc.perform(put("/api/articles")
@@ -206,6 +215,7 @@ public class ArticleResourceIT {
         assertThat(articleList).hasSize(databaseSizeBeforeUpdate);
         Article testArticle = articleList.get(articleList.size() - 1);
         assertThat(testArticle.getNom()).isEqualTo(UPDATED_NOM);
+        assertThat(testArticle.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testArticle.getNumero()).isEqualTo(UPDATED_NUMERO);
     }
 

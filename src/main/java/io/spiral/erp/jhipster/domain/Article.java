@@ -25,6 +25,9 @@ public class Article implements Serializable {
     @Column(name = "nom")
     private String nom;
 
+    @Column(name = "code")
+    private String code;
+
     @Column(name = "numero")
     private String numero;
 
@@ -56,6 +59,19 @@ public class Article implements Serializable {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public Article code(String code) {
+        this.code = code;
+        return this;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getNumero() {
@@ -119,6 +135,7 @@ public class Article implements Serializable {
         return "Article{" +
             "id=" + getId() +
             ", nom='" + getNom() + "'" +
+            ", code='" + getCode() + "'" +
             ", numero='" + getNumero() + "'" +
             "}";
     }

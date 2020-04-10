@@ -17,6 +17,7 @@
         "title": "Article"
       },
       "nom": "Nom",
+      "code": "Code",
       "numero": "Numero",
       "audit": "Audit",
       "entreprise": "Entreprise"

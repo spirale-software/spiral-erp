@@ -5,6 +5,7 @@ entity Entreprise {
 
 entity Article {
     nom String
+    code String
     numero String
 }
 

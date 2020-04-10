@@ -20,6 +20,7 @@
             <tr>
             <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.article.nom">Nom</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.article.code">Code</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.article.numero">Numero</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.article.audit">Audit</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.article.entreprise">Entreprise</span></th>
@@ -30,6 +31,7 @@
             <tr *ngFor="let article of articles ;trackBy: trackId">
                 <td><a [routerLink]="['/article', article.id, 'view' ]">{{article.id}}</a></td>
                 <td>{{article.nom}}</td>
+                <td>{{article.code}}</td>
                 <td>{{article.numero}}</td>
                 <td>
                     <div *ngIf="article.audit">
