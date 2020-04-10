@@ -38,7 +38,7 @@ export class EntrepriseUpdateComponent implements OnInit {
       this.updateForm(entreprise);
 
       this.auditService
-        .query({ filter: 'entreprise-is-null' })
+        .query({ 'entrepriseId.specified': 'false' })
         .pipe(
           map((res: HttpResponse<IAudit[]>) => {
             return res.body ? res.body : [];

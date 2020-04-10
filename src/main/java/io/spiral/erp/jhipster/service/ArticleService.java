@@ -3,7 +3,6 @@ package io.spiral.erp.jhipster.service;
 import io.spiral.erp.jhipster.domain.Article;
 import io.spiral.erp.jhipster.repository.ArticleRepository;
 import io.spiral.erp.jhipster.service.dto.ArticleDTO;
-import io.spiral.erp.jhipster.service.mapper.ArticleMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

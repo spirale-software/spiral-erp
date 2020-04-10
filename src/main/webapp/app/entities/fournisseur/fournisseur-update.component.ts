@@ -48,7 +48,7 @@ export class FournisseurUpdateComponent implements OnInit {
       this.updateForm(fournisseur);
 
       this.auditService
-        .query({ filter: 'fournisseur-is-null' })
+        .query({ 'fournisseurId.specified': 'false' })
         .pipe(
           map((res: HttpResponse<IAudit[]>) => {
             return res.body ? res.body : [];

@@ -30,8 +30,8 @@ export class ArticleUpdateComponent implements OnInit {
     id: [],
     nom: [],
     numero: [],
-    auditId: [],
-    entrepriseId: []
+    audit: [],
+    entreprise: []
   });
 
   constructor(
@@ -47,18 +47,18 @@ export class ArticleUpdateComponent implements OnInit {
       this.updateForm(article);
 
       this.auditService
-        .query({ filter: 'article-is-null' })
+        .query({ 'articleId.specified': 'false' })
         .pipe(
           map((res: HttpResponse<IAudit[]>) => {
             return res.body ? res.body : [];
           })
         )
         .subscribe((resBody: IAudit[]) => {
-          if (!article.auditId) {
+          if (!article.audit || !article.audit.id) {
             this.audits = resBody;
           } else {
             this.auditService
-              .find(article.auditId)
+              .find(article.audit.id)
               .pipe(
                 map((subRes: HttpResponse<IAudit>) => {
                   return subRes.body ? [subRes.body].concat(resBody) : resBody;
@@ -86,8 +86,8 @@ export class ArticleUpdateComponent implements OnInit {
       id: article.id,
       nom: article.nom,
       numero: article.numero,
-      auditId: article.auditId,
-      entrepriseId: article.entrepriseId
+      audit: article.audit,
+      entreprise: article.entreprise
     });
   }
 
@@ -111,8 +111,8 @@ export class ArticleUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       nom: this.editForm.get(['nom'])!.value,
       numero: this.editForm.get(['numero'])!.value,
-      auditId: this.editForm.get(['auditId'])!.value,
-      entrepriseId: this.editForm.get(['entrepriseId'])!.value
+      audit: this.editForm.get(['audit'])!.value,
+      entreprise: this.editForm.get(['entreprise'])!.value
     };
   }
 

@@ -17,28 +17,28 @@
     <div class="table-responsive" *ngIf="articles?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
-            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="nom"><span jhiTranslate="spiralErpApp.article.nom">Nom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="numero"><span jhiTranslate="spiralErpApp.article.numero">Numero</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="auditId"><span jhiTranslate="spiralErpApp.article.audit">Audit</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="entrepriseId"><span jhiTranslate="spiralErpApp.article.entreprise">Entreprise</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.article.nom">Nom</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.article.numero">Numero</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.article.audit">Audit</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.article.entreprise">Entreprise</span></th>
             <th scope="col"></th>
             </tr>
             </thead>
-            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tbody>
             <tr *ngFor="let article of articles ;trackBy: trackId">
                 <td><a [routerLink]="['/article', article.id, 'view' ]">{{article.id}}</a></td>
                 <td>{{article.nom}}</td>
                 <td>{{article.numero}}</td>
                 <td>
-                    <div *ngIf="article.auditId">
-                        <a [routerLink]="['/audit', article.auditId , 'view' ]" >{{article.auditId}}</a>
+                    <div *ngIf="article.audit">
+                        <a [routerLink]="['/audit', article.audit?.id, 'view' ]" >{{article.audit?.id}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="article.entrepriseId">
-                        <a [routerLink]="['/entreprise', article.entrepriseId , 'view' ]" >{{article.entrepriseId}}</a>
+                    <div *ngIf="article.entreprise">
+                        <a [routerLink]="['/entreprise', article.entreprise?.id, 'view' ]" >{{article.entreprise?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">

@@ -50,7 +50,7 @@ export class AchatUpdateComponent implements OnInit {
       this.updateForm(achat);
 
       this.auditService
-        .query({ filter: 'achat-is-null' })
+        .query({ 'achatId.specified': 'false' })
         .pipe(
           map((res: HttpResponse<IAudit[]>) => {
             return res.body ? res.body : [];

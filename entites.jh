@@ -48,6 +48,6 @@ relationship OneToOne {
     Entreprise {audit} to Audit
 }
 
-dto Article with mapstruct
-filter Article
-paginate Article with infinite-scroll
+dto Audit with mapstruct
+filter Audit
+paginate Audit with infinite-scroll

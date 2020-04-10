@@ -1,11 +1,14 @@
+import { IAudit } from 'app/shared/model/audit.model';
+import { IEntreprise } from 'app/shared/model/entreprise.model';
+
 export interface IArticle {
   id?: number;
   nom?: string;
   numero?: string;
-  auditId?: number;
-  entrepriseId?: number;
+  audit?: IAudit;
+  entreprise?: IEntreprise;
 }
 
 export class Article implements IArticle {
-  constructor(public id?: number, public nom?: string, public numero?: string, public auditId?: number, public entrepriseId?: number) {}
+  constructor(public id?: number, public nom?: string, public numero?: string, public audit?: IAudit, public entreprise?: IEntreprise) {}
 }

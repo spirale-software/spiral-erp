@@ -15,14 +15,14 @@
                 </dd>
                 <dt><span jhiTranslate="spiralErpApp.article.audit">Audit</span></dt>
                 <dd>
-                    <div *ngIf="article.auditId">
-                        <a [routerLink]="['/audit', article.auditId, 'view']">{{article.auditId}}</a>
+                    <div *ngIf="article.audit">
+                        <a [routerLink]="['/audit', article.audit?.id, 'view']">{{article.audit?.id}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="spiralErpApp.article.entreprise">Entreprise</span></dt>
                 <dd>
-                    <div *ngIf="article.entrepriseId">
-                        <a [routerLink]="['/entreprise', article.entrepriseId, 'view']">{{article.entrepriseId}}</a>
+                    <div *ngIf="article.entreprise">
+                        <a [routerLink]="['/entreprise', article.entreprise?.id, 'view']">{{article.entreprise?.id}}</a>
                     </div>
                 </dd>
             </dl>
