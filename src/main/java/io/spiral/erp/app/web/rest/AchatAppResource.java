@@ -3,15 +3,16 @@ package io.spiral.erp.app.web.rest;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.spiral.erp.app.service.AchatAppService;
 import io.spiral.erp.app.service.dto.AchatDTO;
+import io.spiral.erp.jhipster.domain.Achat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/erp")
@@ -29,8 +30,9 @@ public class AchatAppResource {
         this.achatAppService = achatAppService;
     }
 
+    @PostMapping("/achats")
     public ResponseEntity<AchatDTO> createAchat(AchatDTO achatDTO) throws URISyntaxException {
-        log.debug("REST request to save Achat : {}", achatDTO);
+        log.debug("Requête REST pour créer un Achat : {}", achatDTO);
         AchatDTO resultat = achatAppService.create(achatDTO);
 
         return ResponseEntity.created(new URI("/api/erp/achats/" + resultat.getId()))
@@ -38,8 +40,9 @@ public class AchatAppResource {
             .body(resultat);
     }
 
+    @PutMapping("/achats")
     public ResponseEntity<AchatDTO> updateAchat(AchatDTO achatDTO) throws URISyntaxException {
-        log.debug("REST request to update Achat : {}", achatDTO);
+        log.debug("Requête REST pour modifier un Achat : {}", achatDTO);
         AchatDTO resultat = achatAppService.create(achatDTO);
 
         return ResponseEntity.created(new URI("/api/erp/achats/" + resultat.getId()))
@@ -47,11 +50,24 @@ public class AchatAppResource {
             .body(resultat);
     }
 
+    @DeleteMapping("/achats")
     public ResponseEntity<Void> deleteAchatById(Long id) throws URISyntaxException {
-        log.debug("REST request to delete Achat : {}", id);
+        log.debug("Requête REST pour supprimer un Achat : {}", id);
         achatAppService.deleteById(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(
                 applicationName, true, ENTITY_NAME, id.toString())).build();
+    }
+
+    @GetMapping("/achats")
+    public ResponseEntity<List<Achat>> findAll(String critereTransverval) {
+        log.debug("Requête REST pour recherche les Achat avec pour critère de recherche : {}", critereTransverval);
+        return null;
+    }
+
+    @GetMapping("/achats/{id}")
+    public ResponseEntity<Achat> findById(@PathVariable Long id) {
+        log.debug("Requête REST pour recherche l'Achat ayant pour id: {}", id);
+        return null;
     }
 }
