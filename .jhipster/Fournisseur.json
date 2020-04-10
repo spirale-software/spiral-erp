@@ -27,6 +27,12 @@
             "ownerSide": true
         },
         {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "article",
+            "otherEntityRelationshipName": "fournisseur",
+            "relationshipName": "article"
+        },
+        {
             "relationshipType": "many-to-one",
             "otherEntityName": "entreprise",
             "otherEntityRelationshipName": "fournisseur",

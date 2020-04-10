@@ -4,7 +4,7 @@ entity Entreprise {
 }
 
 entity Article {
-    nom String
+    nom String required
     code String
     numero String
 }
@@ -31,6 +31,10 @@ entity Utilisateur {
 
 relationship OneToOne {
     Utilisateur{jhiUser} to User
+}
+
+relationship OneToMany {
+    Fournisseur to Article
 }
 
 // Tenant(Entreprise) pour chaque entité

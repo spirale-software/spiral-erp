@@ -10,10 +10,12 @@ import { IArticle, Article } from 'app/shared/model/article.model';
 import { ArticleService } from './article.service';
 import { IAudit } from 'app/shared/model/audit.model';
 import { AuditService } from 'app/entities/audit/audit.service';
+import { IFournisseur } from 'app/shared/model/fournisseur.model';
+import { FournisseurService } from 'app/entities/fournisseur/fournisseur.service';
 import { IEntreprise } from 'app/shared/model/entreprise.model';
 import { EntrepriseService } from 'app/entities/entreprise/entreprise.service';
 
-type SelectableEntity = IAudit | IEntreprise;
+type SelectableEntity = IAudit | IFournisseur | IEntreprise;
 
 @Component({
   selector: 'jhi-article-update',
@@ -24,20 +26,24 @@ export class ArticleUpdateComponent implements OnInit {
 
   audits: IAudit[] = [];
 
+  fournisseurs: IFournisseur[] = [];
+
   entreprises: IEntreprise[] = [];
 
   editForm = this.fb.group({
     id: [],
-    nom: [],
+    nom: [null, [Validators.required]],
     code: [],
     numero: [],
     audit: [],
+    fournisseur: [],
     entreprise: []
   });
 
   constructor(
     protected articleService: ArticleService,
     protected auditService: AuditService,
+    protected fournisseurService: FournisseurService,
     protected entrepriseService: EntrepriseService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -71,6 +77,15 @@ export class ArticleUpdateComponent implements OnInit {
           }
         });
 
+      this.fournisseurService
+        .query()
+        .pipe(
+          map((res: HttpResponse<IFournisseur[]>) => {
+            return res.body ? res.body : [];
+          })
+        )
+        .subscribe((resBody: IFournisseur[]) => (this.fournisseurs = resBody));
+
       this.entrepriseService
         .query()
         .pipe(
@@ -89,6 +104,7 @@ export class ArticleUpdateComponent implements OnInit {
       code: article.code,
       numero: article.numero,
       audit: article.audit,
+      fournisseur: article.fournisseur,
       entreprise: article.entreprise
     });
   }
@@ -115,6 +131,7 @@ export class ArticleUpdateComponent implements OnInit {
       code: this.editForm.get(['code'])!.value,
       numero: this.editForm.get(['numero'])!.value,
       audit: this.editForm.get(['audit'])!.value,
+      fournisseur: this.editForm.get(['fournisseur'])!.value,
       entreprise: this.editForm.get(['entreprise'])!.value
     };
   }

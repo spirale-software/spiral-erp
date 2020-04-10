@@ -7,6 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A Fournisseur.
@@ -36,6 +38,10 @@ public class Fournisseur implements Serializable {
     @OneToOne
     @JoinColumn(unique = true)
     private Audit audit;
+
+    @OneToMany(mappedBy = "fournisseur")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Article> articles = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties("fournisseurs")
@@ -100,6 +106,31 @@ public class Fournisseur implements Serializable {
 
     public void setAudit(Audit audit) {
         this.audit = audit;
+    }
+
+    public Set<Article> getArticles() {
+        return articles;
+    }
+
+    public Fournisseur articles(Set<Article> articles) {
+        this.articles = articles;
+        return this;
+    }
+
+    public Fournisseur addArticle(Article article) {
+        this.articles.add(article);
+        article.setFournisseur(this);
+        return this;
+    }
+
+    public Fournisseur removeArticle(Article article) {
+        this.articles.remove(article);
+        article.setFournisseur(null);
+        return this;
+    }
+
+    public void setArticles(Set<Article> articles) {
+        this.articles = articles;
     }
 
     public Entreprise getEntreprise() {

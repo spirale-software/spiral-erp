@@ -14,6 +14,12 @@
                                  referencedColumnNames="id"
                                  referencedTableName="audit"/>
 
+        <addForeignKeyConstraint baseColumnNames="fournisseur_id"
+                                 baseTableName="article"
+                                 constraintName="fk_article_fournisseur_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fournisseur"/>
+
         <addForeignKeyConstraint baseColumnNames="entreprise_id"
                                  baseTableName="article"
                                  constraintName="fk_article_entreprise_id"

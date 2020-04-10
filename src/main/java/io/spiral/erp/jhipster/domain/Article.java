@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 
@@ -22,7 +23,8 @@ public class Article implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "nom")
+    @NotNull
+    @Column(name = "nom", nullable = false)
     private String nom;
 
     @Column(name = "code")
@@ -34,6 +36,10 @@ public class Article implements Serializable {
     @OneToOne
     @JoinColumn(unique = true)
     private Audit audit;
+
+    @ManyToOne
+    @JsonIgnoreProperties("articles")
+    private Fournisseur fournisseur;
 
     @ManyToOne
     @JsonIgnoreProperties("articles")
@@ -98,6 +104,19 @@ public class Article implements Serializable {
 
     public void setAudit(Audit audit) {
         this.audit = audit;
+    }
+
+    public Fournisseur getFournisseur() {
+        return fournisseur;
+    }
+
+    public Article fournisseur(Fournisseur fournisseur) {
+        this.fournisseur = fournisseur;
+        return this;
+    }
+
+    public void setFournisseur(Fournisseur fournisseur) {
+        this.fournisseur = fournisseur;
     }
 
     public Entreprise getEntreprise() {

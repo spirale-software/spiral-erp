@@ -3,7 +3,10 @@
     "fields": [
         {
             "fieldName": "nom",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "code",
@@ -22,6 +25,13 @@
             "relationshipName": "audit",
             "otherEntityField": "id",
             "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "fournisseur",
+            "otherEntityRelationshipName": "article",
+            "relationshipName": "fournisseur",
+            "otherEntityField": "id"
         },
         {
             "relationshipType": "many-to-one",

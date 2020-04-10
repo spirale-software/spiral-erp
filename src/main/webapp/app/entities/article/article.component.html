@@ -23,6 +23,7 @@
             <th scope="col" ><span jhiTranslate="spiralErpApp.article.code">Code</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.article.numero">Numero</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.article.audit">Audit</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.article.fournisseur">Fournisseur</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.article.entreprise">Entreprise</span></th>
             <th scope="col"></th>
             </tr>
@@ -36,6 +37,11 @@
                 <td>
                     <div *ngIf="article.audit">
                         <a [routerLink]="['/audit', article.audit?.id, 'view' ]" >{{article.audit?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="article.fournisseur">
+                        <a [routerLink]="['/fournisseur', article.fournisseur?.id, 'view' ]" >{{article.fournisseur?.id}}</a>
                     </div>
                 </td>
                 <td>

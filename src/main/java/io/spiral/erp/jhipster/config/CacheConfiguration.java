@@ -52,6 +52,7 @@ public class CacheConfiguration {
             createCache(cm, io.spiral.erp.jhipster.domain.Fournisseur.class.getName());
             createCache(cm, io.spiral.erp.jhipster.domain.Achat.class.getName());
             createCache(cm, io.spiral.erp.jhipster.domain.Utilisateur.class.getName());
+            createCache(cm, io.spiral.erp.jhipster.domain.Fournisseur.class.getName() + ".articles");
             // jhipster-needle-ehcache-add-entry
         };
     }
