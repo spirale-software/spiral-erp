@@ -2,11 +2,9 @@ package io.spiral.erp.app.service.dto;
 
 import io.spiral.erp.jhipster.service.dto.AuditDTO;
 
-public class FournisseurDTO {
+public class EntrepriseDTO {
     private Long id;
     private String nom;
-    private String adresse;
-    private String telephone;
     private AuditDTO audit;
 
     public Long getId() {
@@ -23,22 +21,6 @@ public class FournisseurDTO {
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
     }
 
     public AuditDTO getAudit() {
