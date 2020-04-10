@@ -11,7 +11,8 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring", uses = {AuditMapper.class})
 public interface ArticleMapper extends EntityMapper<ArticleDTO, Article> {
 
-    @Mapping(source = "audit.createdAt", target = "audit.createdAt", defaultExpression = "java(ZonedDateTime.now())")
-    @Mapping(source = "audit.modifiedAt", target = "audit.modifiedAt", defaultExpression = "java(ZonedDateTime.now())")
+    @Mapping(source = "audit.createdAt", target = "audit.createdAt", defaultExpression = "java(java.time.ZonedDateTime.now())")
+    @Mapping(source = "audit.modifiedAt", target = "audit.modifiedAt", defaultExpression = "java(java.time.ZonedDateTime.now())")
     Article toEntity(ArticleDTO dto);
+
 }
