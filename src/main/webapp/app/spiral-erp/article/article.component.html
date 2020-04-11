@@ -2,27 +2,33 @@
 -->
 <div class="div-component">
     <h4>Listes des articles</h4>
-
-
-    <p-dataView [value]="articles" [style]="{'width':'100%'}">
-        <p-header>
-            <div class="p-grid p-align-center vertical-container">
-                <div class="p-col-10">
-                    <erp-recherche></erp-recherche>
+    <div infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+        <p-dataView [value]="articles" [style]="{'width':'100%'}">
+            <p-header>
+                <div class="p-grid p-align-center vertical-container">
+                    <div class="p-col-10">
+                        <erp-recherche (onSearchClick)="loadAll($event)"></erp-recherche>
+                    </div>
+                    <div class="p-col-2">
+                        <button pButton icon="pi pi-plus" routerLink="/articles/creer"></button>
+                    </div>
                 </div>
-                <div class="p-col-2"><button pButton icon="pi pi-plus" routerLink="/articles/creer"></button></div>
-            </div>
-        </p-header>
+            </p-header>
 
-        <ng-template let-article pTemplate="listItem">
-            <div class="p-grid data-item data-view-item" [routerLink]="['/articles','3','modifier']">
-                <div class="p-col-12">
-                    <span style="font-weight: bold;display: block">{{ article.nom }}</span>
-                    <span style="margin-right: 10px; display: block"><strong>Code:</strong> {{ article.code }}</span>
-                    <span style="margin-right: 10px; display: block"><strong>N° d'article:</strong> {{ article.numero }}</span>
-                    <span style="margin-right: 10px; display: block"><strong>Fournisseur:</strong> {{ article.fournisseur }}</span>
+            <ng-template let-article pTemplate="listItem">
+                <div class="p-grid data-item data-view-item" [routerLink]="['/articles','3','modifier']">
+                    <div class="p-col-12">
+                        <span style="font-weight: bold;display: block">{{ article.nom }}</span>
+                        <span
+                            style="margin-right: 10px; display: block"><strong>Code:</strong> {{ article.code }}</span>
+                        <span
+                            style="margin-right: 10px; display: block"><strong>N° d'article:</strong> {{ article.numero }}</span>
+                        <span style="margin-right: 10px; display: block">
+                            <strong>Fournisseur:</strong> {{ article.fournisseur ? article.fournisseur : '-' }}
+                        </span>
+                    </div>
                 </div>
-            </div>
-        </ng-template>
-    </p-dataView>
+            </ng-template>
+        </p-dataView>
+    </div>
 </div>

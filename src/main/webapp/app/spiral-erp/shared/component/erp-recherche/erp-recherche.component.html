@@ -1,6 +1,8 @@
 <!--
 -->
 <div class="ui-inputgroup">
-    <input pInputText placeholder="Rechercher">
-    <span class="ui-inputgroup-addon"><fa-icon icon="search"></fa-icon></span>
+    <input pInputText placeholder="Rechercher"
+           [(ngModel)]="critereTransversal" #recherche
+           (click)="recherche.select()" (keyup.enter)="emitEvent()">
+    <span class="ui-inputgroup-addon" (click)="emitEvent()"><fa-icon icon="search"></fa-icon></span>
 </div>

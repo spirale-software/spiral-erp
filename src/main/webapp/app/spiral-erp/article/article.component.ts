@@ -22,7 +22,7 @@ export class ArticleComponent implements OnInit {
 
   constructor(private aricleService: ArticleErpService, protected parseLinks: JhiParseLinks) {
     this.articles = [];
-    this.itemsPerPage = ITEMS_PER_PAGE;
+    this.itemsPerPage = 5;
     this.page = 0;
     this.links = {
       last: 0
@@ -32,25 +32,27 @@ export class ArticleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.findAll();
+    this.loadAll();
   }
 
-  findAll(): void {
-    this.aricleService
-      .query()
-      .toPromise()
-      .then(httpResponse => (this.articles = httpResponse.body))
-      .catch(httpError => console.log(httpError));
-  }
+  // findAll(event: any): void {
+  //   this.aricleService
+  //     .query()
+  //     .toPromise()
+  //     .then(httpResponse => (this.articles = httpResponse.body))
+  //     .catch(httpError => console.log(httpError));
+  // }
 
-  loadAll(): void {
-    this.aricleService
-      .query({
-        page: this.page,
-        size: this.itemsPerPage,
-        sort: this.sort()
-      })
-      .subscribe((res: HttpResponse<IAudit[]>) => this.paginateAudits(res.body, res.headers));
+  loadAll(critereTransversal?: any): void {
+    const req = {
+      page: this.page,
+      size: this.itemsPerPage,
+      sort: this.sort()
+    };
+    if (critereTransversal) {
+      req['critereTransversal'] = critereTransversal;
+    }
+    this.aricleService.query(req).subscribe((res: HttpResponse<IAudit[]>) => this.paginateArticles(res.body, res.headers));
   }
 
   sort(): string[] {
@@ -72,7 +74,7 @@ export class ArticleComponent implements OnInit {
     this.loadAll();
   }
 
-  protected paginateAudits(data: IAudit[] | null, headers: HttpHeaders): void {
+  protected paginateArticles(data: IAudit[] | null, headers: HttpHeaders): void {
     const headersLink = headers.get('link');
     this.links = this.parseLinks.parse(headersLink ? headersLink : '');
     if (data) {
