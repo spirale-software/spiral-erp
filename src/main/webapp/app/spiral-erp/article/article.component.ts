@@ -47,6 +47,12 @@ export class ArticleComponent implements OnInit {
     this.aricleService.query(req).subscribe((res: HttpResponse<IAudit[]>) => this.paginateArticles(res.body, res.headers));
   }
 
+  findAll(critereTransversal: any): void {
+    this.page = 0;
+    this.articles = [];
+    this.loadAll(critereTransversal);
+  }
+
   sort(): string[] {
     const result = [this.predicate + ',' + (this.ascending ? 'asc' : 'desc')];
     if (this.predicate !== 'id') {

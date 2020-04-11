@@ -67,7 +67,8 @@ public class ArticleAppResource {
     }
 
     @GetMapping("/articles")
-    public ResponseEntity<List<ArticleDTO>> findAll(Pageable pageable, String critereTransverval) {
+    public ResponseEntity<List<ArticleDTO>> findAll(Pageable pageable,
+                                                    @RequestParam(value = "critereTransversal", required = false) String critereTransverval) {
         log.debug("Requête REST pour recherche les Article avec pour critère de recherche : {}", critereTransverval);
         Page<ArticleDTO> page = articleAppService.findAll(critereTransverval, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
