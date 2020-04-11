@@ -29,27 +29,27 @@ public class FournisseurAppResource {
         this.fournisseurAppService = fournisseurAppService;
     }
 
-    @PostMapping("/achats")
+    @PostMapping("/fournisseurs")
     public ResponseEntity<FournisseurDTO> createFournisseur(FournisseurDTO fournisseurDTO) throws URISyntaxException {
         log.debug("Requête REST pour créer un Fournisseur : {}", fournisseurDTO);
         FournisseurDTO resultat = fournisseurAppService.create(fournisseurDTO);
 
-        return ResponseEntity.created(new URI("/api/erp/achats/" + resultat.getId()))
+        return ResponseEntity.created(new URI("/api/erp/fournisseurs/" + resultat.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, resultat.getId().toString()))
             .body(resultat);
     }
 
-    @PutMapping("/achats")
+    @PutMapping("/fournisseurs")
     public ResponseEntity<FournisseurDTO> updateFournisseur(FournisseurDTO fournisseurDTO) throws URISyntaxException {
         log.debug("Requête REST pour modifier un Fournisseur : {}", fournisseurDTO);
         FournisseurDTO resultat = fournisseurAppService.create(fournisseurDTO);
 
-        return ResponseEntity.created(new URI("/api/erp/achats/" + resultat.getId()))
+        return ResponseEntity.created(new URI("/api/erp/fournisseurs/" + resultat.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, resultat.getId().toString()))
             .body(resultat);
     }
 
-    @DeleteMapping("/achats")
+    @DeleteMapping("/fournisseurs")
     public ResponseEntity<Void> deleteFournisseurById(Long id) throws URISyntaxException {
         log.debug("Requête REST pour supprimer un Fournisseur : {}", id);
         fournisseurAppService.deleteById(id);
@@ -58,13 +58,13 @@ public class FournisseurAppResource {
                 applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 
-    @GetMapping("/achats")
+    @GetMapping("/fournisseurs")
     public ResponseEntity<List<FournisseurDTO>> findAll(String critereTransverval) {
         log.debug("Requête REST pour recherche les Fournisseur avec pour critère de recherche : {}", critereTransverval);
         return null;
     }
 
-    @GetMapping("/achats/{id}")
+    @GetMapping("/fournisseurs/{id}")
     public ResponseEntity<FournisseurDTO> findById(@PathVariable Long id) {
         log.debug("Requête REST pour recherche Fournisseur ayant pour id: {}", id);
         return null;

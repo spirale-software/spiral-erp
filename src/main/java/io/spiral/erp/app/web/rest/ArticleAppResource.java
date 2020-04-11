@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -37,7 +38,7 @@ public class ArticleAppResource {
     }
 
     @PostMapping("/articles")
-    public ResponseEntity<ArticleDTO> createArticle(ArticleDTO articleDTO) throws URISyntaxException {
+    public ResponseEntity<ArticleDTO> createArticle(@Valid @RequestBody ArticleDTO articleDTO) throws URISyntaxException {
         log.debug("Requête REST pour créer un Article : {}", articleDTO);
         ArticleDTO resultat = articleAppService.create(articleDTO);
 
@@ -47,7 +48,7 @@ public class ArticleAppResource {
     }
 
     @PutMapping("/articles")
-    public ResponseEntity<ArticleDTO> updateArticle(ArticleDTO articleDTO) throws URISyntaxException {
+    public ResponseEntity<ArticleDTO> updateArticle(@RequestBody ArticleDTO articleDTO) throws URISyntaxException {
         log.debug("Requête REST pour modifier un Article : {}", articleDTO);
         ArticleDTO resultat = articleAppService.create(articleDTO);
 

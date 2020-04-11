@@ -3,7 +3,6 @@ package io.spiral.erp.app.service;
 import io.spiral.erp.app.repository.AchatAppRepository;
 import io.spiral.erp.app.service.dto.AchatDTO;
 import io.spiral.erp.app.service.mapper.AchatMapper;
-import io.spiral.erp.jhipster.domain.Achat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

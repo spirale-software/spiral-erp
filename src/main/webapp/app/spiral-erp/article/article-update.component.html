@@ -5,33 +5,39 @@
         <p-button icon="pi pi-chevron-left" label="Retour" (onClick)="back()"></p-button>
     </div>
 
-    <div>
-        <p-panel>
-            <p-header>
-                <div class="ui-helper-clearfix">
-                    <span class="ui-panel-title">{{ titre }}</span>
+    <form [formGroup]="articleForm" (ngSubmit)="save()">
+        <div>
+            <p-panel>
+                <p-header>
+                    <div class="ui-helper-clearfix">
+                        <span class="ui-panel-title">{{ titre }}</span>
+                    </div>
+                </p-header>
+                <div class="ui-fluid" style="margin-bottom: 13px">
+                    <span style="display: block">Numero d'article</span>
+                    <span>17888</span>
                 </div>
-            </p-header>
-            <div class="ui-fluid" style="margin-bottom: 13px">
-                <span style="display: block">Numero d'article</span>
-                <span>17888</span>
-            </div>
-            <div class="ui-fluid" style="margin-bottom: 13px">
-                <span>Libellé article</span>
-                <input pInputText>
-            </div>
-            <div class="ui-fluid" style="margin-bottom: 13px">
-                <span>Fournisseur</span>
-                <input pInputText>
-            </div>
-        </p-panel>
+                <div class="ui-fluid" style="margin-bottom: 13px">
+                    <span>Nom de l'article</span>
+                    <input pInputText formControlName="nom">
+                </div>
+                <div class="ui-fluid" style="margin-bottom: 13px">
+                    <span>Code</span>
+                    <input pInputText formControlName="code">
+                </div>
+                <div class="ui-fluid" style="margin-bottom: 13px">
+                    <span>Fournisseur</span>
+                    <input pInputText formControlName="fournisseur">
+                </div>
+            </p-panel>
 
-        <p-toolbar [style]="{'margin-top':'7px'}">
-            <div class="ui-toolbar-group-right">
-                <button pButton type="button" icon="pi pi-save" label="Enregistrer"></button>
-                <button pButton type="button" icon="pi pi-times" class="ui-button-danger" label="Supprimer"></button>
-            </div>
-        </p-toolbar>
-    </div>
-
+            <p-toolbar [style]="{'margin-top':'7px'}">
+                <div class="ui-toolbar-group-right">
+                    <button pButton type="submit" icon="pi pi-save" label="Enregistrer"></button>
+                    <button pButton type="button" icon="pi pi-times" class="ui-button-danger"
+                            label="Supprimer"></button>
+                </div>
+            </p-toolbar>
+        </div>
+    </form>
 </div>

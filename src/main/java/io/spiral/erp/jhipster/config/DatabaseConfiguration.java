@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
 @Configuration
-@EnableJpaRepositories("io.spiral.erp.jhipster.repository")
+@EnableJpaRepositories({"io.spiral.erp.jhipster.repository", "io.spiral.erp.app.repository"})
 @EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware")
 @EnableTransactionManagement
 public class DatabaseConfiguration {

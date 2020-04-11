@@ -2,8 +2,12 @@ package io.spiral.erp.app.service.dto;
 
 import io.spiral.erp.jhipster.service.dto.AuditDTO;
 
+import javax.validation.constraints.NotNull;
+
 public class ArticleDTO {
     private Long id;
+    @NotNull
+    private String nom;
     private String code;
     private String numero;
     private AuditDTO audit;
@@ -38,5 +42,24 @@ public class ArticleDTO {
 
     public void setAudit(AuditDTO audit) {
         this.audit = audit;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    @Override
+    public String toString() {
+        return "ArticleDTO{" +
+            "id=" + id +
+            ", nom='" + nom + '\'' +
+            ", code='" + code + '\'' +
+            ", numero='" + numero + '\'' +
+            ", audit=" + audit +
+            '}';
     }
 }
