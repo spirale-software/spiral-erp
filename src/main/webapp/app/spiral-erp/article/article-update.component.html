@@ -1,6 +1,6 @@
 <!--
 -->
-<div>
+<div class="div-component">
     <div style="margin-bottom: 7px">
         <p-button icon="pi pi-chevron-left" label="Retour" (onClick)="back()"></p-button>
     </div>
@@ -13,21 +13,21 @@
                         <span class="ui-panel-title">{{ titre }}</span>
                     </div>
                 </p-header>
-                <div class="ui-fluid" style="margin-bottom: 13px">
-                    <span style="display: block">Numero d'article</span>
-                    <span>17888</span>
+                <div class="ui-fluid" style="margin-bottom: 13px" *ngIf="article.id">
+                    <span class="span-label" style="display: block">Numéro d'article</span>
+                    <span>{{ article.numero }}</span>
                 </div>
                 <div class="ui-fluid" style="margin-bottom: 13px">
-                    <span>Nom de l'article</span>
+                    <span class="span-label">Nom de l'article</span>
                     <input pInputText formControlName="nom">
                 </div>
                 <div class="ui-fluid" style="margin-bottom: 13px">
-                    <span>Code</span>
+                    <span class="span-label">Code</span>
                     <input pInputText formControlName="code">
                 </div>
                 <div class="ui-fluid" style="margin-bottom: 13px">
-                    <span>Fournisseur</span>
-                    <input pInputText formControlName="fournisseur">
+                    <span class="span-label">Fournisseur</span>
+                    <p-dropdown [options]="fournisseurOptions" filter="true" formControlName="fournisseur" baseZIndex="200"></p-dropdown>
                 </div>
             </p-panel>
 

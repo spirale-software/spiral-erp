@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleErpService } from 'app/spiral-erp/article/article-erp.service';
 import { IArticle } from 'app/shared/model/article.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'erp-article-update',
@@ -12,6 +13,7 @@ export class ArticleUpdateComponent implements OnInit {
   titre: string | undefined;
   article: IArticle;
   articleForm: FormGroup;
+  fournisseurOptions: SelectItem[];
 
   constructor(
     private route: ActivatedRoute,
@@ -21,7 +23,9 @@ export class ArticleUpdateComponent implements OnInit {
   ) {
     this.articleForm = {} as FormGroup;
     this.article = {} as IArticle;
+    this.fournisseurOptions = [];
     this.createForm();
+    this.setFournisseurOptions();
   }
 
   createForm(): void {
@@ -30,6 +34,13 @@ export class ArticleUpdateComponent implements OnInit {
       code: [this.article.code],
       fournisseur: []
     });
+  }
+
+  setFournisseurOptions(): void {
+    this.fournisseurOptions = [
+      { label: 'Colruyt', value: 'Colruyt' },
+      { label: 'Spiral-market', value: 'Spiral-market' }
+    ];
   }
 
   ngOnInit(): void {
