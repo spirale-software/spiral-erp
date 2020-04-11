@@ -42,6 +42,17 @@ public class CacheConfiguration {
             createCache(cm, io.spiral.erp.jhipster.domain.User.class.getName());
             createCache(cm, io.spiral.erp.jhipster.domain.Authority.class.getName());
             createCache(cm, io.spiral.erp.jhipster.domain.User.class.getName() + ".authorities");
+            createCache(cm, io.spiral.erp.jhipster.domain.Entreprise.class.getName());
+            createCache(cm, io.spiral.erp.jhipster.domain.Entreprise.class.getName() + ".articles");
+            createCache(cm, io.spiral.erp.jhipster.domain.Entreprise.class.getName() + ".fournisseurs");
+            createCache(cm, io.spiral.erp.jhipster.domain.Entreprise.class.getName() + ".achats");
+            createCache(cm, io.spiral.erp.jhipster.domain.Entreprise.class.getName() + ".utilisateurs");
+            createCache(cm, io.spiral.erp.jhipster.domain.Article.class.getName());
+            createCache(cm, io.spiral.erp.jhipster.domain.Audit.class.getName());
+            createCache(cm, io.spiral.erp.jhipster.domain.Fournisseur.class.getName());
+            createCache(cm, io.spiral.erp.jhipster.domain.Achat.class.getName());
+            createCache(cm, io.spiral.erp.jhipster.domain.Utilisateur.class.getName());
+            createCache(cm, io.spiral.erp.jhipster.domain.Fournisseur.class.getName() + ".articles");
             // jhipster-needle-ehcache-add-entry
         };
     }

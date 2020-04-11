@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="article">
+            <h2><span jhiTranslate="spiralErpApp.article.detail.title">Article</span> {{article.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="spiralErpApp.article.nom">Nom</span></dt>
+                <dd>
+                    <span>{{article.nom}}</span>
+                </dd>
+                <dt><span jhiTranslate="spiralErpApp.article.code">Code</span></dt>
+                <dd>
+                    <span>{{article.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="spiralErpApp.article.numero">Numero</span></dt>
+                <dd>
+                    <span>{{article.numero}}</span>
+                </dd>
+                <dt><span jhiTranslate="spiralErpApp.article.audit">Audit</span></dt>
+                <dd>
+                    <div *ngIf="article.audit">
+                        <a [routerLink]="['/audit', article.audit?.id, 'view']">{{article.audit?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="spiralErpApp.article.fournisseur">Fournisseur</span></dt>
+                <dd>
+                    <div *ngIf="article.fournisseur">
+                        <a [routerLink]="['/fournisseur', article.fournisseur?.id, 'view']">{{article.fournisseur?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="spiralErpApp.article.entreprise">Entreprise</span></dt>
+                <dd>
+                    <div *ngIf="article.entreprise">
+                        <a [routerLink]="['/entreprise', article.entreprise?.id, 'view']">{{article.entreprise?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/article', article.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

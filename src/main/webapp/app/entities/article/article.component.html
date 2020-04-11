@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="spiralErpApp.article.home.title">Articles</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-article" [routerLink]="['/article/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="spiralErpApp.article.home.createLabel">
+            Create a new Article
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="articles?.length === 0">
+        <span jhiTranslate="spiralErpApp.article.home.notFound">No articles found</span>
+    </div>
+    <div class="table-responsive" *ngIf="articles?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.article.nom">Nom</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.article.code">Code</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.article.numero">Numero</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.article.audit">Audit</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.article.fournisseur">Fournisseur</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.article.entreprise">Entreprise</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let article of articles ;trackBy: trackId">
+                <td><a [routerLink]="['/article', article.id, 'view' ]">{{article.id}}</a></td>
+                <td>{{article.nom}}</td>
+                <td>{{article.code}}</td>
+                <td>{{article.numero}}</td>
+                <td>
+                    <div *ngIf="article.audit">
+                        <a [routerLink]="['/audit', article.audit?.id, 'view' ]" >{{article.audit?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="article.fournisseur">
+                        <a [routerLink]="['/fournisseur', article.fournisseur?.id, 'view' ]" >{{article.fournisseur?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="article.entreprise">
+                        <a [routerLink]="['/entreprise', article.entreprise?.id, 'view' ]" >{{article.entreprise?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/article', article.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/article', article.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(article)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

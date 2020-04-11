@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="achat">
+            <h2><span jhiTranslate="spiralErpApp.achat.detail.title">Achat</span> {{achat.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="spiralErpApp.achat.dateAchat">Date Achat</span></dt>
+                <dd>
+                    <span>{{achat.dateAchat}}</span>
+                </dd>
+                <dt><span jhiTranslate="spiralErpApp.achat.prixUnitaire">Prix Unitaire</span></dt>
+                <dd>
+                    <span>{{achat.prixUnitaire}}</span>
+                </dd>
+                <dt><span jhiTranslate="spiralErpApp.achat.quantite">Quantite</span></dt>
+                <dd>
+                    <span>{{achat.quantite}}</span>
+                </dd>
+                <dt><span jhiTranslate="spiralErpApp.achat.audit">Audit</span></dt>
+                <dd>
+                    <div *ngIf="achat.audit">
+                        <a [routerLink]="['/audit', achat.audit?.id, 'view']">{{achat.audit?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="spiralErpApp.achat.entreprise">Entreprise</span></dt>
+                <dd>
+                    <div *ngIf="achat.entreprise">
+                        <a [routerLink]="['/entreprise', achat.entreprise?.id, 'view']">{{achat.entreprise?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/achat', achat.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

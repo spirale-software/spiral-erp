@@ -2,23 +2,39 @@
 -->
 <div class="div-component">
     <h4>Listes des articles</h4>
-
-    <p-dataView [value]="achatList" [style]="{'width':'100%'}">
-        <p-header>
-            <div class="p-grid p-align-center vertical-container">
-                <div class="p-col-10"><input pInputText placeholder="Rechercher"></div>
-                <div class="p-col-2"><button pButton icon="pi pi-plus" routerLink="/articles/creer"></button></div>
-            </div>
-        </p-header>
-
-        <ng-template let-article pTemplate="listItem">
-            <div class="p-grid data-item data-view-item" [routerLink]="['/articles','3','modifier']">
-                <div class="p-col-12">
-                    <span style="font-weight: bold;">{{ article.libelle }}</span><br>
-                    <span style="margin-right: 10px; display: block"><strong>N° d'article:</strong> {{ article.numero }}</span>
-                    <span style="margin-right: 10px; display: block"><strong>Fournisseur:</strong> {{ article.fournisseur }}</span>
+    <div infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']"
+         [infiniteScrollDistance]="0">
+        <p-dataView [value]="articles" [style]="{'width':'100%'}">
+            <p-header>
+                <div class="p-grid p-align-center vertical-container">
+                    <div class="p-col-10">
+                        <erp-recherche (onSearchClick)="findAll($event)"></erp-recherche>
+                    </div>
+                    <div class="p-col-2">
+                        <button pButton icon="pi pi-plus" routerLink="/articles/creer"></button>
+                    </div>
                 </div>
-            </div>
-        </ng-template>
-    </p-dataView>
+            </p-header>
+
+            <ng-template let-article pTemplate="listItem">
+                <div class="p-grid data-item data-view-item" [routerLink]="['/articles',article.id,'modifier']">
+                    <div class="p-col-12">
+                        <span style="font-weight: bold;display: block">{{ article.nom }}</span>
+                        <div>
+                            <em>Code:</em>
+                            <strong>{{ article.code }}</strong>
+                        </div>
+                        <div>
+                            <em>N° d'article:</em>
+                            <strong>{{ article.numero }}</strong>
+                        </div>
+                        <div>
+                            <em>Fournisseur:</em>
+                            <strong>{{ article.fournisseur ? article.fournisseur : '-' }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-dataView>
+    </div>
 </div>

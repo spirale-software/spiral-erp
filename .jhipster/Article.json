@@ -1,0 +1,54 @@
+{
+    "name": "Article",
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numero",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "audit",
+            "otherEntityRelationshipName": "article",
+            "relationshipName": "audit",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "fournisseur",
+            "otherEntityRelationshipName": "article",
+            "relationshipName": "fournisseur",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "entreprise",
+            "otherEntityRelationshipName": "article",
+            "relationshipName": "entreprise",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200410012200",
+    "entityTableName": "article",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

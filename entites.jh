@@ -1,0 +1,58 @@
+
+entity Entreprise {
+    nom String required
+}
+
+entity Article {
+    nom String required
+    code String
+    numero String
+}
+
+entity Audit {
+    createdAt ZonedDateTime
+    modifiedAt ZonedDateTime
+}
+
+entity Fournisseur {
+    nom String required
+    adresse String
+    telephone String
+}
+
+entity Achat {
+    dateAchat ZonedDateTime
+    prixUnitaire Double
+    quantite Integer
+}
+
+entity Utilisateur {
+}
+
+relationship OneToOne {
+    Utilisateur{jhiUser} to User
+}
+
+relationship OneToMany {
+    Fournisseur to Article
+}
+
+// Tenant(Entreprise) pour chaque entité
+relationship OneToMany {
+    Entreprise to Article
+    Entreprise to Fournisseur
+    Entreprise to Achat
+    Entreprise to Utilisateur
+}
+
+// Audit pour chaque entite
+relationship OneToOne {
+    Article {audit} to Audit
+    Fournisseur {audit} to Audit
+    Achat {audit} to Audit
+    Entreprise {audit} to Audit
+}
+
+dto Audit with mapstruct
+filter Audit
+paginate Audit with infinite-scroll

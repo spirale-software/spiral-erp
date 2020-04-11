@@ -1,0 +1,53 @@
+{
+    "name": "Fournisseur",
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "adresse",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telephone",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "audit",
+            "otherEntityRelationshipName": "fournisseur",
+            "relationshipName": "audit",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "article",
+            "otherEntityRelationshipName": "fournisseur",
+            "relationshipName": "article"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "entreprise",
+            "otherEntityRelationshipName": "fournisseur",
+            "relationshipName": "entreprise",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200410012202",
+    "entityTableName": "fournisseur",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

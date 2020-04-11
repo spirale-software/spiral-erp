@@ -1,0 +1,27 @@
+{
+  "spiralErpApp": {
+    "entreprise": {
+      "home": {
+        "title": "Entreprises",
+        "createLabel": "Create a new Entreprise",
+        "createOrEditLabel": "Create or edit a Entreprise",
+        "notFound": "No Entreprises found"
+      },
+      "created": "A new Entreprise is created with identifier {{ param }}",
+      "updated": "A Entreprise is updated with identifier {{ param }}",
+      "deleted": "A Entreprise is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Entreprise {{ id }}?"
+      },
+      "detail": {
+        "title": "Entreprise"
+      },
+      "nom": "Nom",
+      "audit": "Audit",
+      "article": "Article",
+      "fournisseur": "Fournisseur",
+      "achat": "Achat",
+      "utilisateur": "Utilisateur"
+    }
+  }
+}

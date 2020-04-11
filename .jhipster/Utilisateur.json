@@ -1,0 +1,31 @@
+{
+    "name": "Utilisateur",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "utilisateur",
+            "relationshipName": "jhiUser",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "entreprise",
+            "otherEntityRelationshipName": "utilisateur",
+            "relationshipName": "entreprise",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200410012204",
+    "entityTableName": "utilisateur",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

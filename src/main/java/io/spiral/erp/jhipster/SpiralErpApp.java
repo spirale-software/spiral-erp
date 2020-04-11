@@ -20,7 +20,7 @@ import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.Collection;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"io.spiral.erp.jhipster", "io.spiral.erp.app"})
 @EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
 public class SpiralErpApp implements InitializingBean {
 
