@@ -22,7 +22,7 @@ export class ArticleComponent implements OnInit {
 
   constructor(private aricleService: ArticleErpService, protected parseLinks: JhiParseLinks) {
     this.articles = [];
-    this.itemsPerPage = 5;
+    this.itemsPerPage = ITEMS_PER_PAGE;
     this.page = 0;
     this.links = {
       last: 0
@@ -34,14 +34,6 @@ export class ArticleComponent implements OnInit {
   ngOnInit(): void {
     this.loadAll();
   }
-
-  // findAll(event: any): void {
-  //   this.aricleService
-  //     .query()
-  //     .toPromise()
-  //     .then(httpResponse => (this.articles = httpResponse.body))
-  //     .catch(httpError => console.log(httpError));
-  // }
 
   loadAll(critereTransversal?: any): void {
     const req = {

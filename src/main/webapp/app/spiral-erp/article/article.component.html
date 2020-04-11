@@ -16,7 +16,7 @@
             </p-header>
 
             <ng-template let-article pTemplate="listItem">
-                <div class="p-grid data-item data-view-item" [routerLink]="['/articles','3','modifier']">
+                <div class="p-grid data-item data-view-item" [routerLink]="['/articles',article.id,'modifier']">
                     <div class="p-col-12">
                         <span style="font-weight: bold;display: block">{{ article.nom }}</span>
                         <span

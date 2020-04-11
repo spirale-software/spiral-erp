@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleErpService } from 'app/spiral-erp/article/article-erp.service';
-import { Article, IArticle } from 'app/shared/model/article.model';
+import { IArticle } from 'app/shared/model/article.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -26,8 +26,8 @@ export class ArticleUpdateComponent implements OnInit {
 
   createForm(): void {
     this.articleForm = this.fb.group({
-      nom: [],
-      code: [],
+      nom: [this.article.nom],
+      code: [this.article.code],
       fournisseur: []
     });
   }
@@ -36,6 +36,15 @@ export class ArticleUpdateComponent implements OnInit {
     const id = this.route.snapshot.params['id'];
     if (id) {
       this.titre = 'Détail/Modification article';
+      this.articleErpService
+        .find(id)
+        .toPromise()
+        .then(httpResponse => {
+          if (httpResponse.body) {
+            this.article = httpResponse.body;
+            this.articleForm.patchValue(this.article);
+          }
+        });
     } else {
       this.titre = 'Créer nouvel article';
     }
