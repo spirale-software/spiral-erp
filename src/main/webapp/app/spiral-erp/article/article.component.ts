@@ -1,31 +1,84 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticleErpService } from 'app/spiral-erp/article/article-erp.service';
+import { IArticle } from 'app/shared/model/article.model';
+import { Subscription } from 'rxjs';
+import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
+import { HttpHeaders, HttpResponse } from '@angular/common/http';
+import { IAudit } from 'app/shared/model/audit.model';
+import { JhiParseLinks } from 'ng-jhipster';
 
 @Component({
-  selector: 'erp-achat',
+  selector: 'erp-article',
   templateUrl: './article.component.html'
 })
 export class ArticleComponent implements OnInit {
-  achatList: any[];
+  articles: IArticle[] | null;
+  eventSubscriber?: Subscription;
+  itemsPerPage: number;
+  links: any;
+  page: number;
+  predicate: string;
+  ascending: boolean;
 
-  constructor() {
-    this.achatList = [
-      {
-        numero: '20001',
-        libelle: 'Robe',
-        fournisseur: 'Spiral-Mode'
-      },
-      {
-        numero: '20002',
-        libelle: 'Frigo',
-        fournisseur: 'Spiral-Electro'
-      },
-      {
-        numero: '20003',
-        libelle: 'Ordinateur',
-        fournisseur: 'Spiral-Electro'
-      }
-    ];
+  constructor(private aricleService: ArticleErpService, protected parseLinks: JhiParseLinks) {
+    this.articles = [];
+    this.itemsPerPage = ITEMS_PER_PAGE;
+    this.page = 0;
+    this.links = {
+      last: 0
+    };
+    this.predicate = 'id';
+    this.ascending = true;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.findAll();
+  }
+
+  findAll(): void {
+    this.aricleService
+      .query()
+      .toPromise()
+      .then(httpResponse => (this.articles = httpResponse.body))
+      .catch(httpError => console.log(httpError));
+  }
+
+  loadAll(): void {
+    this.aricleService
+      .query({
+        page: this.page,
+        size: this.itemsPerPage,
+        sort: this.sort()
+      })
+      .subscribe((res: HttpResponse<IAudit[]>) => this.paginateAudits(res.body, res.headers));
+  }
+
+  sort(): string[] {
+    const result = [this.predicate + ',' + (this.ascending ? 'asc' : 'desc')];
+    if (this.predicate !== 'id') {
+      result.push('id');
+    }
+    return result;
+  }
+
+  reset(): void {
+    this.page = 0;
+    this.articles = [];
+    this.loadAll();
+  }
+
+  loadPage(page: number): void {
+    this.page = page;
+    this.loadAll();
+  }
+
+  protected paginateAudits(data: IAudit[] | null, headers: HttpHeaders): void {
+    const headersLink = headers.get('link');
+    this.links = this.parseLinks.parse(headersLink ? headersLink : '');
+    if (data) {
+      for (let i = 0; i < data.length; i++) {
+        if (this.articles) this.articles.push(data[i]);
+      }
+    }
+  }
 }

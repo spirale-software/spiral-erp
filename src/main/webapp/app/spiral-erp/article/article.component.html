@@ -3,7 +3,8 @@
 <div class="div-component">
     <h4>Listes des articles</h4>
 
-    <p-dataView [value]="achatList" [style]="{'width':'100%'}">
+
+    <p-dataView [value]="articles" [style]="{'width':'100%'}">
         <p-header>
             <div class="p-grid p-align-center vertical-container">
                 <div class="p-col-10">
@@ -16,7 +17,8 @@
         <ng-template let-article pTemplate="listItem">
             <div class="p-grid data-item data-view-item" [routerLink]="['/articles','3','modifier']">
                 <div class="p-col-12">
-                    <span style="font-weight: bold;">{{ article.libelle }}</span><br>
+                    <span style="font-weight: bold;display: block">{{ article.nom }}</span>
+                    <span style="margin-right: 10px; display: block"><strong>Code:</strong> {{ article.code }}</span>
                     <span style="margin-right: 10px; display: block"><strong>N° d'article:</strong> {{ article.numero }}</span>
                     <span style="margin-right: 10px; display: block"><strong>Fournisseur:</strong> {{ article.fournisseur }}</span>
                 </div>
