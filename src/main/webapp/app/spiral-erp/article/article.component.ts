@@ -36,6 +36,7 @@ export class ArticleComponent implements OnInit {
   }
 
   loadAll(critereTransversal?: any): void {
+    this.articles = null;
     const req = {
       page: this.page,
       size: this.itemsPerPage,
