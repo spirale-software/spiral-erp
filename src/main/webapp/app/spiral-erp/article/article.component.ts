@@ -21,7 +21,7 @@ export class ArticleComponent implements OnInit {
   ascending: boolean;
 
   constructor(private aricleService: ArticleErpService, protected parseLinks: JhiParseLinks) {
-    this.articles = [];
+    this.articles = null;
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.page = 0;
     this.links = {
@@ -73,6 +73,9 @@ export class ArticleComponent implements OnInit {
   }
 
   protected paginateArticles(data: IAudit[] | null, headers: HttpHeaders): void {
+    if (!this.articles) {
+      this.articles = [];
+    }
     const headersLink = headers.get('link');
     this.links = this.parseLinks.parse(headersLink ? headersLink : '');
     if (data) {

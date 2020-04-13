@@ -16,6 +16,7 @@ import {
   OverlayPanelModule,
   PanelModule,
   PickListModule,
+  ProgressSpinnerModule,
   SidebarModule,
   ToolbarModule
 } from 'primeng/primeng';
@@ -43,5 +44,6 @@ export const primengLib = [
   SidebarModule,
   OverlayPanelModule,
   DialogModule,
-  ToastModule
+  ToastModule,
+  ProgressSpinnerModule
 ];
