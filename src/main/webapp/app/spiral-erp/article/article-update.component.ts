@@ -5,6 +5,7 @@ import { IArticle } from 'app/shared/model/article.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SelectItem } from 'primeng/api';
 import { FournisseurErpService } from 'app/spiral-erp/fournisseur/fournisseur-erp.service';
+import { JhiEventManager } from 'ng-jhipster';
 
 @Component({
   selector: 'erp-article-update',
@@ -21,7 +22,8 @@ export class ArticleUpdateComponent implements OnInit {
     private articleErpService: ArticleErpService,
     private fournisseurErpService: FournisseurErpService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private eventManager: JhiEventManager
   ) {
     this.articleForm = {} as FormGroup;
     this.article = {} as IArticle;
@@ -75,10 +77,32 @@ export class ArticleUpdateComponent implements OnInit {
   save(): void {
     this.article = Object.assign(this.article, this.articleForm.value);
     console.log(this.article);
-    this.articleErpService
-      .create(this.article)
-      .toPromise()
-      .then(() => this.router.navigate(['articles']))
-      .catch(httpError => console.log(httpError));
+    if (!this.article.id) {
+      this.articleErpService
+        .create(this.article)
+        .toPromise()
+        .then(() => {
+          this.router.navigate(['articles']);
+          const summary = 'Sauvegarde réussie';
+          const detail = "L'article a bien été crée";
+          this.showMessage('success', summary, detail);
+        })
+        .catch(httpError => console.log(httpError));
+    } else {
+      this.articleErpService
+        .update(this.article)
+        .toPromise()
+        .then(() => {
+          this.router.navigate(['articles']);
+          const summary = 'Mise à jour réussie.';
+          const detail = "L'article a bien été mis à jour.";
+          this.showMessage('success', summary, detail);
+        })
+        .catch(httpError => console.log(httpError));
+    }
+  }
+
+  showMessage(severity: string, summary: string, detail: string): void {
+    this.eventManager.broadcast({ name: 'showMessage', content: { severity, summary, detail } });
   }
 }

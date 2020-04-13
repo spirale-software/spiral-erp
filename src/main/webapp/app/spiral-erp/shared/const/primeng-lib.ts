@@ -20,6 +20,7 @@ import {
   ToolbarModule
 } from 'primeng/primeng';
 import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
 
 export const primengLib = [
   DataViewModule,
@@ -41,5 +42,6 @@ export const primengLib = [
   MenuModule,
   SidebarModule,
   OverlayPanelModule,
-  DialogModule
+  DialogModule,
+  ToastModule
 ];

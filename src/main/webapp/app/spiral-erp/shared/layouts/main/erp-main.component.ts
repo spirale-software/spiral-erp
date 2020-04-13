@@ -1,14 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 import { AccountService } from 'app/core/auth/account.service';
 import { LoginService } from 'app/core/login/login.service';
 import { Router } from '@angular/router';
 import { Account } from 'app/core/user/account.model';
 import { Subscription } from 'rxjs';
+import { JhiEventManager } from 'ng-jhipster';
 
 @Component({
   selector: 'erp-main',
-  templateUrl: './erp-main.component.html'
+  templateUrl: './erp-main.component.html',
+  providers: [MessageService]
 })
 export class ErpMainComponent implements OnInit, OnDestroy {
   items: MenuItem[];
@@ -17,7 +19,13 @@ export class ErpMainComponent implements OnInit, OnDestroy {
   account: Account | null;
   authSubscription?: Subscription;
 
-  constructor(private accountService: AccountService, private loginService: LoginService, private router: Router) {
+  constructor(
+    private accountService: AccountService,
+    private loginService: LoginService,
+    private router: Router,
+    private eventManager: JhiEventManager,
+    protected messageService: MessageService
+  ) {
     this.items = [];
     this.account = {} as Account;
   }
@@ -54,6 +62,13 @@ export class ErpMainComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.accountService.identity().subscribe();
     this.setCurrentAcount();
+
+    this.eventManager.subscribe('showMessage', (obj: any) => this.showSuccess(obj.content));
+  }
+
+  showSuccess(content: any): void {
+    console.log('showSuccess: ', content);
+    this.messageService.add({ severity: content.severity, summary: content.summary, detail: content.detail });
   }
 
   setItems(): void {
