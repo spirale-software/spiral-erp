@@ -4,7 +4,6 @@ import io.spiral.erp.app.repository.ArticleAppRepository;
 import io.spiral.erp.app.service.dto.ArticleDTO;
 import io.spiral.erp.app.service.mapper.ArticleMapper;
 import io.spiral.erp.jhipster.domain.Article;
-import io.spiral.erp.jhipster.domain.Audit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.ZonedDateTime;
-import java.util.List;
 import java.util.Optional;
 
 @Service

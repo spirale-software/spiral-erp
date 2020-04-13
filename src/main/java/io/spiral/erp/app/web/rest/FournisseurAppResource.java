@@ -2,6 +2,7 @@ package io.spiral.erp.app.web.rest;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
+import io.github.jhipster.web.util.ResponseUtil;
 import io.spiral.erp.app.service.FournisseurAppService;
 import io.spiral.erp.app.service.dto.FournisseurDTO;
 import org.slf4j.Logger;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/erp")
@@ -75,6 +77,7 @@ public class FournisseurAppResource {
     @GetMapping("/fournisseurs/{id}")
     public ResponseEntity<FournisseurDTO> findById(@PathVariable Long id) {
         log.debug("Requête REST pour recherche Fournisseur ayant pour id: {}", id);
-        return null;
+        Optional<FournisseurDTO> articleDTO = fournisseurAppService.findById(id);
+        return ResponseUtil.wrapOrNotFound(articleDTO);
     }
 }

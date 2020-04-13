@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -53,8 +54,8 @@ public class FournisseurAppService {
     }
 
     @Transactional(readOnly = true)
-    public FournisseurDTO findById(Long id) {
+    public Optional<FournisseurDTO> findById(Long id) {
         log.info("Rechercher un Fournisseur ayant pour id: {}", id);
-        return null;
+        return fournisseurAppRepository.findById(id).map(fournisseurMapper::toDto);
     }
 }

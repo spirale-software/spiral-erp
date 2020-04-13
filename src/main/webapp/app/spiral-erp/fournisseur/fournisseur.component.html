@@ -2,25 +2,35 @@
 -->
 <div class="div-component">
     <h4>Listes des fournisseurs</h4>
-    <p-dataView [value]="fournisseurList" [style]="{'width':'100%'}">
-        <p-header>
-            <div class="p-grid p-align-center vertical-container">
-                <div class="p-col-10">
-                    <erp-recherche></erp-recherche>
+    <div infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']"
+         [infiniteScrollDistance]="0">
+        <p-dataView [value]="fournisseurs" [style]="{'width':'100%'}">
+            <p-header>
+                <div class="p-grid p-align-center vertical-container">
+                    <div class="p-col-10">
+                        <erp-recherche (onSearchClick)="findAll($event)"></erp-recherche>
+                    </div>
+                    <div class="p-col-2">
+                        <button pButton icon="pi pi-plus" routerLink="/fournisseurs/ajouter"></button>
+                    </div>
                 </div>
-                <div class="p-col-2"><button pButton icon="pi pi-plus" routerLink="/fournisseurs/ajouter"></button></div>
-            </div>
-        </p-header>
+            </p-header>
 
-        <ng-template let-fournisseur pTemplate="listItem">
-            <div class="p-grid data-item data-view-item" [routerLink]="['/fournisseurs','3','modifier']">
-                <div class="p-col-12">
-                    <span style="font-weight: bold;">{{ fournisseur.nom }}</span><br>
-                    <span style="margin-right: 10px; display: block"><strong>N°:</strong> {{ fournisseur.numero }}</span>
-                    <span style="margin-right: 10px; display: block"><strong>Téléphone:</strong> {{ fournisseur.telephone }}</span>
-                    <span style="margin-right: 10px; display: block"><strong>Adresse:</strong> {{ fournisseur.adresse }}</span>
+            <ng-template let-fournisseur pTemplate="listItem">
+                <div class="p-grid data-item data-view-item" [routerLink]="['/fournisseurs', fournisseur.id, 'modifier']">
+                    <div class="p-col-12">
+                        <span style="font-weight: bold;">{{ fournisseur.nom }}</span><br>
+                        <div>
+                            <em>Téléphone:</em>
+                            <strong>{{ fournisseur.telephone }}</strong>
+                        </div>
+                        <div>
+                            <em>Adresse:</em>
+                            <strong>{{ fournisseur.adresse  }}</strong>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </ng-template>
-    </p-dataView>
+            </ng-template>
+        </p-dataView>
+    </div>
 </div>
