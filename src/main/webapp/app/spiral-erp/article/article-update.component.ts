@@ -25,7 +25,7 @@ export class ArticleUpdateComponent implements OnInit {
   ) {
     this.articleForm = {} as FormGroup;
     this.article = {} as IArticle;
-    this.fournisseurOptions = [];
+    this.fournisseurOptions = [{ label: '', value: null }];
     this.createForm();
     this.setFournisseurOptions();
   }

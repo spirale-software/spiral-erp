@@ -10,7 +10,7 @@ import io.spiral.erp.jhipster.service.mapper.EntityMapper;
 import org.mapstruct.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Mapper(componentModel = "spring", uses = {AuditMapper.class})
+@Mapper(componentModel = "spring", uses = {AuditMapper.class, FournisseurMapper.class})
 public abstract class ArticleMapper implements EntityMapper<ArticleDTO, Article> {
     @Autowired
     private AuditRepository auditRepository;

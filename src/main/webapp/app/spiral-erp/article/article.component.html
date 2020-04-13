@@ -22,7 +22,7 @@
                         <span style="font-weight: bold;display: block">{{ article.nom }}</span>
                         <div>
                             <em>Code:</em>
-                            <strong>{{ article.code }}</strong>
+                            <strong>{{ article.code ? article.code : '-' }}</strong>
                         </div>
                         <div>
                             <em>N° d'article:</em>
@@ -30,7 +30,7 @@
                         </div>
                         <div>
                             <em>Fournisseur:</em>
-                            <strong>{{ article.fournisseur ? article.fournisseur : '-' }}</strong>
+                            <strong>{{ article.fournisseur ? article.fournisseur.nom : '-' }}</strong>
                         </div>
                     </div>
                 </div>

@@ -10,6 +10,7 @@ public class ArticleDTO {
     private String nom;
     private String code;
     private String numero;
+    private FournisseurDTO fournisseur;
     private AuditDTO audit;
 
     public Long getId() {
@@ -50,6 +51,14 @@ public class ArticleDTO {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public FournisseurDTO getFournisseur() {
+        return fournisseur;
+    }
+
+    public void setFournisseur(FournisseurDTO fournisseur) {
+        this.fournisseur = fournisseur;
     }
 
     @Override
