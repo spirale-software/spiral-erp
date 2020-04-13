@@ -4,6 +4,7 @@ import { ArticleErpService } from 'app/spiral-erp/article/article-erp.service';
 import { IArticle } from 'app/shared/model/article.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SelectItem } from 'primeng/api';
+import { FournisseurErpService } from 'app/spiral-erp/fournisseur/fournisseur-erp.service';
 
 @Component({
   selector: 'erp-article-update',
@@ -18,6 +19,7 @@ export class ArticleUpdateComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private articleErpService: ArticleErpService,
+    private fournisseurErpService: FournisseurErpService,
     private fb: FormBuilder,
     private router: Router
   ) {
@@ -37,10 +39,15 @@ export class ArticleUpdateComponent implements OnInit {
   }
 
   setFournisseurOptions(): void {
-    this.fournisseurOptions = [
-      { label: 'Colruyt', value: 'Colruyt' },
-      { label: 'Spiral-market', value: 'Spiral-market' }
-    ];
+    this.fournisseurErpService
+      .query()
+      .toPromise()
+      .then(httpReponse => {
+        if (httpReponse.body) {
+          httpReponse.body.forEach(item => this.fournisseurOptions.push({ label: item.nom, value: item }));
+        }
+      })
+      .catch(httpError => console.log(httpError));
   }
 
   ngOnInit(): void {

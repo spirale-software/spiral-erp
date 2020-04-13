@@ -4,7 +4,7 @@
     <h4>Listes des articles</h4>
     <div infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']"
          [infiniteScrollDistance]="0">
-        <p-dataView [value]="articles" [style]="{'width':'100%'}">
+        <p-dataView [value]="articles" [style]="{'width':'100%'}" emptyMessage="Aucun résultat">
             <p-header>
                 <div class="p-grid p-align-center vertical-container">
                     <div class="p-col-10">
