@@ -15,7 +15,7 @@ public class ArticleQueryService extends QueryService<Article> {
 
     public Specification<Article> createSpecification(String critereTransversal) {
         log.info("Création de la spécification à partir du critère transversal: {}", critereTransversal);
-        Specification<Article> specification = null; //Specification.where(null);
+        Specification<Article> specification = null;
         if (critereTransversal != null) {
             StringFilter filter = new StringFilter();
             filter.setContains(critereTransversal);

@@ -1,13 +1,18 @@
 package io.spiral.erp.app.web.rest;
 
 import io.github.jhipster.web.util.HeaderUtil;
+import io.github.jhipster.web.util.PaginationUtil;
 import io.spiral.erp.app.service.FournisseurAppService;
 import io.spiral.erp.app.service.dto.FournisseurDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -59,9 +64,12 @@ public class FournisseurAppResource {
     }
 
     @GetMapping("/fournisseurs")
-    public ResponseEntity<List<FournisseurDTO>> findAll(String critereTransverval) {
+    public ResponseEntity<List<FournisseurDTO>> findAll(Pageable pageable,
+                                                        @RequestParam(value = "critereTransverval", required = false) String critereTransverval) {
         log.debug("Requête REST pour recherche les Fournisseur avec pour critère de recherche : {}", critereTransverval);
-        return null;
+        Page<FournisseurDTO> page = fournisseurAppService.findAll(critereTransverval, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
     @GetMapping("/fournisseurs/{id}")

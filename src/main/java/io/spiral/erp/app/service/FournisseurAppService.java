@@ -3,8 +3,13 @@ package io.spiral.erp.app.service;
 import io.spiral.erp.app.repository.FournisseurAppRepository;
 import io.spiral.erp.app.service.dto.FournisseurDTO;
 import io.spiral.erp.app.service.mapper.FournisseurMapper;
+import io.spiral.erp.jhipster.domain.Article;
+import io.spiral.erp.jhipster.domain.Fournisseur;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,9 +46,10 @@ public class FournisseurAppService {
     }
 
     @Transactional(readOnly = true)
-    public List<FournisseurDTO> findAll(String critereTransversal) {
+    public Page<FournisseurDTO> findAll(String critereTransversal, Pageable pageable) {
         log.info("Rechercher tous les Fournisseur correspondant au critère: {}", critereTransversal);
-        return null;
+        Specification<Fournisseur> specification = fournisseurQueryService.createSpecification(critereTransversal);
+        return fournisseurAppRepository.findAll(specification, pageable).map(fournisseurMapper::toDto);
     }
 
     @Transactional(readOnly = true)
