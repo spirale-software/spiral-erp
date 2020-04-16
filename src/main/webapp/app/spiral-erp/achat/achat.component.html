@@ -2,7 +2,7 @@
 -->
 <div class="div-component">
     <h4>Listes des achats</h4>
-    <p-dataView [value]="achatList">
+    <p-dataView [value]="achats">
         <p-header>
             <div class="p-grid p-align-center vertical-container">
                 <div class="p-col-10">
@@ -16,16 +16,24 @@
             <div class="p-grid data-view-item" routerLink="/achats/creer">
                 <div class="p-col-12">
                     <span style="font-weight: bold;">{{ achat.libelleProduit }} - {{ achat.prixVente }} FCFA</span><br>
-                    <span style="display: block"><strong>N° d'article:</strong> {{ achat.numeroProduit }}</span>
-                    <span style="margin-right: 10px; display: inline-block"><strong>Qté:</strong> {{ '6' }}</span>
-                    <span style="margin-right: 10px; display: inline-block"><strong>PU:</strong> {{ '1000' }}</span>
-                    <span style="margin-right: 10px; display: block"><strong>Acheteur:</strong> {{ achat.vendeur }}</span>
-                    <span style="margin-right: 10px; display: inline-block"><strong>Date:</strong> {{ achat.dateVente }}</span>
+                    <span>
+                        <em>Quantité:</em>
+                        <strong>{{ achat.quantite }}</strong>
+                    </span>
+                    <span style="padding: 0 7px">|</span>
+                    <span>
+                        <em>Prix Unitaire:</em>
+                        <strong>{{ achat.prixUnitaire }}</strong>
+                    </span>
+                    <div>
+                        <em>Acheteur:</em>
+                        <strong>{{ achat.acheteur }}</strong>
+                    </div>
+                    <div>
+                        <em>Date:</em>
+                        <strong>{{ achat.dateVente }}</strong>
+                    </div>
                 </div>
-<!--                <div class="p-col-4">-->
-<!--                    <button pButton type="button" icon="pi pi-pencil" class="ui-button-warning"></button>-->
-<!--                    <button pButton type="button" icon="pi pi-trash" class="ui-button-danger"></button>-->
-<!--                </div>-->
             </div>
         </ng-template>
 

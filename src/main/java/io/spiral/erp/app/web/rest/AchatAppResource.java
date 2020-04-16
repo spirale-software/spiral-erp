@@ -1,17 +1,24 @@
 package io.spiral.erp.app.web.rest;
 
 import io.github.jhipster.web.util.HeaderUtil;
+import io.github.jhipster.web.util.PaginationUtil;
+import io.github.jhipster.web.util.ResponseUtil;
 import io.spiral.erp.app.service.AchatAppService;
 import io.spiral.erp.app.service.dto.AchatDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/erp")
@@ -59,14 +66,17 @@ public class AchatAppResource {
     }
 
     @GetMapping("/achats")
-    public ResponseEntity<List<AchatDTO>> findAll(String critereTransverval) {
+    public ResponseEntity<List<AchatDTO>> findAll(String critereTransverval, Pageable pageable) {
         log.debug("Requête REST pour recherche les Achat avec pour critère de recherche : {}", critereTransverval);
-        return null;
+        Page<AchatDTO> page = achatAppService.findAll(critereTransverval, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
     @GetMapping("/achats/{id}")
     public ResponseEntity<AchatDTO> findById(@PathVariable Long id) {
         log.debug("Requête REST pour recherche l'Achat ayant pour id: {}", id);
-        return null;
+        Optional<AchatDTO> articleDTO = achatAppService.findById(id);
+        return ResponseUtil.wrapOrNotFound(articleDTO);
     }
 }

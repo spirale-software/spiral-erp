@@ -3,12 +3,17 @@ package io.spiral.erp.app.service;
 import io.spiral.erp.app.repository.AchatAppRepository;
 import io.spiral.erp.app.service.dto.AchatDTO;
 import io.spiral.erp.app.service.mapper.AchatMapper;
+import io.spiral.erp.jhipster.domain.Achat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.time.ZonedDateTime;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -27,25 +32,32 @@ public class AchatAppService {
     }
 
     public AchatDTO create(AchatDTO achatDTO) {
-        return null;
+        log.info("Créer un nouvel Achat: {}", achatDTO);
+        return achatMapper.toDto(achatAppRepository.save(achatMapper.toEntity(achatDTO)));
     }
 
     public AchatDTO update(AchatDTO achatDTO) {
-        return null;
+        log.info("Modifier un Achat: {}", achatDTO);
+        Achat achat = achatMapper.toEntity(achatDTO);
+        achat.getAudit().setModifiedAt(ZonedDateTime.now());
+        return achatMapper.toDto(achatAppRepository.save(achat));
     }
 
     public void deleteById(Long id) {
+        log.info("Supprimer un Achat avec pour id: {}", id);
+        achatAppRepository.deleteById(id);
     }
 
     @Transactional(readOnly = true)
-    public List<AchatDTO> findAll(String critereTransversal) {
-        log.info("Rechercher tous les Achats correspondant au critère: {}", critereTransversal);
-        return null;
+    public Page<AchatDTO> findAll(String critereTransversal, Pageable pageable) {
+        log.info("Rechercher tous les Achat correspondant au critère: {}", critereTransversal);
+        Specification<Achat> specification = achatQueryService.createSpecification(critereTransversal);
+        return achatAppRepository.findAll(specification, pageable).map(achatMapper::toDto);
     }
 
     @Transactional(readOnly = true)
-    public AchatDTO findById(Long id) {
+    public Optional<AchatDTO> findById(Long id) {
         log.info("Rechercher un Achat ayant pour id: {}", id);
-        return null;
+        return achatAppRepository.findById(id).map(achatMapper::toDto);
     }
 }
