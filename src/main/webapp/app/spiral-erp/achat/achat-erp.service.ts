@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { FournisseurService } from 'app/entities/fournisseur/fournisseur.service';
 import { SERVER_API_URL } from 'app/app.constants';
 import { IFournisseur } from 'app/shared/model/fournisseur.model';
 import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { IAchat } from 'app/shared/model/achat.model';
+import { AchatService } from 'app/entities/achat/achat.service';
 
 type EntityResponseType = HttpResponse<IAchat>;
 type EntityArrayResponseType = HttpResponse<IAchat[]>;
 
 @Injectable({ providedIn: 'root' })
 export class AchatErpService {
-  constructor(public achatJhiService: FournisseurService) {
+  constructor(public achatJhiService: AchatService) {
     achatJhiService.resourceUrl = SERVER_API_URL + 'api/erp/achats';
   }
 

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AchatErpService } from 'app/spiral-erp/achat/achat-erp.service';
 import { JhiParseLinks } from 'ng-jhipster';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
-import { Achat } from 'app/shared/model/achat.model';
+import { Achat, IAchat } from 'app/shared/model/achat.model';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { IAudit } from 'app/shared/model/audit.model';
+import { Moment } from 'moment';
 
 @Component({
   selector: 'erp-achat',
@@ -82,5 +83,17 @@ export class AchatComponent implements OnInit {
         if (this.achats) this.achats.push(data[i]);
       }
     }
+  }
+
+  getMontantTotal(achat: IAchat): number {
+    let result = 0;
+    if (achat) {
+      result = achat.prixUnitaire * achat.quantite;
+    }
+    return result;
+  }
+
+  getDate(date: Moment): string {
+    return date.format('DD/MM/YYYY') + ' à ' + date.toString().slice(16, 26);
   }
 }
