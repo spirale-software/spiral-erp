@@ -27,6 +27,12 @@
             <column name="audit_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_achat_audit_id" />
             </column>
+            <column name="utilisateur_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="article_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <column name="entreprise_id" type="bigint">
                 <constraints nullable="true" />
             </column>

@@ -12,10 +12,14 @@ import { IAchat, Achat } from 'app/shared/model/achat.model';
 import { AchatService } from './achat.service';
 import { IAudit } from 'app/shared/model/audit.model';
 import { AuditService } from 'app/entities/audit/audit.service';
+import { IUtilisateur } from 'app/shared/model/utilisateur.model';
+import { UtilisateurService } from 'app/entities/utilisateur/utilisateur.service';
+import { IArticle } from 'app/shared/model/article.model';
+import { ArticleService } from 'app/entities/article/article.service';
 import { IEntreprise } from 'app/shared/model/entreprise.model';
 import { EntrepriseService } from 'app/entities/entreprise/entreprise.service';
 
-type SelectableEntity = IAudit | IEntreprise;
+type SelectableEntity = IAudit | IUtilisateur | IArticle | IEntreprise;
 
 @Component({
   selector: 'jhi-achat-update',
@@ -26,6 +30,10 @@ export class AchatUpdateComponent implements OnInit {
 
   audits: IAudit[] = [];
 
+  utilisateurs: IUtilisateur[] = [];
+
+  articles: IArticle[] = [];
+
   entreprises: IEntreprise[] = [];
 
   editForm = this.fb.group({
@@ -34,12 +42,16 @@ export class AchatUpdateComponent implements OnInit {
     prixUnitaire: [],
     quantite: [],
     audit: [],
+    utilisateur: [],
+    article: [],
     entreprise: []
   });
 
   constructor(
     protected achatService: AchatService,
     protected auditService: AuditService,
+    protected utilisateurService: UtilisateurService,
+    protected articleService: ArticleService,
     protected entrepriseService: EntrepriseService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -73,6 +85,24 @@ export class AchatUpdateComponent implements OnInit {
           }
         });
 
+      this.utilisateurService
+        .query()
+        .pipe(
+          map((res: HttpResponse<IUtilisateur[]>) => {
+            return res.body ? res.body : [];
+          })
+        )
+        .subscribe((resBody: IUtilisateur[]) => (this.utilisateurs = resBody));
+
+      this.articleService
+        .query()
+        .pipe(
+          map((res: HttpResponse<IArticle[]>) => {
+            return res.body ? res.body : [];
+          })
+        )
+        .subscribe((resBody: IArticle[]) => (this.articles = resBody));
+
       this.entrepriseService
         .query()
         .pipe(
@@ -91,6 +121,8 @@ export class AchatUpdateComponent implements OnInit {
       prixUnitaire: achat.prixUnitaire,
       quantite: achat.quantite,
       audit: achat.audit,
+      utilisateur: achat.utilisateur,
+      article: achat.article,
       entreprise: achat.entreprise
     });
   }
@@ -118,6 +150,8 @@ export class AchatUpdateComponent implements OnInit {
       prixUnitaire: this.editForm.get(['prixUnitaire'])!.value,
       quantite: this.editForm.get(['quantite'])!.value,
       audit: this.editForm.get(['audit'])!.value,
+      utilisateur: this.editForm.get(['utilisateur'])!.value,
+      article: this.editForm.get(['article'])!.value,
       entreprise: this.editForm.get(['entreprise'])!.value
     };
   }

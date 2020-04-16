@@ -38,6 +38,14 @@ public class Achat implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("achats")
+    private Utilisateur utilisateur;
+
+    @ManyToOne
+    @JsonIgnoreProperties("achats")
+    private Article article;
+
+    @ManyToOne
+    @JsonIgnoreProperties("achats")
     private Entreprise entreprise;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -99,6 +107,32 @@ public class Achat implements Serializable {
 
     public void setAudit(Audit audit) {
         this.audit = audit;
+    }
+
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public Achat utilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+        return this;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+    public Article getArticle() {
+        return article;
+    }
+
+    public Achat article(Article article) {
+        this.article = article;
+        return this;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
     }
 
     public Entreprise getEntreprise() {

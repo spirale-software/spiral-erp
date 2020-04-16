@@ -36,11 +36,9 @@ relationship OneToOne {
 relationship OneToMany {
     Fournisseur to Article
     Utilisateur to Achat
+    Article to Achat
 }
 
-relationship ManyToOne {
-    Achat to Article
-}
 
 // Tenant(Entreprise) pour chaque entité
 relationship OneToMany {

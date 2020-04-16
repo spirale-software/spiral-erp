@@ -11,6 +11,12 @@
             "ownerSide": true
         },
         {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "achat",
+            "otherEntityRelationshipName": "utilisateur",
+            "relationshipName": "achat"
+        },
+        {
             "relationshipType": "many-to-one",
             "otherEntityName": "entreprise",
             "otherEntityRelationshipName": "utilisateur",

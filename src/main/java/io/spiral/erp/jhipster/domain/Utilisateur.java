@@ -6,6 +6,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A Utilisateur.
@@ -25,6 +27,10 @@ public class Utilisateur implements Serializable {
     @OneToOne
     @JoinColumn(unique = true)
     private User jhiUser;
+
+    @OneToMany(mappedBy = "utilisateur")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Achat> achats = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties("utilisateurs")
@@ -50,6 +56,31 @@ public class Utilisateur implements Serializable {
 
     public void setJhiUser(User user) {
         this.jhiUser = user;
+    }
+
+    public Set<Achat> getAchats() {
+        return achats;
+    }
+
+    public Utilisateur achats(Set<Achat> achats) {
+        this.achats = achats;
+        return this;
+    }
+
+    public Utilisateur addAchat(Achat achat) {
+        this.achats.add(achat);
+        achat.setUtilisateur(this);
+        return this;
+    }
+
+    public Utilisateur removeAchat(Achat achat) {
+        this.achats.remove(achat);
+        achat.setUtilisateur(null);
+        return this;
+    }
+
+    public void setAchats(Set<Achat> achats) {
+        this.achats = achats;
     }
 
     public Entreprise getEntreprise() {

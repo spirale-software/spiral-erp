@@ -1,7 +1,5 @@
 package io.spiral.erp.app.service.dto;
 
-import io.spiral.erp.jhipster.domain.Utilisateur;
-
 import java.time.ZonedDateTime;
 
 public class AchatDTO {

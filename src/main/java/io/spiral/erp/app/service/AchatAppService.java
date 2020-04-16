@@ -52,6 +52,7 @@ public class AchatAppService {
     public Page<AchatDTO> findAll(String critereTransversal, Pageable pageable) {
         log.info("Rechercher tous les Achat correspondant au critère: {}", critereTransversal);
         Specification<Achat> specification = achatQueryService.createSpecification(critereTransversal);
+        Page<Achat> all = achatAppRepository.findAll(specification, pageable);
         return achatAppRepository.findAll(specification, pageable).map(achatMapper::toDto);
     }
 

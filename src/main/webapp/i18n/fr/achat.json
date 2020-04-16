@@ -20,6 +20,8 @@
       "prixUnitaire": "Prix Unitaire",
       "quantite": "Quantite",
       "audit": "Audit",
+      "utilisateur": "Utilisateur",
+      "article": "Article",
       "entreprise": "Entreprise"
     }
   }

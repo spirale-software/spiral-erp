@@ -27,6 +27,12 @@
             "ownerSide": true
         },
         {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "achat",
+            "otherEntityRelationshipName": "article",
+            "relationshipName": "achat"
+        },
+        {
             "relationshipType": "many-to-one",
             "otherEntityName": "fournisseur",
             "otherEntityRelationshipName": "article",
