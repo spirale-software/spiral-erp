@@ -1,0 +1,44 @@
+<!--
+-->
+<div>
+    <div style="margin-bottom: 7px">
+        <p-button icon="pi pi-chevron-left" label="Retour" (onClick)="back()"></p-button>
+    </div>
+
+    <div>
+        <p-panel>
+            <p-header>
+                <div class="ui-helper-clearfix">
+                    <span class="ui-panel-title">{{ titre }}</span>
+                </div>
+            </p-header>
+            <div style="margin-bottom: 13px">
+                <span style="display: block">Date</span>
+                <span>10/08/2020</span>
+            </div>
+            <div class="ui-fluid" style="margin-bottom: 13px">
+                <span>Description de la dépense</span>
+                <input pInputText>
+            </div>
+            <div class="ui-fluid" style="margin-bottom: 13px">
+                <span>Montant</span>
+                <div class="ui-inputgroup">
+                    <input type="text" pInputText>
+                    <span class="ui-inputgroup-addon">FCFA</span>
+                </div>
+            </div>
+            <div class="ui-fluid" style="margin-bottom: 13px">
+                <span>Type de dépense</span>
+                <p-dropdown [options]="typeOptions"></p-dropdown>
+            </div>
+        </p-panel>
+
+        <p-toolbar [style]="{'margin-top':'7px'}">
+            <div class="ui-toolbar-group-right">
+                <button pButton type="button" icon="pi pi-save" label="Enregistrer"></button>
+                <button pButton type="button" icon="pi pi-times" class="ui-button-danger" label="Supprimer"></button>
+            </div>
+        </p-toolbar>
+    </div>
+
+</div>
