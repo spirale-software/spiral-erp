@@ -41,8 +41,8 @@ public class AchatAppService {
         Achat achat = achatMapper.toEntity(achatDTO);
         achat.setDateAchat(ZonedDateTime.now());
 
-        Utilisateur acheteur = utilisateurAppRepository.findByJhiUserLogin(achatDTO.getAcheteur().getLogin()).get();
-        achat.setAcheteur(acheteur);
+       // Utilisateur acheteur = utilisateurAppRepository.findByJhiUserLogin(achatDTO.getAcheteur().getLogin()).get();
+        // achat.setAcheteur(acheteur);
 
         return achatMapper.toDto(achatAppRepository.save(achat));
     }

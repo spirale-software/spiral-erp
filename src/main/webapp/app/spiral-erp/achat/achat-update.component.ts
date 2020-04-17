@@ -7,9 +7,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { SelectItem } from 'primeng/api';
-import { ArticleErpService } from 'app/spiral-erp/article/article-erp.service';
 import { Subscription } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
+import { ArticleErpService } from 'app/spiral-erp/article/article-erp.service';
 
 @Component({
   selector: 'erp-achat-update',
@@ -32,8 +32,8 @@ export class AchatUpdateComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private articleErpService: ArticleErpService,
-    private eventManager: JhiEventManager
+    private eventManager: JhiEventManager,
+    private articleErpService: ArticleErpService
   ) {
     this.account = null;
     this.titre = '';
@@ -97,7 +97,7 @@ export class AchatUpdateComponent implements OnInit, OnDestroy {
 
     console.log(this.achat);
     if (!this.achat.id) {
-      this.articleErpService
+      this.achatErpService
         .create(this.achat)
         .toPromise()
         .then(() => {
@@ -108,7 +108,7 @@ export class AchatUpdateComponent implements OnInit, OnDestroy {
         })
         .catch(httpError => console.log(httpError));
     } else {
-      this.articleErpService
+      this.achatErpService
         .update(this.achat)
         .toPromise()
         .then(() => {

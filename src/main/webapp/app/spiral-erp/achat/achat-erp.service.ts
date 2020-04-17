@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { SERVER_API_URL } from 'app/app.constants';
-import { IFournisseur } from 'app/shared/model/fournisseur.model';
 import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { IAchat } from 'app/shared/model/achat.model';
@@ -15,12 +14,12 @@ export class AchatErpService {
     achatJhiService.resourceUrl = SERVER_API_URL + 'api/erp/achats';
   }
 
-  create(fournisseur: IFournisseur): Observable<EntityResponseType> {
-    return this.achatJhiService.create(fournisseur);
+  create(achat: IAchat): Observable<EntityResponseType> {
+    return this.achatJhiService.create(achat);
   }
 
-  update(fournisseur: IFournisseur): Observable<EntityResponseType> {
-    return this.achatJhiService.update(fournisseur);
+  update(achat: IAchat): Observable<EntityResponseType> {
+    return this.achatJhiService.update(achat);
   }
 
   find(id: number): Observable<EntityResponseType> {

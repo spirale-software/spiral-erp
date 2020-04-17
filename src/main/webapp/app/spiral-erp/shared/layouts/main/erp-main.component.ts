@@ -118,7 +118,15 @@ export class ErpMainComponent implements OnInit, OnDestroy {
         ]
       },
       {
-        label: 'Administration',
+        label: 'Administration Spiral-ERP',
+        visible: this.isVisible,
+        items: [
+          { label: 'Gestion des utilisateurs', icon: 'pi pi-home', routerLink: 'admin/utilisateurs', command: this.closeSidebar },
+          { label: 'Entreprise', icon: 'pi pi-table', routerLink: 'admin/entreprises', command: this.closeSidebar }
+        ]
+      },
+      {
+        label: 'Administration JHI',
         visible: this.isVisible,
         items: [
           {
