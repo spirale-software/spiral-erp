@@ -5,48 +5,47 @@
         <p-button icon="pi pi-chevron-left" label="Tous les achats" routerLink="/achats"></p-button>
     </div>
 
-    <div>
+    <div [formGroup]="achatForm">
         <p-panel>
             <p-header>
                 <div class="ui-helper-clearfix">
-                    <span class="ui-panel-title">Nouvel achat</span>
+                    <span class="ui-panel-title">{{titre}}</span>
                 </div>
             </p-header>
             <div class="p-grid">
                 <div class="p-col">
                     <span class="span-label">Acheteur</span>
-                    <span style="display: block">Gyle</span>
+                    <span style="display: block">{{account?.lastName}}</span>
                 </div>
                 <div class="p-col">
                     <span class="span-label">Date</span>
-                    <span style="display: block">10/05/2020</span>
+                    <span style="display: block">{{currentDate}}</span>
                 </div>
             </div>
             <div class="ui-fluid" style="margin-bottom: 13px">
                 <span class="span-label">Article</span>
-                <input pInputText>
+                <p-dropdown [options]="articleOptions" filter="true" formControlName="article"></p-dropdown>
             </div>
             <div class="ui-fluid" style="margin-bottom: 13px">
                 <span class="span-label">Prix unitaire</span>
                 <div class="ui-inputgroup">
-                    <input type="text" pInputText>
+                    <input type="text" pInputText formControlName="prixUnitaire">
                     <span class="ui-inputgroup-addon">FCFA</span>
                 </div>
             </div>
             <div class="ui-fluid" style="margin-bottom: 13px">
                 <span class="span-label">Quantité</span>
-                <input pInputText>
+                <input pInputText formControlName="quantite">
             </div>
             <div class="ui-fluid" style="margin-bottom: 13px">
-                <span style="display: block">Prix total d'achat</span>
-                <span style="font-weight: bold">1 200 000 FCFA</span>
+                <span style="display: block; font-weight: bold">Prix total d'achat</span>
+                <span style="">{{prixTotalAchat}} FCFA</span>
             </div>
         </p-panel>
 
         <p-toolbar [style]="{'margin-top':'7px'}">
             <div class="ui-toolbar-group-right">
-                <button pButton type="button" icon="pi pi-save" label="Confirmer l'achat"></button>
-<!--                <button pButton type="button" icon="pi pi-times" class="ui-button-danger" label="Supprimer"></button>-->
+                <button pButton type="submit" icon="pi pi-save" label="Confirmer l'achat" (click)="save()"></button>
             </div>
         </p-toolbar>
     </div>

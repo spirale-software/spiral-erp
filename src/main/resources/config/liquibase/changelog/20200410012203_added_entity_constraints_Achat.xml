@@ -14,9 +14,9 @@
                                  referencedColumnNames="id"
                                  referencedTableName="audit"/>
 
-        <addForeignKeyConstraint baseColumnNames="utilisateur_id"
+        <addForeignKeyConstraint baseColumnNames="acheteur_id"
                                  baseTableName="achat"
-                                 constraintName="fk_achat_utilisateur_id"
+                                 constraintName="fk_achat_acheteur_id"
                                  referencedColumnNames="id"
                                  referencedTableName="utilisateur"/>
 

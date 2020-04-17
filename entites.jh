@@ -35,7 +35,7 @@ relationship OneToOne {
 
 relationship OneToMany {
     Fournisseur to Article
-    Utilisateur to Achat
+    Utilisateur to Achat {acheteur}
     Article to Achat
 }
 

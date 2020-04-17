@@ -23,10 +23,10 @@
                         <a [routerLink]="['/audit', achat.audit?.id, 'view']">{{achat.audit?.id}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="spiralErpApp.achat.utilisateur">Utilisateur</span></dt>
+                <dt><span jhiTranslate="spiralErpApp.achat.acheteur">Acheteur</span></dt>
                 <dd>
-                    <div *ngIf="achat.utilisateur">
-                        <a [routerLink]="['/utilisateur', achat.utilisateur?.id, 'view']">{{achat.utilisateur?.id}}</a>
+                    <div *ngIf="achat.acheteur">
+                        <a [routerLink]="['/utilisateur', achat.acheteur?.id, 'view']">{{achat.acheteur?.id}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="spiralErpApp.achat.article">Article</span></dt>

@@ -23,7 +23,7 @@
             <th scope="col" ><span jhiTranslate="spiralErpApp.achat.prixUnitaire">Prix Unitaire</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.achat.quantite">Quantite</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.achat.audit">Audit</span></th>
-            <th scope="col" ><span jhiTranslate="spiralErpApp.achat.utilisateur">Utilisateur</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.achat.acheteur">Acheteur</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.achat.article">Article</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.achat.entreprise">Entreprise</span></th>
             <th scope="col"></th>
@@ -41,8 +41,8 @@
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="achat.utilisateur">
-                        <a [routerLink]="['/utilisateur', achat.utilisateur?.id, 'view' ]" >{{achat.utilisateur?.id}}</a>
+                    <div *ngIf="achat.acheteur">
+                        <a [routerLink]="['/utilisateur', achat.acheteur?.id, 'view' ]" >{{achat.acheteur?.id}}</a>
                     </div>
                 </td>
                 <td>

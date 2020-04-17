@@ -13,7 +13,7 @@
         {
             "relationshipType": "one-to-many",
             "otherEntityName": "achat",
-            "otherEntityRelationshipName": "utilisateur",
+            "otherEntityRelationshipName": "acheteur",
             "relationshipName": "achat"
         },
         {

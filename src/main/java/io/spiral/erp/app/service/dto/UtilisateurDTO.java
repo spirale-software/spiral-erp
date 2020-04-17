@@ -5,6 +5,7 @@ public class UtilisateurDTO {
     private String nom;
     private String prenom;
     private String email;
+    private String login;
 
     public Long getId() {
         return id;
@@ -36,5 +37,13 @@ public class UtilisateurDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 }

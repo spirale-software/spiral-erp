@@ -42,7 +42,7 @@ export class AchatUpdateComponent implements OnInit {
     prixUnitaire: [],
     quantite: [],
     audit: [],
-    utilisateur: [],
+    acheteur: [],
     article: [],
     entreprise: []
   });
@@ -121,7 +121,7 @@ export class AchatUpdateComponent implements OnInit {
       prixUnitaire: achat.prixUnitaire,
       quantite: achat.quantite,
       audit: achat.audit,
-      utilisateur: achat.utilisateur,
+      acheteur: achat.acheteur,
       article: achat.article,
       entreprise: achat.entreprise
     });
@@ -150,7 +150,7 @@ export class AchatUpdateComponent implements OnInit {
       prixUnitaire: this.editForm.get(['prixUnitaire'])!.value,
       quantite: this.editForm.get(['quantite'])!.value,
       audit: this.editForm.get(['audit'])!.value,
-      utilisateur: this.editForm.get(['utilisateur'])!.value,
+      acheteur: this.editForm.get(['acheteur'])!.value,
       article: this.editForm.get(['article'])!.value,
       entreprise: this.editForm.get(['entreprise'])!.value
     };

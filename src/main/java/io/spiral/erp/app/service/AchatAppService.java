@@ -1,9 +1,11 @@
 package io.spiral.erp.app.service;
 
 import io.spiral.erp.app.repository.AchatAppRepository;
+import io.spiral.erp.app.repository.UtilisateurAppRepository;
 import io.spiral.erp.app.service.dto.AchatDTO;
 import io.spiral.erp.app.service.mapper.AchatMapper;
 import io.spiral.erp.jhipster.domain.Achat;
+import io.spiral.erp.jhipster.domain.Utilisateur;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -23,17 +25,26 @@ public class AchatAppService {
     private final AchatMapper achatMapper;
     private final AchatQueryService achatQueryService;
     private final AchatAppRepository achatAppRepository;
+    private final UtilisateurAppRepository utilisateurAppRepository;
+
 
     public AchatAppService(AchatMapper achatMapper, AchatQueryService achatQueryService,
-                           AchatAppRepository achatAppRepository) {
+                           AchatAppRepository achatAppRepository, UtilisateurAppRepository utilisateurAppRepository) {
         this.achatMapper = achatMapper;
         this.achatQueryService = achatQueryService;
         this.achatAppRepository = achatAppRepository;
+        this.utilisateurAppRepository = utilisateurAppRepository;
     }
 
     public AchatDTO create(AchatDTO achatDTO) {
         log.info("Créer un nouvel Achat: {}", achatDTO);
-        return achatMapper.toDto(achatAppRepository.save(achatMapper.toEntity(achatDTO)));
+        Achat achat = achatMapper.toEntity(achatDTO);
+        achat.setDateAchat(ZonedDateTime.now());
+
+        Utilisateur acheteur = utilisateurAppRepository.findByJhiUserLogin(achatDTO.getAcheteur().getLogin()).get();
+        achat.setAcheteur(acheteur);
+
+        return achatMapper.toDto(achatAppRepository.save(achat));
     }
 
     public AchatDTO update(AchatDTO achatDTO) {

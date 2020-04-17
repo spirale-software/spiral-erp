@@ -27,7 +27,7 @@
             "relationshipType": "many-to-one",
             "otherEntityName": "utilisateur",
             "otherEntityRelationshipName": "achat",
-            "relationshipName": "utilisateur",
+            "relationshipName": "acheteur",
             "otherEntityField": "id"
         },
         {

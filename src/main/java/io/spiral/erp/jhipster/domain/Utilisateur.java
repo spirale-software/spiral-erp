@@ -28,7 +28,7 @@ public class Utilisateur implements Serializable {
     @JoinColumn(unique = true)
     private User jhiUser;
 
-    @OneToMany(mappedBy = "utilisateur")
+    @OneToMany(mappedBy = "acheteur")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Achat> achats = new HashSet<>();
 
@@ -69,13 +69,13 @@ public class Utilisateur implements Serializable {
 
     public Utilisateur addAchat(Achat achat) {
         this.achats.add(achat);
-        achat.setUtilisateur(this);
+        achat.setAcheteur(this);
         return this;
     }
 
     public Utilisateur removeAchat(Achat achat) {
         this.achats.remove(achat);
-        achat.setUtilisateur(null);
+        achat.setAcheteur(null);
         return this;
     }
 

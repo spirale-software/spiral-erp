@@ -10,7 +10,7 @@ export interface IAchat {
   prixUnitaire?: number;
   quantite?: number;
   audit?: IAudit;
-  utilisateur?: IUtilisateur;
+  acheteur?: IUtilisateur;
   article?: IArticle;
   entreprise?: IEntreprise;
 }
@@ -22,7 +22,7 @@ export class Achat implements IAchat {
     public prixUnitaire?: number,
     public quantite?: number,
     public audit?: IAudit,
-    public utilisateur?: IUtilisateur,
+    public acheteur?: IUtilisateur,
     public article?: IArticle,
     public entreprise?: IEntreprise
   ) {}

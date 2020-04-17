@@ -37,7 +37,7 @@ public class AchatAppResource {
     }
 
     @PostMapping("/achats")
-    public ResponseEntity<AchatDTO> createAchat(AchatDTO achatDTO) throws URISyntaxException {
+    public ResponseEntity<AchatDTO> createAchat(@RequestBody AchatDTO achatDTO) throws URISyntaxException {
         log.debug("Requête REST pour créer un Achat : {}", achatDTO);
         AchatDTO resultat = achatAppService.create(achatDTO);
 
@@ -47,11 +47,12 @@ public class AchatAppResource {
     }
 
     @PutMapping("/achats")
-    public ResponseEntity<AchatDTO> updateAchat(AchatDTO achatDTO) throws URISyntaxException {
+    public ResponseEntity<AchatDTO> updateAchat(@RequestBody AchatDTO achatDTO) throws URISyntaxException {
         log.debug("Requête REST pour modifier un Achat : {}", achatDTO);
         AchatDTO resultat = achatAppService.create(achatDTO);
 
         return ResponseEntity.created(new URI("/api/erp/achats/" + resultat.getId()))
+
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, resultat.getId().toString()))
             .body(resultat);
     }

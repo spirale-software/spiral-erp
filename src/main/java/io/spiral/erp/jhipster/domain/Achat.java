@@ -38,7 +38,7 @@ public class Achat implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("achats")
-    private Utilisateur utilisateur;
+    private Utilisateur acheteur;
 
     @ManyToOne
     @JsonIgnoreProperties("achats")
@@ -109,17 +109,17 @@ public class Achat implements Serializable {
         this.audit = audit;
     }
 
-    public Utilisateur getUtilisateur() {
-        return utilisateur;
+    public Utilisateur getAcheteur() {
+        return acheteur;
     }
 
-    public Achat utilisateur(Utilisateur utilisateur) {
-        this.utilisateur = utilisateur;
+    public Achat acheteur(Utilisateur utilisateur) {
+        this.acheteur = utilisateur;
         return this;
     }
 
-    public void setUtilisateur(Utilisateur utilisateur) {
-        this.utilisateur = utilisateur;
+    public void setAcheteur(Utilisateur utilisateur) {
+        this.acheteur = utilisateur;
     }
 
     public Article getArticle() {
