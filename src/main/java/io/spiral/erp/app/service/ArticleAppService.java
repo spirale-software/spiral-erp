@@ -23,17 +23,21 @@ public class ArticleAppService {
     private final ArticleMapper articleMapper;
     private final ArticleQueryService articleQueryService;
     private final ArticleAppRepository articleAppRepository;
+    private final AuditAppService auditAppService;
 
     public ArticleAppService(ArticleMapper articleMapper, ArticleQueryService articleQueryService,
-                             ArticleAppRepository articleAppRepository) {
+                             ArticleAppRepository articleAppRepository, AuditAppService auditAppService) {
         this.articleMapper = articleMapper;
         this.articleQueryService = articleQueryService;
         this.articleAppRepository = articleAppRepository;
+        this.auditAppService = auditAppService;
     }
 
     public ArticleDTO create(ArticleDTO articleDTO) {
         log.info("Créer un nouvel Article: {}", articleDTO);
-        return articleMapper.toDto(articleAppRepository.save(articleMapper.toEntity(articleDTO)));
+        Article article = articleMapper.toEntity(articleDTO);
+        article.setAudit(auditAppService.createAuditFromNow());
+        return articleMapper.toDto(articleAppRepository.save(article));
     }
 
     public ArticleDTO update(ArticleDTO articleDTO) {

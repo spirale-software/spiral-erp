@@ -2,6 +2,7 @@ package io.spiral.erp.app.service.dto;
 
 public class UtilisateurDTO {
     private Long id;
+    private Long idJhiUser;
     private String nom;
     private String prenom;
     private String email;
@@ -9,8 +10,9 @@ public class UtilisateurDTO {
     private String telephone;
     private String adresse;
     private String password;
-    private EntrepriseDTO entreprise;
     private Boolean actif;
+    private Long idEntreprise;
+    private String nomEntreprise;
 
 
     public Long getId() {
@@ -77,12 +79,20 @@ public class UtilisateurDTO {
         this.password = password;
     }
 
-    public EntrepriseDTO getEntreprise() {
-        return entreprise;
+    public Long getIdEntreprise() {
+        return idEntreprise;
     }
 
-    public void setEntreprise(EntrepriseDTO entreprise) {
-        this.entreprise = entreprise;
+    public void setIdEntreprise(Long idEntreprise) {
+        this.idEntreprise = idEntreprise;
+    }
+
+    public String getNomEntreprise() {
+        return nomEntreprise;
+    }
+
+    public void setNomEntreprise(String nomEntreprise) {
+        this.nomEntreprise = nomEntreprise;
     }
 
     public Boolean getActif() {
@@ -91,5 +101,13 @@ public class UtilisateurDTO {
 
     public void setActif(Boolean actif) {
         this.actif = actif;
+    }
+
+    public Long getIdJhiUser() {
+        return idJhiUser;
+    }
+
+    public void setIdJhiUser(Long idJhiUser) {
+        this.idJhiUser = idJhiUser;
     }
 }

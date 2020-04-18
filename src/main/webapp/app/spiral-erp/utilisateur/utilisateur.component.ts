@@ -3,15 +3,15 @@ import { Subscription } from 'rxjs';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { UtilisateurErpService } from 'app/spiral-erp/utilisateur/utilisateur-erp.service';
-import { IUtilisateur, Utilisateur } from 'app/shared/model/utilisateur.model';
 import { JhiParseLinks } from 'ng-jhipster';
+import { UtilisateurErp } from 'app/spiral-erp/shared/domain/utilisateur-erp';
 
 @Component({
   selector: 'erp-utilisateur',
   templateUrl: './utilisateur.component.html'
 })
 export class UtilisateurComponent implements OnInit {
-  utilisateurs: Utilisateur[] | null;
+  utilisateurs: UtilisateurErp[] | null;
   eventSubscriber?: Subscription;
   itemsPerPage: number;
   links: any;
@@ -46,7 +46,7 @@ export class UtilisateurComponent implements OnInit {
     }
     this.utilisateurErpService
       .query(req)
-      .subscribe((res: HttpResponse<IUtilisateur[]>) => this.paginateUtilisateurs(res.body, res.headers));
+      .subscribe((res: HttpResponse<UtilisateurErp[]>) => this.paginateUtilisateurs(res.body, res.headers));
   }
 
   findAll(critereTransversal: any): void {
@@ -74,7 +74,7 @@ export class UtilisateurComponent implements OnInit {
     this.loadAll();
   }
 
-  protected paginateUtilisateurs(data: IUtilisateur[] | null, headers: HttpHeaders): void {
+  protected paginateUtilisateurs(data: UtilisateurErp[] | null, headers: HttpHeaders): void {
     if (!this.utilisateurs) {
       this.utilisateurs = [];
     }

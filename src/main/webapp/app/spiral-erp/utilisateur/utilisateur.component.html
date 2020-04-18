@@ -27,11 +27,11 @@
                     <div class="p-grid data-item data-view-item" [routerLink]="['/admin/utilisateurs',utilisateur.id,'modifier']">
                         <div class="p-col-12">
                             <span style="font-weight: bold;display: block">
-                                {{ utilisateur.jhiUser.lastName }} - {{ utilisateur.jhiUser.firstName }}
+                                {{ utilisateur.prenom }} - {{ utilisateur.nom }}
                             </span>
                             <div>
                                 <em>Email:</em>
-                                <strong>{{ utilisateur.jhiUser.email }}</strong>
+                                <strong>{{ utilisateur.email }}</strong>
                             </div>
                             <div>
                                 <em>Tél:</em>
@@ -39,7 +39,7 @@
                             </div>
                             <div>
                                 <em>Entreprise:</em>
-                                <strong>{{ utilisateur.entreprise.nom }}</strong>
+                                <strong>{{ utilisateur.nomEntreprise }}</strong>
                             </div>
                         </div>
                     </div>

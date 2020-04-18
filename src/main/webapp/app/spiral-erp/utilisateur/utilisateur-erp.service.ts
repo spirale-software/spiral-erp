@@ -1,36 +1,39 @@
-import { HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SERVER_API_URL } from 'app/app.constants';
 import { Observable } from 'rxjs';
-import { IUtilisateur } from 'app/shared/model/utilisateur.model';
 import { UtilisateurService } from 'app/entities/utilisateur/utilisateur.service';
+import { UtilisateurErp } from 'app/spiral-erp/shared/domain/utilisateur-erp';
+import { IUtilisateur } from 'app/shared/model/utilisateur.model';
+import { createRequestOption } from 'app/shared/util/request-util';
 
-type EntityResponseType = HttpResponse<IUtilisateur>;
-type EntityArrayResponseType = HttpResponse<IUtilisateur[]>;
+type EntityResponseType = HttpResponse<UtilisateurErp>;
+type EntityArrayResponseType = HttpResponse<UtilisateurErp[]>;
 
 @Injectable({ providedIn: 'root' })
 export class UtilisateurErpService {
-  constructor(public utilisateurService: UtilisateurService) {
-    utilisateurService.resourceUrl = SERVER_API_URL + 'api/erp/utilisateurs';
+  public resourceUrl = SERVER_API_URL + 'api/erp/utilisateurs';
+
+  constructor(protected http: HttpClient) {}
+
+  create(utilisateur: UtilisateurErp): Observable<EntityResponseType> {
+    return this.http.post<UtilisateurErp>(this.resourceUrl, utilisateur, { observe: 'response' });
   }
 
-  create(article: IUtilisateur): Observable<EntityResponseType> {
-    return this.utilisateurService.create(article);
-  }
-
-  update(article: IUtilisateur): Observable<EntityResponseType> {
-    return this.utilisateurService.update(article);
+  update(utilisateur: UtilisateurErp): Observable<EntityResponseType> {
+    return this.http.put<UtilisateurErp>(this.resourceUrl, utilisateur, { observe: 'response' });
   }
 
   find(id: number): Observable<EntityResponseType> {
-    return this.utilisateurService.find(id);
+    return this.http.get<UtilisateurErp>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {
-    return this.utilisateurService.query(req);
+    const options = createRequestOption(req);
+    return this.http.get<UtilisateurErp[]>(this.resourceUrl, { params: options, observe: 'response' });
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {
-    return this.utilisateurService.delete(id);
+    return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 }

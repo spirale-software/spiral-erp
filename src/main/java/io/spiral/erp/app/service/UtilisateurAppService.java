@@ -3,7 +3,10 @@ package io.spiral.erp.app.service;
 import io.spiral.erp.app.repository.UtilisateurAppRepository;
 import io.spiral.erp.app.service.dto.UtilisateurDTO;
 import io.spiral.erp.app.service.mapper.UtilisateurMapper;
+import io.spiral.erp.jhipster.domain.User;
 import io.spiral.erp.jhipster.domain.Utilisateur;
+import io.spiral.erp.jhipster.service.UserService;
+import io.spiral.erp.jhipster.service.dto.UserDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -16,23 +19,40 @@ import java.time.ZonedDateTime;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class UtilisateurAppService {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     private final UtilisateurMapper utilisateurMapper;
     private final UtilisateurQueryService utilisateurQueryService;
     private final UtilisateurAppRepository utilisateurAppRepository;
+    private final AuditAppService auditAppService;
+    private final UserService userService;
 
     public UtilisateurAppService(UtilisateurMapper utilisateurMapper, UtilisateurQueryService utilisateurQueryService,
-                             UtilisateurAppRepository utilisateurAppRepository) {
+                                 UtilisateurAppRepository utilisateurAppRepository, AuditAppService auditAppService,
+                                 UserService userService) {
         this.utilisateurMapper = utilisateurMapper;
         this.utilisateurQueryService = utilisateurQueryService;
         this.utilisateurAppRepository = utilisateurAppRepository;
+        this.auditAppService = auditAppService;
+        this.userService = userService;
     }
 
     public UtilisateurDTO create(UtilisateurDTO utilisateurDTO) {
         log.info("Créer un nouvel Utilisateur: {}", utilisateurDTO);
-        return utilisateurMapper.toDto(utilisateurAppRepository.save(utilisateurMapper.toEntity(utilisateurDTO)));
+        Utilisateur utilisateur = utilisateurMapper.toEntity(utilisateurDTO);
+
+        User jhiUser = utilisateur.getJhiUser();
+        UserDTO userDTO = new UserDTO(jhiUser);
+        User user = userService.registerUser(userDTO, jhiUser.getPassword());
+
+        utilisateur.setJhiUser(user);
+        utilisateur.setAudit(auditAppService.createAuditFromNow());
+
+        Utilisateur save = utilisateurAppRepository.save(utilisateur);
+
+        return utilisateurMapper.toDto(utilisateurAppRepository.save(utilisateur));
     }
 
     public UtilisateurDTO update(UtilisateurDTO utilisateurDTO) {
