@@ -6,6 +6,12 @@ public class UtilisateurDTO {
     private String prenom;
     private String email;
     private String login;
+    private String telephone;
+    private String adresse;
+    private String password;
+    private EntrepriseDTO entreprise;
+    private Boolean actif;
+
 
     public Long getId() {
         return id;
@@ -45,5 +51,45 @@ public class UtilisateurDTO {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public EntrepriseDTO getEntreprise() {
+        return entreprise;
+    }
+
+    public void setEntreprise(EntrepriseDTO entreprise) {
+        this.entreprise = entreprise;
+    }
+
+    public Boolean getActif() {
+        return actif;
+    }
+
+    public void setActif(Boolean actif) {
+        this.actif = actif;
     }
 }

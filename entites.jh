@@ -29,6 +29,7 @@ entity Achat {
 
 entity Utilisateur {
     telephone String
+    adresse String
 }
 
 relationship OneToOne {
@@ -56,6 +57,7 @@ relationship OneToOne {
     Fournisseur {audit} to Audit
     Achat {audit} to Audit
     Entreprise {audit} to Audit
+    Utilisateur {audit} to Audit
 }
 
 dto Audit with mapstruct

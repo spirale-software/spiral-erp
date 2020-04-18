@@ -14,12 +14,24 @@
                     <input type="text" class="form-control" name="telephone" id="field_telephone"
                            formControlName="telephone"/>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="spiralErpApp.utilisateur.adresse" for="field_adresse">Adresse</label>
+                    <input type="text" class="form-control" name="adresse" id="field_adresse"
+                           formControlName="adresse"/>
+                </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="spiralErpApp.utilisateur.jhiUser" for="field_jhiUser">Jhi User</label>
                     <select class="form-control" id="field_jhiUser" name="jhiUser" formControlName="jhiUser">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="userOption.id === editForm.get('jhiUser')!.value?.id ? editForm.get('jhiUser')!.value : userOption" *ngFor="let userOption of users; trackBy: trackById">{{userOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="spiralErpApp.utilisateur.audit" for="field_audit">Audit</label>
+                    <select class="form-control" id="field_audit" name="audit" formControlName="audit">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="auditOption.id === editForm.get('audit')!.value?.id ? editForm.get('audit')!.value : auditOption" *ngFor="let auditOption of audits; trackBy: trackById">{{auditOption.id}}</option>
                     </select>
                 </div>
                 <div class="form-group">

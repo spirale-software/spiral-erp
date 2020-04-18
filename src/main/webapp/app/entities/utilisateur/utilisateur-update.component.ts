@@ -10,10 +10,12 @@ import { IUtilisateur, Utilisateur } from 'app/shared/model/utilisateur.model';
 import { UtilisateurService } from './utilisateur.service';
 import { IUser } from 'app/core/user/user.model';
 import { UserService } from 'app/core/user/user.service';
+import { IAudit } from 'app/shared/model/audit.model';
+import { AuditService } from 'app/entities/audit/audit.service';
 import { IEntreprise } from 'app/shared/model/entreprise.model';
 import { EntrepriseService } from 'app/entities/entreprise/entreprise.service';
 
-type SelectableEntity = IUser | IEntreprise;
+type SelectableEntity = IUser | IAudit | IEntreprise;
 
 @Component({
   selector: 'jhi-utilisateur-update',
@@ -24,18 +26,23 @@ export class UtilisateurUpdateComponent implements OnInit {
 
   users: IUser[] = [];
 
+  audits: IAudit[] = [];
+
   entreprises: IEntreprise[] = [];
 
   editForm = this.fb.group({
     id: [],
     telephone: [],
+    adresse: [],
     jhiUser: [],
+    audit: [],
     entreprise: []
   });
 
   constructor(
     protected utilisateurService: UtilisateurService,
     protected userService: UserService,
+    protected auditService: AuditService,
     protected entrepriseService: EntrepriseService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -54,6 +61,30 @@ export class UtilisateurUpdateComponent implements OnInit {
         )
         .subscribe((resBody: IUser[]) => (this.users = resBody));
 
+      this.auditService
+        .query({ 'utilisateurId.specified': 'false' })
+        .pipe(
+          map((res: HttpResponse<IAudit[]>) => {
+            return res.body ? res.body : [];
+          })
+        )
+        .subscribe((resBody: IAudit[]) => {
+          if (!utilisateur.audit || !utilisateur.audit.id) {
+            this.audits = resBody;
+          } else {
+            this.auditService
+              .find(utilisateur.audit.id)
+              .pipe(
+                map((subRes: HttpResponse<IAudit>) => {
+                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
+                })
+              )
+              .subscribe((concatRes: IAudit[]) => {
+                this.audits = concatRes;
+              });
+          }
+        });
+
       this.entrepriseService
         .query()
         .pipe(
@@ -69,7 +100,9 @@ export class UtilisateurUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: utilisateur.id,
       telephone: utilisateur.telephone,
+      adresse: utilisateur.adresse,
       jhiUser: utilisateur.jhiUser,
+      audit: utilisateur.audit,
       entreprise: utilisateur.entreprise
     });
   }
@@ -93,7 +126,9 @@ export class UtilisateurUpdateComponent implements OnInit {
       ...new Utilisateur(),
       id: this.editForm.get(['id'])!.value,
       telephone: this.editForm.get(['telephone'])!.value,
+      adresse: this.editForm.get(['adresse'])!.value,
       jhiUser: this.editForm.get(['jhiUser'])!.value,
+      audit: this.editForm.get(['audit'])!.value,
       entreprise: this.editForm.get(['entreprise'])!.value
     };
   }

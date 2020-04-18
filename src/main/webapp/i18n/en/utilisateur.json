@@ -17,7 +17,9 @@
         "title": "Utilisateur"
       },
       "telephone": "Telephone",
+      "adresse": "Adresse",
       "jhiUser": "Jhi User",
+      "audit": "Audit",
       "achat": "Achat",
       "entreprise": "Entreprise"
     }

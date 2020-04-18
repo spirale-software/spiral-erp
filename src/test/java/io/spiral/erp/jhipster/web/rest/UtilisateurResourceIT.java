@@ -36,6 +36,9 @@ public class UtilisateurResourceIT {
     private static final String DEFAULT_TELEPHONE = "AAAAAAAAAA";
     private static final String UPDATED_TELEPHONE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_ADRESSE = "AAAAAAAAAA";
+    private static final String UPDATED_ADRESSE = "BBBBBBBBBB";
+
     @Autowired
     private UtilisateurRepository utilisateurRepository;
 
@@ -78,7 +81,8 @@ public class UtilisateurResourceIT {
      */
     public static Utilisateur createEntity(EntityManager em) {
         Utilisateur utilisateur = new Utilisateur()
-            .telephone(DEFAULT_TELEPHONE);
+            .telephone(DEFAULT_TELEPHONE)
+            .adresse(DEFAULT_ADRESSE);
         return utilisateur;
     }
     /**
@@ -89,7 +93,8 @@ public class UtilisateurResourceIT {
      */
     public static Utilisateur createUpdatedEntity(EntityManager em) {
         Utilisateur utilisateur = new Utilisateur()
-            .telephone(UPDATED_TELEPHONE);
+            .telephone(UPDATED_TELEPHONE)
+            .adresse(UPDATED_ADRESSE);
         return utilisateur;
     }
 
@@ -114,6 +119,7 @@ public class UtilisateurResourceIT {
         assertThat(utilisateurList).hasSize(databaseSizeBeforeCreate + 1);
         Utilisateur testUtilisateur = utilisateurList.get(utilisateurList.size() - 1);
         assertThat(testUtilisateur.getTelephone()).isEqualTo(DEFAULT_TELEPHONE);
+        assertThat(testUtilisateur.getAdresse()).isEqualTo(DEFAULT_ADRESSE);
     }
 
     @Test
@@ -147,7 +153,8 @@ public class UtilisateurResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(utilisateur.getId().intValue())))
-            .andExpect(jsonPath("$.[*].telephone").value(hasItem(DEFAULT_TELEPHONE)));
+            .andExpect(jsonPath("$.[*].telephone").value(hasItem(DEFAULT_TELEPHONE)))
+            .andExpect(jsonPath("$.[*].adresse").value(hasItem(DEFAULT_ADRESSE)));
     }
     
     @Test
@@ -161,7 +168,8 @@ public class UtilisateurResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(utilisateur.getId().intValue()))
-            .andExpect(jsonPath("$.telephone").value(DEFAULT_TELEPHONE));
+            .andExpect(jsonPath("$.telephone").value(DEFAULT_TELEPHONE))
+            .andExpect(jsonPath("$.adresse").value(DEFAULT_ADRESSE));
     }
 
     @Test
@@ -185,7 +193,8 @@ public class UtilisateurResourceIT {
         // Disconnect from session so that the updates on updatedUtilisateur are not directly saved in db
         em.detach(updatedUtilisateur);
         updatedUtilisateur
-            .telephone(UPDATED_TELEPHONE);
+            .telephone(UPDATED_TELEPHONE)
+            .adresse(UPDATED_ADRESSE);
 
         restUtilisateurMockMvc.perform(put("/api/utilisateurs")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -197,6 +206,7 @@ public class UtilisateurResourceIT {
         assertThat(utilisateurList).hasSize(databaseSizeBeforeUpdate);
         Utilisateur testUtilisateur = utilisateurList.get(utilisateurList.size() - 1);
         assertThat(testUtilisateur.getTelephone()).isEqualTo(UPDATED_TELEPHONE);
+        assertThat(testUtilisateur.getAdresse()).isEqualTo(UPDATED_ADRESSE);
     }
 
     @Test

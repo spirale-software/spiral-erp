@@ -20,7 +20,9 @@
             <tr>
             <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.utilisateur.telephone">Telephone</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.utilisateur.adresse">Adresse</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.utilisateur.jhiUser">Jhi User</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.utilisateur.audit">Audit</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.utilisateur.entreprise">Entreprise</span></th>
             <th scope="col"></th>
             </tr>
@@ -29,8 +31,14 @@
             <tr *ngFor="let utilisateur of utilisateurs ;trackBy: trackId">
                 <td><a [routerLink]="['/utilisateur', utilisateur.id, 'view' ]">{{utilisateur.id}}</a></td>
                 <td>{{utilisateur.telephone}}</td>
+                <td>{{utilisateur.adresse}}</td>
                 <td>
                     {{utilisateur.jhiUser?.id}}
+                </td>
+                <td>
+                    <div *ngIf="utilisateur.audit">
+                        <a [routerLink]="['/audit', utilisateur.audit?.id, 'view' ]" >{{utilisateur.audit?.id}}</a>
+                    </div>
                 </td>
                 <td>
                     <div *ngIf="utilisateur.entreprise">

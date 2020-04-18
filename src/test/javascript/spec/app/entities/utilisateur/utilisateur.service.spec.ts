@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(UtilisateurService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Utilisateur(0, 'AAAAAAA');
+      elemDefault = new Utilisateur(0, 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -56,7 +56,8 @@ describe('Service Tests', () => {
       it('should update a Utilisateur', () => {
         const returnedFromService = Object.assign(
           {
-            telephone: 'BBBBBB'
+            telephone: 'BBBBBB',
+            adresse: 'BBBBBB'
           },
           elemDefault
         );
@@ -74,7 +75,8 @@ describe('Service Tests', () => {
       it('should return a list of Utilisateur', () => {
         const returnedFromService = Object.assign(
           {
-            telephone: 'BBBBBB'
+            telephone: 'BBBBBB',
+            adresse: 'BBBBBB'
           },
           elemDefault
         );

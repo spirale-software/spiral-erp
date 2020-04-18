@@ -9,9 +9,19 @@
                 <dd>
                     <span>{{utilisateur.telephone}}</span>
                 </dd>
+                <dt><span jhiTranslate="spiralErpApp.utilisateur.adresse">Adresse</span></dt>
+                <dd>
+                    <span>{{utilisateur.adresse}}</span>
+                </dd>
                 <dt><span jhiTranslate="spiralErpApp.utilisateur.jhiUser">Jhi User</span></dt>
                 <dd>
                     {{utilisateur.jhiUser?.id}}
+                </dd>
+                <dt><span jhiTranslate="spiralErpApp.utilisateur.audit">Audit</span></dt>
+                <dd>
+                    <div *ngIf="utilisateur.audit">
+                        <a [routerLink]="['/audit', utilisateur.audit?.id, 'view']">{{utilisateur.audit?.id}}</a>
+                    </div>
                 </dd>
                 <dt><span jhiTranslate="spiralErpApp.utilisateur.entreprise">Entreprise</span></dt>
                 <dd>

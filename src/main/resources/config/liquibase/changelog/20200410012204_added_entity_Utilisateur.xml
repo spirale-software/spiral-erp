@@ -18,8 +18,14 @@
             <column name="telephone" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="adresse" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="jhi_user_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_utilisateur_jhi_user_id" />
+            </column>
+            <column name="audit_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_utilisateur_audit_id" />
             </column>
             <column name="entreprise_id" type="bigint">
                 <constraints nullable="true" />
@@ -48,6 +54,7 @@
                   tableName="utilisateur">
             <column name="id" type="numeric"/>
             <column name="telephone" type="string"/>
+            <column name="adresse" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

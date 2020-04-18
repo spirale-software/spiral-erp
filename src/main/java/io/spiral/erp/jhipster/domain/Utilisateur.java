@@ -27,9 +27,16 @@ public class Utilisateur implements Serializable {
     @Column(name = "telephone")
     private String telephone;
 
+    @Column(name = "adresse")
+    private String adresse;
+
     @OneToOne
     @JoinColumn(unique = true)
     private User jhiUser;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Audit audit;
 
     @OneToMany(mappedBy = "acheteur")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -61,6 +68,19 @@ public class Utilisateur implements Serializable {
         this.telephone = telephone;
     }
 
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public Utilisateur adresse(String adresse) {
+        this.adresse = adresse;
+        return this;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
     public User getJhiUser() {
         return jhiUser;
     }
@@ -72,6 +92,19 @@ public class Utilisateur implements Serializable {
 
     public void setJhiUser(User user) {
         this.jhiUser = user;
+    }
+
+    public Audit getAudit() {
+        return audit;
+    }
+
+    public Utilisateur audit(Audit audit) {
+        this.audit = audit;
+        return this;
+    }
+
+    public void setAudit(Audit audit) {
+        this.audit = audit;
     }
 
     public Set<Achat> getAchats() {
@@ -134,6 +167,7 @@ public class Utilisateur implements Serializable {
         return "Utilisateur{" +
             "id=" + getId() +
             ", telephone='" + getTelephone() + "'" +
+            ", adresse='" + getAdresse() + "'" +
             "}";
     }
 }

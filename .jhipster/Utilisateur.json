@@ -4,6 +4,10 @@
         {
             "fieldName": "telephone",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "adresse",
+            "fieldType": "String"
         }
     ],
     "relationships": [
@@ -12,6 +16,14 @@
             "otherEntityName": "user",
             "otherEntityRelationshipName": "utilisateur",
             "relationshipName": "jhiUser",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "audit",
+            "otherEntityRelationshipName": "utilisateur",
+            "relationshipName": "audit",
             "otherEntityField": "id",
             "ownerSide": true
         },
