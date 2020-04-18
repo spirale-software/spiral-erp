@@ -5,37 +5,51 @@
         <p-button icon="pi pi-chevron-left" label="Retour" (onClick)="back()"></p-button>
     </div>
 
-    <div>
+    <div [formGroup]="utilisateurForm">
         <p-panel>
             <p-header>
                 <div class="ui-helper-clearfix">
                     <span class="ui-panel-title">{{ titre }}</span>
                 </div>
             </p-header>
-            <div style="margin-bottom: 13px">
-                <span style="display: block">Date</span>
-                <span>10/08/2020</span>
+            <div class="ui-fluid" style="margin-bottom: 13px">
+                <span class="span-label">Nom</span>
+                <input pInputText formControlName="nom">
             </div>
             <div class="ui-fluid" style="margin-bottom: 13px">
-                <span>Description de la dépense</span>
-                <input pInputText>
+                <span class="span-label">Prénom</span>
+                <input pInputText formControlName="prenom">
             </div>
             <div class="ui-fluid" style="margin-bottom: 13px">
-                <span>Montant</span>
-                <div class="ui-inputgroup">
-                    <input type="text" pInputText>
-                    <span class="ui-inputgroup-addon">FCFA</span>
-                </div>
+                <span class="span-label">Téléphone</span>
+                <input pInputText formControlName="telephone">
             </div>
             <div class="ui-fluid" style="margin-bottom: 13px">
-                <span>Type de dépense</span>
-                <p-dropdown [options]="typeOptions"></p-dropdown>
+                <span class="span-label">Adresse</span>
+                <input pInputText formControlName="adresse">
+            </div>
+            <div class="ui-fluid" style="margin-bottom: 13px">
+                <span class="span-label">Login</span>
+                <input pInputText formControlName="login">
+            </div>
+            <div class="ui-fluid" style="margin-bottom: 13px">
+                <span class="span-label">Mot de passe par défaut</span>
+                <input pInputText formControlName="password">
+            </div>
+            <div class="ui-fluid" style="margin-bottom: 13px">
+                <span class="span-label">Actif</span><br>
+                <p-inputSwitch formControlName="actif"></p-inputSwitch>
+            </div>
+            <div class="ui-fluid" style="margin-bottom: 13px">
+                <span class="span-label">Entreprise</span>
+                <p-dropdown [options]="entrepriseOptions" placeholder="Selectionner une entreprise"
+                            (onClick)="setEntrepriseOptions()" formControlName="idEntreprise"></p-dropdown>
             </div>
         </p-panel>
 
         <p-toolbar [style]="{'margin-top':'7px'}">
             <div class="ui-toolbar-group-right">
-                <button pButton type="button" icon="pi pi-save" label="Enregistrer"></button>
+                <button pButton type="button" icon="pi pi-save" label="Enregistrer" (click)="save()"></button>
                 <button pButton type="button" icon="pi pi-times" class="ui-button-danger" label="Supprimer"></button>
             </div>
         </p-toolbar>

@@ -2,9 +2,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SERVER_API_URL } from 'app/app.constants';
 import { Observable } from 'rxjs';
-import { UtilisateurService } from 'app/entities/utilisateur/utilisateur.service';
 import { UtilisateurErp } from 'app/spiral-erp/shared/domain/utilisateur-erp';
-import { IUtilisateur } from 'app/shared/model/utilisateur.model';
 import { createRequestOption } from 'app/shared/util/request-util';
 
 type EntityResponseType = HttpResponse<UtilisateurErp>;
