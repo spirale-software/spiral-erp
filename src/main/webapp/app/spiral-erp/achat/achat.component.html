@@ -15,7 +15,7 @@
         <ng-template let-achat pTemplate="listItem">
             <div class="p-grid data-view-item" routerLink="/achats/creer">
                 <div class="p-col-12">
-                    <span style="font-weight: bold;">{{ achat.libelleProduit }} - {{ getMontantTotal(achat) }} FCFA</span><br>
+                    <span style="font-weight: bold;">{{ achat.nomArticle }} - {{ getMontantTotal(achat) }} FCFA</span><br>
                     <span>
                         <em>Quantité:</em>
                         <strong>{{ achat.quantite }}</strong>
@@ -27,7 +27,7 @@
                     </span>
                     <div>
                         <em>Acheteur:</em>
-                        <strong>{{ achat.acheteur }}</strong>
+                        <strong>{{ achat.nomAcheteur }}</strong>
                     </div>
                     <div>
                         <em>Date:</em>

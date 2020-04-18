@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AccountService } from 'app/core/auth/account.service';
 import { AchatErpService } from 'app/spiral-erp/achat/achat-erp.service';
 import { Account } from 'app/core/user/account.model';
-import { Achat } from 'app/shared/model/achat.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
@@ -10,6 +9,7 @@ import { SelectItem } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { ArticleErpService } from 'app/spiral-erp/article/article-erp.service';
+import { AchatErp } from 'app/spiral-erp/shared/domain/achat-erp';
 
 @Component({
   selector: 'erp-achat-update',
@@ -18,7 +18,7 @@ import { ArticleErpService } from 'app/spiral-erp/article/article-erp.service';
 export class AchatUpdateComponent implements OnInit, OnDestroy {
   account: Account | null;
   titre: string;
-  achat: Achat;
+  achat: AchatErp;
   achatForm: FormGroup;
   currentDate: string;
   articleOptions: SelectItem[];
@@ -37,7 +37,7 @@ export class AchatUpdateComponent implements OnInit, OnDestroy {
   ) {
     this.account = null;
     this.titre = '';
-    this.achat = {} as Achat;
+    this.achat = {} as AchatErp;
     this.achatForm = {} as FormGroup;
     this.currentDate = moment().format('DD/MM/YYYY');
     this.articleOptions = [];
@@ -90,9 +90,8 @@ export class AchatUpdateComponent implements OnInit, OnDestroy {
 
   save(): void {
     this.achat = Object.assign(this.achat, this.achatForm.value);
-    this.achat.acheteur = {};
     if (this.account) {
-      this.achat.acheteur['login'] = this.account.login;
+      this.achat.loginAcheteur = this.account.login;
     }
 
     console.log(this.achat);
@@ -127,9 +126,7 @@ export class AchatUpdateComponent implements OnInit, OnDestroy {
 
   initForm(): void {
     this.achatForm = this.fb.group({
-      acheteur: [],
-      date: [],
-      article: [],
+      idArticle: [],
       prixUnitaire: [],
       quantite: []
     });
@@ -141,7 +138,7 @@ export class AchatUpdateComponent implements OnInit, OnDestroy {
       .toPromise()
       .then(httpReponse => {
         if (httpReponse.body) {
-          httpReponse.body.forEach(article => this.articleOptions.push({ label: article.nom, value: article }));
+          httpReponse.body.forEach(article => this.articleOptions.push({ label: article.nom, value: article.id }));
         }
       });
   }

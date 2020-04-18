@@ -2,17 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { AchatErpService } from 'app/spiral-erp/achat/achat-erp.service';
 import { JhiParseLinks } from 'ng-jhipster';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
-import { Achat, IAchat } from 'app/shared/model/achat.model';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
-import { IAudit } from 'app/shared/model/audit.model';
 import { Moment } from 'moment';
+import { AchatErp } from 'app/spiral-erp/shared/domain/achat-erp';
 
 @Component({
   selector: 'erp-achat',
   templateUrl: './achat.component.html'
 })
 export class AchatComponent implements OnInit {
-  achats: Achat[] | null;
+  achats: AchatErp[] | null;
   itemsPerPage: number;
   links: any;
   page: number;
@@ -44,7 +43,7 @@ export class AchatComponent implements OnInit {
     if (critereTransversal) {
       req['critereTransversal'] = critereTransversal;
     }
-    this.achatErpService.query(req).subscribe((res: HttpResponse<IAudit[]>) => this.paginateAchats(res.body, res.headers));
+    this.achatErpService.query(req).subscribe((res: HttpResponse<AchatErp[]>) => this.paginateAchats(res.body, res.headers));
   }
 
   findAll(critereTransversal: any): void {
@@ -72,7 +71,7 @@ export class AchatComponent implements OnInit {
     this.loadAll();
   }
 
-  protected paginateAchats(data: IAudit[] | null, headers: HttpHeaders): void {
+  protected paginateAchats(data: AchatErp[] | null, headers: HttpHeaders): void {
     if (!this.achats) {
       this.achats = [];
     }
@@ -85,7 +84,7 @@ export class AchatComponent implements OnInit {
     }
   }
 
-  getMontantTotal(achat: IAchat): number {
+  getMontantTotal(achat: AchatErp): number {
     let result = 0;
     if (achat.prixUnitaire && achat.quantite) {
       result = achat.prixUnitaire * achat.quantite;
