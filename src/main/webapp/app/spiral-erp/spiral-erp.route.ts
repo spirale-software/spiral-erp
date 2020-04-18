@@ -13,6 +13,7 @@ import { bilanRoutes } from 'app/spiral-erp/bilan/bilan.route';
 import { fournisseurRoutes } from 'app/spiral-erp/fournisseur/fournisseur.route';
 import { achatRoutes } from 'app/spiral-erp/achat/achat.route';
 import { utilisateurRoutes } from 'app/spiral-erp/utilisateur/utilisateur.route';
+import { entrepriseRoutes } from 'app/spiral-erp/entreprise/entreprise.route';
 
 export const spiraleErpRoutes: Routes = [
   {
@@ -25,6 +26,7 @@ export const spiraleErpRoutes: Routes = [
       ...articleRoutes,
       ...achatRoutes,
       ...utilisateurRoutes,
+      ...entrepriseRoutes,
       ...fournisseurRoutes,
       ...projetRoutes,
       ...tableauDeBordRoutes,

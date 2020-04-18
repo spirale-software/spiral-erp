@@ -4,5 +4,5 @@ import io.spiral.erp.jhipster.domain.Entreprise;
 import io.spiral.erp.jhipster.repository.EntrepriseRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface EntreprseAppRepository extends EntrepriseRepository, JpaSpecificationExecutor<Entreprise> {
+public interface EntrepriseAppRepository extends EntrepriseRepository, JpaSpecificationExecutor<Entreprise> {
 }

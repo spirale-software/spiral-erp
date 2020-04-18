@@ -87,7 +87,7 @@ export class AchatComponent implements OnInit {
 
   getMontantTotal(achat: IAchat): number {
     let result = 0;
-    if (achat) {
+    if (achat.prixUnitaire && achat.quantite) {
       result = achat.prixUnitaire * achat.quantite;
     }
     return result;
