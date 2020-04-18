@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SelectItem } from 'primeng/api';
-import { UtilisateurService } from 'app/entities/utilisateur/utilisateur.service';
 import { UtilisateurErpService } from 'app/spiral-erp/utilisateur/utilisateur-erp.service';
 
 @Component({

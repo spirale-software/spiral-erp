@@ -26,18 +26,20 @@
                 <ng-template let-utilisateur pTemplate="listItem">
                     <div class="p-grid data-item data-view-item" [routerLink]="['/admin/utilisateurs',utilisateur.id,'modifier']">
                         <div class="p-col-12">
-                            <span style="font-weight: bold;display: block">{{ utilisateur.nom }}</span>
+                            <span style="font-weight: bold;display: block">
+                                {{ utilisateur.jhiUser.lastName }} - {{ utilisateur.jhiUser.firstName }}
+                            </span>
                             <div>
-                                <em>Code:</em>
-                                <strong>{{ utilisateur.code ? utilisateur.code : '-' }}</strong>
+                                <em>Email:</em>
+                                <strong>{{ utilisateur.jhiUser.email }}</strong>
                             </div>
                             <div>
-                                <em>N° d'article:</em>
-                                <strong>{{ utilisateur.numero }}</strong>
+                                <em>Tél:</em>
+                                <strong>{{ utilisateur.telephone }}</strong>
                             </div>
                             <div>
-                                <em>Fournisseur:</em>
-                                <strong>{{ utilisateur.fournisseur ? utilisateur.fournisseur.nom : '-' }}</strong>
+                                <em>Entreprise:</em>
+                                <strong>{{ utilisateur.entreprise.nom }}</strong>
                             </div>
                         </div>
                     </div>

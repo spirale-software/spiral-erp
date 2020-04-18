@@ -27,6 +27,7 @@ entity Achat {
 }
 
 entity Utilisateur {
+    telephone String
 }
 
 relationship OneToOne {

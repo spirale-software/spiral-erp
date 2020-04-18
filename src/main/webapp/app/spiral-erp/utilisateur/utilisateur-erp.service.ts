@@ -1,5 +1,4 @@
 import { HttpResponse } from '@angular/common/http';
-import { IArticle } from 'app/shared/model/article.model';
 import { Injectable } from '@angular/core';
 import { SERVER_API_URL } from 'app/app.constants';
 import { Observable } from 'rxjs';

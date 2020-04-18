@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { IAudit } from 'app/shared/model/audit.model';
 import { UtilisateurErpService } from 'app/spiral-erp/utilisateur/utilisateur-erp.service';
-import { Utilisateur } from 'app/shared/model/utilisateur.model';
+import { IUtilisateur, Utilisateur } from 'app/shared/model/utilisateur.model';
 import { JhiParseLinks } from 'ng-jhipster';
 
 @Component({
   selector: 'erp-utilisateur',
   templateUrl: './utilisateur.component.html'
 })
-export class UtilisateurComponent {
+export class UtilisateurComponent implements OnInit {
   utilisateurs: Utilisateur[] | null;
   eventSubscriber?: Subscription;
   itemsPerPage: number;
@@ -45,7 +45,9 @@ export class UtilisateurComponent {
     if (critereTransversal) {
       req['critereTransversal'] = critereTransversal;
     }
-    this.utilisateurErpService.query(req).subscribe((res: HttpResponse<IAudit[]>) => this.paginateUtilisateurs(res.body, res.headers));
+    this.utilisateurErpService
+      .query(req)
+      .subscribe((res: HttpResponse<IUtilisateur[]>) => this.paginateUtilisateurs(res.body, res.headers));
   }
 
   findAll(critereTransversal: any): void {
@@ -73,7 +75,7 @@ export class UtilisateurComponent {
     this.loadAll();
   }
 
-  protected paginateUtilisateurs(data: IAudit[] | null, headers: HttpHeaders): void {
+  protected paginateUtilisateurs(data: IUtilisateur[] | null, headers: HttpHeaders): void {
     if (!this.utilisateurs) {
       this.utilisateurs = [];
     }
