@@ -24,6 +24,9 @@ public class Utilisateur implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    @Column(name = "telephone")
+    private String telephone;
+
     @OneToOne
     @JoinColumn(unique = true)
     private User jhiUser;
@@ -43,6 +46,19 @@ public class Utilisateur implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public Utilisateur telephone(String telephone) {
+        this.telephone = telephone;
+        return this;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public User getJhiUser() {
@@ -117,6 +133,7 @@ public class Utilisateur implements Serializable {
     public String toString() {
         return "Utilisateur{" +
             "id=" + getId() +
+            ", telephone='" + getTelephone() + "'" +
             "}";
     }
 }

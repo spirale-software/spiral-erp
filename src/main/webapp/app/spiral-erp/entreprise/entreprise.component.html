@@ -29,12 +29,12 @@
                             <span style="font-weight: bold;display: block">{{ entreprise.nom }}</span>
                             <div>
                                 <em>Actif:</em>
-                                <fa-icon icon="check" style="color: #3e8acc"></fa-icon>
-                                <fa-icon icon="times" style="color: #FFda16"></fa-icon>
+                                <span *ngIf="entreprise.actif"><fa-icon icon="check" style="color: #3e8acc"></fa-icon></span>
+                                <span *ngIf="!entreprise.actif"> <fa-icon icon="times" style="color: #FFda16"></fa-icon></span>
                             </div>
                             <div>
                                 <em>Crée le:</em>
-                                <strong>{{ entreprise.audit?.createdAt }}</strong>
+                                <strong>{{ getFormattedDate(entreprise.audit) }}</strong>
                             </div>
                         </div>
                     </div>

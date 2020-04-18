@@ -16,6 +16,7 @@
       "detail": {
         "title": "Utilisateur"
       },
+      "telephone": "Telephone",
       "jhiUser": "Jhi User",
       "achat": "Achat",
       "entreprise": "Entreprise"

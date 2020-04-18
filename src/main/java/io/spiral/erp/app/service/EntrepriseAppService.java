@@ -20,15 +20,20 @@ public class EntrepriseAppService {
 
     private final EntrepriseAppRepository entrepriseAppRepository;
     private final EntrepriseMapper entrepriseMapper;
+    private final AuditAppService auditAppService;
 
-    public EntrepriseAppService(EntrepriseAppRepository entrepriseAppRepository, EntrepriseMapper entrepriseMapper) {
+    public EntrepriseAppService(EntrepriseAppRepository entrepriseAppRepository, EntrepriseMapper entrepriseMapper,
+                                AuditAppService auditAppService) {
         this.entrepriseAppRepository = entrepriseAppRepository;
         this.entrepriseMapper = entrepriseMapper;
+        this.auditAppService = auditAppService;
     }
 
     public EntrepriseDTO create(EntrepriseDTO entrepriseDTO) {
         log.info("Créer un nouvel Entreprise: {}", entrepriseDTO);
-        return entrepriseMapper.toDto(entrepriseAppRepository.save(entrepriseMapper.toEntity(entrepriseDTO)));
+        Entreprise entreprise = entrepriseMapper.toEntity(entrepriseDTO);
+        entreprise.setAudit(auditAppService.createAuditFromNow());
+        return entrepriseMapper.toDto(entrepriseAppRepository.save(entreprise));
     }
 
     public EntrepriseDTO update(EntrepriseDTO entrepriseDTO) {

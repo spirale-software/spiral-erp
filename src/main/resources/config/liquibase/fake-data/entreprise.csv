@@ -1,11 +1,11 @@
-id;nom
-1;Iceland Krona matrix Sao Tome and Principe
-2;Avon
-3;Wooden
-4;Consultant
-5;payment Tuna
-6;Generic monitoring Shirt
-7;Soft B2C Somoni
-8;Chicken real-time
-9;Plastic
-10;Networked encompassing
+id;nom;actif
+1;Iceland Krona matrix Sao Tome and Principe;false
+2;Electronics Wooden;false
+3;generate payment Tuna;true
+4;withdrawal;true
+5;redefine;false
+6;B2C Somoni Avon;true
+7;bypass;false
+8;Czech Republic;false
+9;user-centric;false
+10;innovate Shirt invoice;true

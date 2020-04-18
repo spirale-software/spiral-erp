@@ -36,6 +36,9 @@ public class EntrepriseResourceIT {
     private static final String DEFAULT_NOM = "AAAAAAAAAA";
     private static final String UPDATED_NOM = "BBBBBBBBBB";
 
+    private static final Boolean DEFAULT_ACTIF = false;
+    private static final Boolean UPDATED_ACTIF = true;
+
     @Autowired
     private EntrepriseRepository entrepriseRepository;
 
@@ -78,7 +81,8 @@ public class EntrepriseResourceIT {
      */
     public static Entreprise createEntity(EntityManager em) {
         Entreprise entreprise = new Entreprise()
-            .nom(DEFAULT_NOM);
+            .nom(DEFAULT_NOM)
+            .actif(DEFAULT_ACTIF);
         return entreprise;
     }
     /**
@@ -89,7 +93,8 @@ public class EntrepriseResourceIT {
      */
     public static Entreprise createUpdatedEntity(EntityManager em) {
         Entreprise entreprise = new Entreprise()
-            .nom(UPDATED_NOM);
+            .nom(UPDATED_NOM)
+            .actif(UPDATED_ACTIF);
         return entreprise;
     }
 
@@ -114,6 +119,7 @@ public class EntrepriseResourceIT {
         assertThat(entrepriseList).hasSize(databaseSizeBeforeCreate + 1);
         Entreprise testEntreprise = entrepriseList.get(entrepriseList.size() - 1);
         assertThat(testEntreprise.getNom()).isEqualTo(DEFAULT_NOM);
+        assertThat(testEntreprise.isActif()).isEqualTo(DEFAULT_ACTIF);
     }
 
     @Test
@@ -165,7 +171,8 @@ public class EntrepriseResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(entreprise.getId().intValue())))
-            .andExpect(jsonPath("$.[*].nom").value(hasItem(DEFAULT_NOM)));
+            .andExpect(jsonPath("$.[*].nom").value(hasItem(DEFAULT_NOM)))
+            .andExpect(jsonPath("$.[*].actif").value(hasItem(DEFAULT_ACTIF.booleanValue())));
     }
     
     @Test
@@ -179,7 +186,8 @@ public class EntrepriseResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(entreprise.getId().intValue()))
-            .andExpect(jsonPath("$.nom").value(DEFAULT_NOM));
+            .andExpect(jsonPath("$.nom").value(DEFAULT_NOM))
+            .andExpect(jsonPath("$.actif").value(DEFAULT_ACTIF.booleanValue()));
     }
 
     @Test
@@ -203,7 +211,8 @@ public class EntrepriseResourceIT {
         // Disconnect from session so that the updates on updatedEntreprise are not directly saved in db
         em.detach(updatedEntreprise);
         updatedEntreprise
-            .nom(UPDATED_NOM);
+            .nom(UPDATED_NOM)
+            .actif(UPDATED_ACTIF);
 
         restEntrepriseMockMvc.perform(put("/api/entreprises")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -215,6 +224,7 @@ public class EntrepriseResourceIT {
         assertThat(entrepriseList).hasSize(databaseSizeBeforeUpdate);
         Entreprise testEntreprise = entrepriseList.get(entrepriseList.size() - 1);
         assertThat(testEntreprise.getNom()).isEqualTo(UPDATED_NOM);
+        assertThat(testEntreprise.isActif()).isEqualTo(UPDATED_ACTIF);
     }
 
     @Test

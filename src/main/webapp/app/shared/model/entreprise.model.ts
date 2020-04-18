@@ -7,6 +7,7 @@ import { IUtilisateur } from 'app/shared/model/utilisateur.model';
 export interface IEntreprise {
   id?: number;
   nom?: string;
+  actif?: boolean;
   audit?: IAudit;
   articles?: IArticle[];
   fournisseurs?: IFournisseur[];
@@ -18,10 +19,13 @@ export class Entreprise implements IEntreprise {
   constructor(
     public id?: number,
     public nom?: string,
+    public actif?: boolean,
     public audit?: IAudit,
     public articles?: IArticle[],
     public fournisseurs?: IFournisseur[],
     public achats?: IAchat[],
     public utilisateurs?: IUtilisateur[]
-  ) {}
+  ) {
+    this.actif = this.actif || false;
+  }
 }

@@ -20,6 +20,7 @@
             <tr>
             <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.entreprise.nom">Nom</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.entreprise.actif">Actif</span></th>
             <th scope="col" ><span jhiTranslate="spiralErpApp.entreprise.audit">Audit</span></th>
             <th scope="col"></th>
             </tr>
@@ -28,6 +29,7 @@
             <tr *ngFor="let entreprise of entreprises ;trackBy: trackId">
                 <td><a [routerLink]="['/entreprise', entreprise.id, 'view' ]">{{entreprise.id}}</a></td>
                 <td>{{entreprise.nom}}</td>
+                <td>{{entreprise.actif}}</td>
                 <td>
                     <div *ngIf="entreprise.audit">
                         <a [routerLink]="['/audit', entreprise.audit?.id, 'view' ]" >{{entreprise.audit?.id}}</a>

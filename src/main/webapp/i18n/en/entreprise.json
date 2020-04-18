@@ -17,6 +17,7 @@
         "title": "Entreprise"
       },
       "nom": "Nom",
+      "actif": "Actif",
       "audit": "Audit",
       "article": "Article",
       "fournisseur": "Fournisseur",

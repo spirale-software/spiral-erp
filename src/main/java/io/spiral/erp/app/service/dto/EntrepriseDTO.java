@@ -5,6 +5,7 @@ import io.spiral.erp.jhipster.service.dto.AuditDTO;
 public class EntrepriseDTO {
     private Long id;
     private String nom;
+    private Boolean actif;
     private AuditDTO audit;
 
     public Long getId() {
@@ -29,5 +30,13 @@ public class EntrepriseDTO {
 
     public void setAudit(AuditDTO audit) {
         this.audit = audit;
+    }
+
+    public Boolean getActif() {
+        return actif;
+    }
+
+    public void setActif(Boolean actif) {
+        this.actif = actif;
     }
 }

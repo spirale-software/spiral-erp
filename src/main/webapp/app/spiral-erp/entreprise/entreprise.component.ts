@@ -5,6 +5,8 @@ import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { JhiParseLinks } from 'ng-jhipster';
 import { EntrepriseErpService } from 'app/spiral-erp/entreprise/entreprise-erp.service';
 import { IEntreprise } from 'app/shared/model/entreprise.model';
+import * as moment from 'moment';
+import { IAudit } from 'app/shared/model/audit.model';
 
 @Component({
   selector: 'erp-article',
@@ -83,5 +85,9 @@ export class EntrepriseComponent implements OnInit {
         if (this.entreprises) this.entreprises.push(data[i]);
       }
     }
+  }
+
+  getFormattedDate(audit: IAudit): string {
+    return audit ? moment(audit.createdAt).format('DD/MM/YYYY') : '';
   }
 }

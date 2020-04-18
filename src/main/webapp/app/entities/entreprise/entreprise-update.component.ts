@@ -23,6 +23,7 @@ export class EntrepriseUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     nom: [null, [Validators.required]],
+    actif: [],
     audit: []
   });
 
@@ -67,6 +68,7 @@ export class EntrepriseUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: entreprise.id,
       nom: entreprise.nom,
+      actif: entreprise.actif,
       audit: entreprise.audit
     });
   }
@@ -90,6 +92,7 @@ export class EntrepriseUpdateComponent implements OnInit {
       ...new Entreprise(),
       id: this.editForm.get(['id'])!.value,
       nom: this.editForm.get(['nom'])!.value,
+      actif: this.editForm.get(['actif'])!.value,
       audit: this.editForm.get(['audit'])!.value
     };
   }

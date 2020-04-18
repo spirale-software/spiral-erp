@@ -63,7 +63,7 @@ export class EntrepriseUpdateComponent implements OnInit {
         .create(this.entreprise)
         .toPromise()
         .then(() => {
-          this.router.navigate(['entreprises']);
+          this.router.navigate(['admin/entreprises']);
           const summary = 'Sauvegarde réussie';
           const detail = "L'entreprise a bien été crée";
           this.showMessage('success', summary, detail);
@@ -74,7 +74,7 @@ export class EntrepriseUpdateComponent implements OnInit {
         .update(this.entreprise)
         .toPromise()
         .then(() => {
-          this.router.navigate(['entreprises']);
+          this.router.navigate(['admin/entreprises']);
           const summary = 'Mise à jour réussie.';
           const detail = "L'entreprise a bien été mis à jour.";
           this.showMessage('success', summary, detail);

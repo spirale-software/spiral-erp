@@ -1,6 +1,11 @@
 {
     "name": "Utilisateur",
-    "fields": [],
+    "fields": [
+        {
+            "fieldName": "telephone",
+            "fieldType": "String"
+        }
+    ],
     "relationships": [
         {
             "relationshipType": "one-to-one",

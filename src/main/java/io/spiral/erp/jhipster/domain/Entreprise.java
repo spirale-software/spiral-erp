@@ -28,6 +28,9 @@ public class Entreprise implements Serializable {
     @Column(name = "nom", nullable = false)
     private String nom;
 
+    @Column(name = "actif")
+    private Boolean actif;
+
     @OneToOne
     @JoinColumn(unique = true)
     private Audit audit;
@@ -68,6 +71,19 @@ public class Entreprise implements Serializable {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public Boolean isActif() {
+        return actif;
+    }
+
+    public Entreprise actif(Boolean actif) {
+        this.actif = actif;
+        return this;
+    }
+
+    public void setActif(Boolean actif) {
+        this.actif = actif;
     }
 
     public Audit getAudit() {
@@ -205,6 +221,7 @@ public class Entreprise implements Serializable {
         return "Entreprise{" +
             "id=" + getId() +
             ", nom='" + getNom() + "'" +
+            ", actif='" + isActif() + "'" +
             "}";
     }
 }

@@ -1,6 +1,7 @@
 
 entity Entreprise {
     nom String required
+    actif Boolean
 }
 
 entity Article {

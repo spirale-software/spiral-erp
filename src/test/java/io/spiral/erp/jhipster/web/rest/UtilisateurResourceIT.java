@@ -33,6 +33,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = SpiralErpApp.class)
 public class UtilisateurResourceIT {
 
+    private static final String DEFAULT_TELEPHONE = "AAAAAAAAAA";
+    private static final String UPDATED_TELEPHONE = "BBBBBBBBBB";
+
     @Autowired
     private UtilisateurRepository utilisateurRepository;
 
@@ -74,7 +77,8 @@ public class UtilisateurResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Utilisateur createEntity(EntityManager em) {
-        Utilisateur utilisateur = new Utilisateur();
+        Utilisateur utilisateur = new Utilisateur()
+            .telephone(DEFAULT_TELEPHONE);
         return utilisateur;
     }
     /**
@@ -84,7 +88,8 @@ public class UtilisateurResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Utilisateur createUpdatedEntity(EntityManager em) {
-        Utilisateur utilisateur = new Utilisateur();
+        Utilisateur utilisateur = new Utilisateur()
+            .telephone(UPDATED_TELEPHONE);
         return utilisateur;
     }
 
@@ -108,6 +113,7 @@ public class UtilisateurResourceIT {
         List<Utilisateur> utilisateurList = utilisateurRepository.findAll();
         assertThat(utilisateurList).hasSize(databaseSizeBeforeCreate + 1);
         Utilisateur testUtilisateur = utilisateurList.get(utilisateurList.size() - 1);
+        assertThat(testUtilisateur.getTelephone()).isEqualTo(DEFAULT_TELEPHONE);
     }
 
     @Test
@@ -140,7 +146,8 @@ public class UtilisateurResourceIT {
         restUtilisateurMockMvc.perform(get("/api/utilisateurs?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(utilisateur.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(utilisateur.getId().intValue())))
+            .andExpect(jsonPath("$.[*].telephone").value(hasItem(DEFAULT_TELEPHONE)));
     }
     
     @Test
@@ -153,7 +160,8 @@ public class UtilisateurResourceIT {
         restUtilisateurMockMvc.perform(get("/api/utilisateurs/{id}", utilisateur.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(utilisateur.getId().intValue()));
+            .andExpect(jsonPath("$.id").value(utilisateur.getId().intValue()))
+            .andExpect(jsonPath("$.telephone").value(DEFAULT_TELEPHONE));
     }
 
     @Test
@@ -176,6 +184,8 @@ public class UtilisateurResourceIT {
         Utilisateur updatedUtilisateur = utilisateurRepository.findById(utilisateur.getId()).get();
         // Disconnect from session so that the updates on updatedUtilisateur are not directly saved in db
         em.detach(updatedUtilisateur);
+        updatedUtilisateur
+            .telephone(UPDATED_TELEPHONE);
 
         restUtilisateurMockMvc.perform(put("/api/utilisateurs")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -186,6 +196,7 @@ public class UtilisateurResourceIT {
         List<Utilisateur> utilisateurList = utilisateurRepository.findAll();
         assertThat(utilisateurList).hasSize(databaseSizeBeforeUpdate);
         Utilisateur testUtilisateur = utilisateurList.get(utilisateurList.size() - 1);
+        assertThat(testUtilisateur.getTelephone()).isEqualTo(UPDATED_TELEPHONE);
     }
 
     @Test
