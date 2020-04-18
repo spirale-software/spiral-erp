@@ -16,6 +16,7 @@ import { BilanModule } from 'app/spiral-erp/bilan/bilan.module';
 import { FournisseurModule } from 'app/spiral-erp/fournisseur/fournisseur.module';
 import { AchatModule } from 'app/spiral-erp/achat/achat.module';
 import { UtilisateurModule } from 'app/spiral-erp/utilisateur/utilisateur.module';
+import { EntrepriseModule } from 'app/spiral-erp/entreprise/entreprise.module';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { UtilisateurModule } from 'app/spiral-erp/utilisateur/utilisateur.module
     StockModule,
     DepenseModule,
     BilanModule,
-    UtilisateurModule
+    UtilisateurModule,
+    EntrepriseModule
   ],
   declarations: [SpiralErpComponent],
   exports: [RouterModule]

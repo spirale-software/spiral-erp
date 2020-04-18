@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IArticle } from 'app/shared/model/article.model';
 import { Subscription } from 'rxjs';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
@@ -12,7 +11,7 @@ import { IEntreprise } from 'app/shared/model/entreprise.model';
   templateUrl: './entreprise.component.html'
 })
 export class EntrepriseComponent implements OnInit {
-  articles: IArticle[] | null;
+  entreprises: IEntreprise[] | null;
   eventSubscriber?: Subscription;
   itemsPerPage: number;
   links: any;
@@ -21,7 +20,7 @@ export class EntrepriseComponent implements OnInit {
   ascending: boolean;
 
   constructor(private entrepriseService: EntrepriseErpService, protected parseLinks: JhiParseLinks) {
-    this.articles = null;
+    this.entreprises = null;
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.page = 0;
     this.links = {
@@ -36,7 +35,7 @@ export class EntrepriseComponent implements OnInit {
   }
 
   loadAll(critereTransversal?: any): void {
-    this.articles = null;
+    this.entreprises = null;
     const req = {
       page: this.page,
       size: this.itemsPerPage,
@@ -50,7 +49,7 @@ export class EntrepriseComponent implements OnInit {
 
   findAll(critereTransversal: any): void {
     this.page = 0;
-    this.articles = [];
+    this.entreprises = [];
     this.loadAll(critereTransversal);
   }
 
@@ -64,7 +63,7 @@ export class EntrepriseComponent implements OnInit {
 
   reset(): void {
     this.page = 0;
-    this.articles = [];
+    this.entreprises = [];
     this.loadAll();
   }
 
@@ -74,14 +73,14 @@ export class EntrepriseComponent implements OnInit {
   }
 
   protected paginateEntreprises(data: IEntreprise[] | null, headers: HttpHeaders): void {
-    if (!this.articles) {
-      this.articles = [];
+    if (!this.entreprises) {
+      this.entreprises = [];
     }
     const headersLink = headers.get('link');
     this.links = this.parseLinks.parse(headersLink ? headersLink : '');
     if (data) {
       for (let i = 0; i < data.length; i++) {
-        if (this.articles) this.articles.push(data[i]);
+        if (this.entreprises) this.entreprises.push(data[i]);
       }
     }
   }
