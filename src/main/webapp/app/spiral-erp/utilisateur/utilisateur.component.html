@@ -27,8 +27,12 @@
                     <div class="p-grid data-item data-view-item" [routerLink]="['/admin/utilisateurs',utilisateur.id,'modifier']">
                         <div class="p-col-12">
                             <span style="font-weight: bold;display: block">
-                                {{ utilisateur.prenom }} - {{ utilisateur.nom }}
+                                {{ utilisateur.prenom }}  {{ utilisateur.nom }}
                             </span>
+                            <div>
+                                <em>Login:</em>
+                                <strong>{{ utilisateur.login }}</strong>
+                            </div>
                             <div>
                                 <em>Email:</em>
                                 <strong>{{ utilisateur.email }}</strong>
@@ -40,6 +44,11 @@
                             <div>
                                 <em>Entreprise:</em>
                                 <strong>{{ utilisateur.nomEntreprise }}</strong>
+                            </div>
+                            <div>
+                                <em>Actif:</em>
+                                <span *ngIf="utilisateur.actif"><fa-icon icon="check" style="color: #3e8acc"></fa-icon></span>
+                                <span *ngIf="!utilisateur.actif"> <fa-icon icon="times" style="color: #FFda16"></fa-icon></span>
                             </div>
                         </div>
                     </div>

@@ -51,8 +51,7 @@ public class UtilisateurAppService {
         utilisateur.setAudit(auditAppService.createAuditFromNow());
 
         Utilisateur save = utilisateurAppRepository.save(utilisateur);
-
-        return utilisateurMapper.toDto(utilisateurAppRepository.save(utilisateur));
+        return utilisateurMapper.toDto(save);
     }
 
     public UtilisateurDTO update(UtilisateurDTO utilisateurDTO) {
@@ -71,6 +70,7 @@ public class UtilisateurAppService {
     public Page<UtilisateurDTO> findAll(String critereTransversal, Pageable pageable) {
         log.info("Rechercher tous les Utilisateur correspondant au critère: {}", critereTransversal);
         Specification<Utilisateur> specification = utilisateurQueryService.createSpecification(critereTransversal);
+        Page<Utilisateur> all = utilisateurAppRepository.findAll(specification, pageable);
         return utilisateurAppRepository.findAll(specification, pageable).map(utilisateurMapper::toDto);
     }
 

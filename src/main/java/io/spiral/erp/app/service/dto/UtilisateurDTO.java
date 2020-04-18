@@ -1,5 +1,7 @@
 package io.spiral.erp.app.service.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class UtilisateurDTO {
     private Long id;
     private Long idJhiUser;
@@ -11,6 +13,7 @@ public class UtilisateurDTO {
     private String adresse;
     private String password;
     private Boolean actif;
+    @NotNull
     private Long idEntreprise;
     private String nomEntreprise;
 

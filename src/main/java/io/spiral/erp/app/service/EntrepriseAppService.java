@@ -4,6 +4,7 @@ import io.spiral.erp.app.repository.EntrepriseAppRepository;
 import io.spiral.erp.app.service.dto.EntrepriseDTO;
 import io.spiral.erp.app.service.mapper.EntrepriseMapper;
 import io.spiral.erp.jhipster.domain.Entreprise;
+import org.mapstruct.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -59,5 +60,12 @@ public class EntrepriseAppService {
     public Optional<EntrepriseDTO> findById(Long id) {
         log.info("Rechercher un Entreprise ayant pour id: {}", id);
         return entrepriseAppRepository.findById(id).map(entrepriseMapper::toDto);
+    }
+
+    @Named("getEntrepriseById")
+    public Entreprise getEntrepriseById(Long idEntreprise) {
+        return entrepriseAppRepository
+            .findById(idEntreprise)
+            .orElseThrow(() -> new RuntimeException("Aucune entreprise n'existe avec cet ID: " + idEntreprise));
     }
 }
