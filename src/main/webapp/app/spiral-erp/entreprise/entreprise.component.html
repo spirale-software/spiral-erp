@@ -23,21 +23,18 @@
                     </div>
                 </p-header>
 
-                <ng-template let-article pTemplate="listItem">
-                    <div class="p-grid data-item data-view-item" [routerLink]="['/admin/entreprises',article.id,'modifier']">
+                <ng-template let-entreprise pTemplate="listItem">
+                    <div class="p-grid data-item data-view-item" [routerLink]="['/admin/entreprises',entreprise.id,'modifier']">
                         <div class="p-col-12">
-                            <span style="font-weight: bold;display: block">{{ article.nom }}</span>
+                            <span style="font-weight: bold;display: block">{{ entreprise.nom }}</span>
                             <div>
-                                <em>Code:</em>
-                                <strong>{{ article.code ? article.code : '-' }}</strong>
+                                <em>Actif:</em>
+                                <fa-icon icon="check" style="color: #3e8acc"></fa-icon>
+                                <fa-icon icon="times" style="color: #FFda16"></fa-icon>
                             </div>
                             <div>
-                                <em>N° d'article:</em>
-                                <strong>{{ article.numero }}</strong>
-                            </div>
-                            <div>
-                                <em>Fournisseur:</em>
-                                <strong>{{ article.fournisseur ? article.fournisseur.nom : '-' }}</strong>
+                                <em>Crée le:</em>
+                                <strong>{{ entreprise.audit?.createdAt }}</strong>
                             </div>
                         </div>
                     </div>

@@ -5,7 +5,7 @@
         <p-button icon="pi pi-chevron-left" label="Retour" (onClick)="back()"></p-button>
     </div>
 
-    <form [formGroup]="articleForm" (ngSubmit)="save()">
+    <form [formGroup]="entrepriseForm" (ngSubmit)="save()">
         <div>
             <p-panel>
                 <p-header>
@@ -13,22 +13,15 @@
                         <span class="ui-panel-title">{{ titre }}</span>
                     </div>
                 </p-header>
-                <div class="ui-fluid" style="margin-bottom: 13px" *ngIf="article.id">
-                    <span class="span-label" style="display: block">Numéro d'article</span>
-                    <span>{{ article.numero }}</span>
-                </div>
                 <div class="ui-fluid" style="margin-bottom: 13px">
-                    <span class="span-label">Nom de l'article</span>
+                    <span class="span-label">Nom de l'entreprise</span>
                     <input pInputText formControlName="nom">
                 </div>
                 <div class="ui-fluid" style="margin-bottom: 13px">
-                    <span class="span-label">Code</span>
-                    <input pInputText formControlName="code">
+                    <span class="span-label">Actif</span><br>
+                    <p-inputSwitch formControlName="actif"></p-inputSwitch>
                 </div>
-                <div class="ui-fluid" style="margin-bottom: 13px">
-                    <span class="span-label">Fournisseur</span>
-                    <p-dropdown [options]="fournisseurOptions" filter="true" formControlName="fournisseur" baseZIndex="200"></p-dropdown>
-                </div>
+
             </p-panel>
 
             <p-toolbar [style]="{'margin-top':'7px'}">
