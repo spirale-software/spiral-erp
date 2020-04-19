@@ -12,7 +12,7 @@
         <ng-template let-depense pTemplate="listItem">
             <div class="p-grid data-view-item" routerLink="/depenses/creer">
                 <div class="p-col-12">
-                    <span style="font-weight: bold;">{{ depense.libelle }} - {{ depense.montant }} FCFA</span><br>
+                    <span style="font-weight: bold;">{{ depense.description }} - {{ depense.montant }} FCFA</span><br>
                     <span style="margin-right: 10px; display: inline-block"><strong>Type de dépense:</strong> {{ depense.typeDepense }}</span>
                     <span style="margin-right: 10px; display: inline-block"><strong>Date:</strong> {{ depense.dateDepense }}</span>
                 </div>

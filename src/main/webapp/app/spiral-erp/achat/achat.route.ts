@@ -4,5 +4,6 @@ import { AchatUpdateComponent } from 'app/spiral-erp/achat/achat-update.componen
 
 export const achatRoutes: Routes = [
   { path: 'achats', component: AchatComponent },
-  { path: 'achats/creer', component: AchatUpdateComponent }
+  { path: 'achats/creer', component: AchatUpdateComponent },
+  { path: 'achats/:id/modifier', component: AchatUpdateComponent }
 ];

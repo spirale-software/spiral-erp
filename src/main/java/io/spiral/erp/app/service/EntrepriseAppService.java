@@ -16,6 +16,7 @@ import java.time.ZonedDateTime;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class EntrepriseAppService {
     private final Logger log = LoggerFactory.getLogger(getClass());
 

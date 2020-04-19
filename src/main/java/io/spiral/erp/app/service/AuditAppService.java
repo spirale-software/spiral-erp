@@ -4,10 +4,12 @@ import io.spiral.erp.jhipster.domain.Audit;
 import io.spiral.erp.jhipster.repository.AuditRepository;
 import io.spiral.erp.jhipster.service.dto.AuditDTO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.ZonedDateTime;
 
 @Service
+@Transactional
 public class AuditAppService {
 
     private final AuditRepository auditRepository;

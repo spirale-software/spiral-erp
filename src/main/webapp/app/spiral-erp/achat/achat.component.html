@@ -13,7 +13,7 @@
         </p-header>
 
         <ng-template let-achat pTemplate="listItem">
-            <div class="p-grid data-view-item" routerLink="/achats/creer">
+            <div class="p-grid data-view-item" [routerLink]="['/achats', achat.id,'modifier']">
                 <div class="p-col-12">
                     <span style="font-weight: bold;">{{ achat.nomArticle }} - {{ getMontantTotal(achat) }} FCFA</span><br>
                     <span>

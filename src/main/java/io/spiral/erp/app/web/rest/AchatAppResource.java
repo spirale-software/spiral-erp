@@ -25,7 +25,7 @@ import java.util.Optional;
 public class AchatAppResource {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
-    private static final String ENTITY_NAME = "article";
+    private static final String ENTITY_NAME = "achat";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
