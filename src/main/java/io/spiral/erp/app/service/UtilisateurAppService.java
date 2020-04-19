@@ -5,8 +5,10 @@ import io.spiral.erp.app.service.dto.UtilisateurDTO;
 import io.spiral.erp.app.service.mapper.UtilisateurMapper;
 import io.spiral.erp.jhipster.domain.User;
 import io.spiral.erp.jhipster.domain.Utilisateur;
+import io.spiral.erp.jhipster.repository.UserRepository;
 import io.spiral.erp.jhipster.service.UserService;
 import io.spiral.erp.jhipster.service.dto.UserDTO;
+import org.mapstruct.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -28,15 +30,17 @@ public class UtilisateurAppService {
     private final UtilisateurAppRepository utilisateurAppRepository;
     private final AuditAppService auditAppService;
     private final UserService userService;
+    private final UserRepository userRepository;
 
     public UtilisateurAppService(UtilisateurMapper utilisateurMapper, UtilisateurQueryService utilisateurQueryService,
                                  UtilisateurAppRepository utilisateurAppRepository, AuditAppService auditAppService,
-                                 UserService userService) {
+                                 UserService userService, UserRepository userRepository) {
         this.utilisateurMapper = utilisateurMapper;
         this.utilisateurQueryService = utilisateurQueryService;
         this.utilisateurAppRepository = utilisateurAppRepository;
         this.auditAppService = auditAppService;
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     public UtilisateurDTO create(UtilisateurDTO utilisateurDTO) {
@@ -78,5 +82,19 @@ public class UtilisateurAppService {
     public Optional<UtilisateurDTO> findById(Long id) {
         log.info("Rechercher un Utilisateur ayant pour id: {}", id);
         return utilisateurAppRepository.findById(id).map(utilisateurMapper::toDto);
+    }
+
+    @Named("getUtilisateurByLogin")
+    public Utilisateur getUtilisateurByLogin(String login) {
+        Optional<Utilisateur> optional = utilisateurAppRepository.findByJhiUserLogin(login);
+        if (optional.isPresent()) {
+            return optional.get();
+        } else {
+            Utilisateur utilisateur = new Utilisateur();
+            User user = userRepository.findOneByLogin(login).get();
+            utilisateur.setJhiUser(user);
+            utilisateur.setAudit(auditAppService.createAuditFromNow());
+            return utilisateurAppRepository.save(utilisateur);
+        }
     }
 }

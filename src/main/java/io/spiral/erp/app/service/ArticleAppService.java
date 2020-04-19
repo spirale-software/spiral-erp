@@ -4,6 +4,7 @@ import io.spiral.erp.app.repository.ArticleAppRepository;
 import io.spiral.erp.app.service.dto.ArticleDTO;
 import io.spiral.erp.app.service.mapper.ArticleMapper;
 import io.spiral.erp.jhipster.domain.Article;
+import org.mapstruct.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -63,5 +64,12 @@ public class ArticleAppService {
     public Optional<ArticleDTO> findById(Long id) {
         log.info("Rechercher un Article ayant pour id: {}", id);
         return articleAppRepository.findById(id).map(articleMapper::toDto);
+    }
+
+    @Named("getArticleById")
+    public Article getArticleById(Long idArticle) {
+        return articleAppRepository
+            .findById(idArticle)
+            .orElseThrow(() -> new RuntimeException("Aucun article n'existe avec cet ID: " + idArticle));
     }
 }

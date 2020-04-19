@@ -93,6 +93,6 @@ export class AchatComponent implements OnInit {
   }
 
   getDate(date: Moment): string {
-    return date.format('DD/MM/YYYY') + ' à ' + date.toString().slice(16, 26);
+    return date.format('DD/MM/YYYY') + ' à ' + date.toString().slice(16, 25);
   }
 }
