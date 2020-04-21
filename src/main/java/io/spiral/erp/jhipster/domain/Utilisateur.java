@@ -42,6 +42,10 @@ public class Utilisateur implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Achat> achats = new HashSet<>();
 
+    @OneToMany(mappedBy = "vendeur")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Vente> ventes = new HashSet<>();
+
     @ManyToOne
     @JsonIgnoreProperties("utilisateurs")
     private Entreprise entreprise;
@@ -130,6 +134,31 @@ public class Utilisateur implements Serializable {
 
     public void setAchats(Set<Achat> achats) {
         this.achats = achats;
+    }
+
+    public Set<Vente> getVentes() {
+        return ventes;
+    }
+
+    public Utilisateur ventes(Set<Vente> ventes) {
+        this.ventes = ventes;
+        return this;
+    }
+
+    public Utilisateur addVente(Vente vente) {
+        this.ventes.add(vente);
+        vente.setVendeur(this);
+        return this;
+    }
+
+    public Utilisateur removeVente(Vente vente) {
+        this.ventes.remove(vente);
+        vente.setVendeur(null);
+        return this;
+    }
+
+    public void setVentes(Set<Vente> ventes) {
+        this.ventes = ventes;
     }
 
     public Entreprise getEntreprise() {

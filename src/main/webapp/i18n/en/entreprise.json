@@ -22,7 +22,9 @@
       "article": "Article",
       "fournisseur": "Fournisseur",
       "achat": "Achat",
-      "utilisateur": "Utilisateur"
+      "utilisateur": "Utilisateur",
+      "depense": "Depense",
+      "vente": "Vente"
     }
   }
 }

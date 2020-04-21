@@ -20,11 +20,15 @@
     <include file="config/liquibase/changelog/20200410012202_added_entity_Fournisseur.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200410012203_added_entity_Achat.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200410012204_added_entity_Utilisateur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200421173711_added_entity_Depense.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200421173712_added_entity_Vente.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20200410012200_added_entity_constraints_Article.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200410012202_added_entity_constraints_Fournisseur.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200410012203_added_entity_constraints_Achat.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200410012204_added_entity_constraints_Utilisateur.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200410012159_added_entity_constraints_Entreprise.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200421173711_added_entity_constraints_Depense.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200421173712_added_entity_constraints_Vente.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

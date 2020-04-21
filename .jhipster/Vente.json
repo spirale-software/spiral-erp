@@ -1,0 +1,58 @@
+{
+    "name": "Vente",
+    "fields": [
+        {
+            "fieldName": "tauxTVA",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "quantiteVendu",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "prixUnitaireVente",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "audit",
+            "otherEntityRelationshipName": "vente",
+            "relationshipName": "audit",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "utilisateur",
+            "otherEntityRelationshipName": "vente",
+            "relationshipName": "vendeur",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "article",
+            "otherEntityRelationshipName": "vente",
+            "relationshipName": "article",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "entreprise",
+            "otherEntityRelationshipName": "vente",
+            "relationshipName": "entreprise",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200421173712",
+    "entityTableName": "vente",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,6 +1,7 @@
 import { IUser } from 'app/core/user/user.model';
 import { IAudit } from 'app/shared/model/audit.model';
 import { IAchat } from 'app/shared/model/achat.model';
+import { IVente } from 'app/shared/model/vente.model';
 import { IEntreprise } from 'app/shared/model/entreprise.model';
 
 export interface IUtilisateur {
@@ -10,6 +11,7 @@ export interface IUtilisateur {
   jhiUser?: IUser;
   audit?: IAudit;
   achats?: IAchat[];
+  ventes?: IVente[];
   entreprise?: IEntreprise;
 }
 
@@ -21,6 +23,7 @@ export class Utilisateur implements IUtilisateur {
     public jhiUser?: IUser,
     public audit?: IAudit,
     public achats?: IAchat[],
+    public ventes?: IVente[],
     public entreprise?: IEntreprise
   ) {}
 }

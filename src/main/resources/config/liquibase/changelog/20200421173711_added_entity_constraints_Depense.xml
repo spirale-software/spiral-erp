@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Depense.
+    -->
+    <changeSet id="20200421173711-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="audit_id"
+                                 baseTableName="depense"
+                                 constraintName="fk_depense_audit_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="audit"/>
+
+        <addForeignKeyConstraint baseColumnNames="entreprise_id"
+                                 baseTableName="depense"
+                                 constraintName="fk_depense_entreprise_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="entreprise"/>
+
+    </changeSet>
+</databaseChangeLog>

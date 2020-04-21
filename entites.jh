@@ -32,6 +32,18 @@ entity Utilisateur {
     adresse String
 }
 
+entity Depense {
+    description String
+    typeDepense String
+    montant Double
+}
+
+entity Vente {
+    tauxTVA Double
+    quantiteVendu Integer
+    prixUnitaireVente Double
+}
+
 relationship OneToOne {
     Utilisateur{jhiUser} to User
 }
@@ -40,6 +52,8 @@ relationship OneToMany {
     Fournisseur to Article
     Utilisateur to Achat {acheteur}
     Article to Achat
+    Utilisateur to Vente {vendeur}
+    Article to Vente
 }
 
 
@@ -49,6 +63,8 @@ relationship OneToMany {
     Entreprise to Fournisseur
     Entreprise to Achat
     Entreprise to Utilisateur
+    Entreprise to Depense
+    Entreprise to Vente
 }
 
 // Audit pour chaque entite
@@ -58,6 +74,8 @@ relationship OneToOne {
     Achat {audit} to Audit
     Entreprise {audit} to Audit
     Utilisateur {audit} to Audit
+    Depense {audit} to Audit
+    Vente {audit} to Audit
 }
 
 dto Audit with mapstruct

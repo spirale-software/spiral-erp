@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="vente">
+            <h2><span jhiTranslate="spiralErpApp.vente.detail.title">Vente</span> {{vente.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="spiralErpApp.vente.tauxTVA">Taux TVA</span></dt>
+                <dd>
+                    <span>{{vente.tauxTVA}}</span>
+                </dd>
+                <dt><span jhiTranslate="spiralErpApp.vente.quantiteVendu">Quantite Vendu</span></dt>
+                <dd>
+                    <span>{{vente.quantiteVendu}}</span>
+                </dd>
+                <dt><span jhiTranslate="spiralErpApp.vente.prixUnitaireVente">Prix Unitaire Vente</span></dt>
+                <dd>
+                    <span>{{vente.prixUnitaireVente}}</span>
+                </dd>
+                <dt><span jhiTranslate="spiralErpApp.vente.audit">Audit</span></dt>
+                <dd>
+                    <div *ngIf="vente.audit">
+                        <a [routerLink]="['/audit', vente.audit?.id, 'view']">{{vente.audit?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="spiralErpApp.vente.vendeur">Vendeur</span></dt>
+                <dd>
+                    <div *ngIf="vente.vendeur">
+                        <a [routerLink]="['/utilisateur', vente.vendeur?.id, 'view']">{{vente.vendeur?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="spiralErpApp.vente.article">Article</span></dt>
+                <dd>
+                    <div *ngIf="vente.article">
+                        <a [routerLink]="['/article', vente.article?.id, 'view']">{{vente.article?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="spiralErpApp.vente.entreprise">Entreprise</span></dt>
+                <dd>
+                    <div *ngIf="vente.entreprise">
+                        <a [routerLink]="['/entreprise', vente.entreprise?.id, 'view']">{{vente.entreprise?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/vente', vente.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

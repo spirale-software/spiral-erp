@@ -5,7 +5,7 @@
         <p-button icon="pi pi-chevron-left" label="Retour" (onClick)="back()"></p-button>
     </div>
 
-    <div>
+    <div [formGroup]="depenseForm">
         <p-panel>
             <p-header>
                 <div class="ui-helper-clearfix">
@@ -14,28 +14,28 @@
             </p-header>
             <div style="margin-bottom: 13px">
                 <span class="span-label" style="display: block">Date</span>
-                <span>10/08/2020</span>
+                <span>{{ dateDepense }}</span>
             </div>
             <div class="ui-fluid" style="margin-bottom: 13px">
                 <span class="span-label">Description de la dépense</span>
-                <input pInputText>
+                <input pInputText formControlName="description">
             </div>
             <div class="ui-fluid" style="margin-bottom: 13px">
                 <span class="span-label">Montant</span>
                 <div class="ui-inputgroup">
-                    <input type="text" pInputText>
+                    <input type="text" pInputText formControlName="montant">
                     <span class="ui-inputgroup-addon">FCFA</span>
                 </div>
             </div>
             <div class="ui-fluid" style="margin-bottom: 13px">
                 <span class="span-label">Type de dépense</span>
-                <p-dropdown [options]="typeOptions"></p-dropdown>
+                <p-dropdown [options]="typeOptions" formControlName="typeDepense"></p-dropdown>
             </div>
         </p-panel>
 
         <p-toolbar [style]="{'margin-top':'7px'}">
             <div class="ui-toolbar-group-right">
-                <button pButton type="button" icon="pi pi-save" label="Enregistrer"></button>
+                <button pButton type="button" icon="pi pi-save" label="Enregistrer" (click)="save()"></button>
                 <button pButton type="button" icon="pi pi-times" class="ui-button-danger" label="Supprimer"></button>
             </div>
         </p-toolbar>

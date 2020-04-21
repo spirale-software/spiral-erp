@@ -43,6 +43,10 @@ public class Article implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Achat> achats = new HashSet<>();
 
+    @OneToMany(mappedBy = "article")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Vente> ventes = new HashSet<>();
+
     @ManyToOne
     @JsonIgnoreProperties("articles")
     private Fournisseur fournisseur;
@@ -135,6 +139,31 @@ public class Article implements Serializable {
 
     public void setAchats(Set<Achat> achats) {
         this.achats = achats;
+    }
+
+    public Set<Vente> getVentes() {
+        return ventes;
+    }
+
+    public Article ventes(Set<Vente> ventes) {
+        this.ventes = ventes;
+        return this;
+    }
+
+    public Article addVente(Vente vente) {
+        this.ventes.add(vente);
+        vente.setArticle(this);
+        return this;
+    }
+
+    public Article removeVente(Vente vente) {
+        this.ventes.remove(vente);
+        vente.setArticle(null);
+        return this;
+    }
+
+    public void setVentes(Set<Vente> ventes) {
+        this.ventes = ventes;
     }
 
     public Fournisseur getFournisseur() {

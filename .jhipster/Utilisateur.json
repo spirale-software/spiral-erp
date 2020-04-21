@@ -34,6 +34,12 @@
             "relationshipName": "achat"
         },
         {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "vente",
+            "otherEntityRelationshipName": "vendeur",
+            "relationshipName": "vente"
+        },
+        {
             "relationshipType": "many-to-one",
             "otherEntityName": "entreprise",
             "otherEntityRelationshipName": "utilisateur",

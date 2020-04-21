@@ -1,5 +1,6 @@
 package io.spiral.erp.app.service;
 
+import io.github.jhipster.service.QueryService;
 import io.github.jhipster.service.filter.StringFilter;
 import io.spiral.erp.jhipster.domain.Utilisateur;
 import org.slf4j.Logger;
@@ -8,7 +9,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UtilisateurQueryService {
+public class UtilisateurQueryService extends QueryService<Utilisateur> {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     public Specification<Utilisateur> createSpecification(String critereTransversal) {

@@ -2,7 +2,7 @@ package io.spiral.erp.app.service.dto;
 
 import java.time.ZonedDateTime;
 
-public class depenseDTO {
+public class DepenseDTO {
     private Long id;
     private String description;
     private String typeDepense;

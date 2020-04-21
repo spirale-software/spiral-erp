@@ -45,6 +45,18 @@
             "otherEntityName": "utilisateur",
             "otherEntityRelationshipName": "entreprise",
             "relationshipName": "utilisateur"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "depense",
+            "otherEntityRelationshipName": "entreprise",
+            "relationshipName": "depense"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "vente",
+            "otherEntityRelationshipName": "entreprise",
+            "relationshipName": "vente"
         }
     ],
     "changelogDate": "20200410012159",

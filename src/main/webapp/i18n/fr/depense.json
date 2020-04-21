@@ -1,0 +1,26 @@
+{
+  "spiralErpApp": {
+    "depense": {
+      "home": {
+        "title": "Depenses",
+        "createLabel": "Créer un nouveau Depense",
+        "createOrEditLabel": "Créer ou éditer un Depense",
+        "notFound": "Aucun Depense trouvé"
+      },
+      "created": "Un nouveau Depense a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Depense avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Depense avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Depense {{ id }} ?"
+      },
+      "detail": {
+        "title": "Depense"
+      },
+      "description": "Description",
+      "typeDepense": "Type Depense",
+      "montant": "Montant",
+      "audit": "Audit",
+      "entreprise": "Entreprise"
+    }
+  }
+}

@@ -3,6 +3,8 @@ import { IArticle } from 'app/shared/model/article.model';
 import { IFournisseur } from 'app/shared/model/fournisseur.model';
 import { IAchat } from 'app/shared/model/achat.model';
 import { IUtilisateur } from 'app/shared/model/utilisateur.model';
+import { IDepense } from 'app/shared/model/depense.model';
+import { IVente } from 'app/shared/model/vente.model';
 
 export interface IEntreprise {
   id?: number;
@@ -13,6 +15,8 @@ export interface IEntreprise {
   fournisseurs?: IFournisseur[];
   achats?: IAchat[];
   utilisateurs?: IUtilisateur[];
+  depenses?: IDepense[];
+  ventes?: IVente[];
 }
 
 export class Entreprise implements IEntreprise {
@@ -24,7 +28,9 @@ export class Entreprise implements IEntreprise {
     public articles?: IArticle[],
     public fournisseurs?: IFournisseur[],
     public achats?: IAchat[],
-    public utilisateurs?: IUtilisateur[]
+    public utilisateurs?: IUtilisateur[],
+    public depenses?: IDepense[],
+    public ventes?: IVente[]
   ) {
     this.actif = this.actif || false;
   }

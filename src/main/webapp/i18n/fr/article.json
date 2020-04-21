@@ -21,6 +21,7 @@
       "numero": "Numero",
       "audit": "Audit",
       "achat": "Achat",
+      "vente": "Vente",
       "fournisseur": "Fournisseur",
       "entreprise": "Entreprise"
     }

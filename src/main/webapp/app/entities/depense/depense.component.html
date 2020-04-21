@@ -1,0 +1,71 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="spiralErpApp.depense.home.title">Depenses</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-depense" [routerLink]="['/depense/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="spiralErpApp.depense.home.createLabel">
+            Create a new Depense
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="depenses?.length === 0">
+        <span jhiTranslate="spiralErpApp.depense.home.notFound">No depenses found</span>
+    </div>
+    <div class="table-responsive" *ngIf="depenses?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.depense.description">Description</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.depense.typeDepense">Type Depense</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.depense.montant">Montant</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.depense.audit">Audit</span></th>
+            <th scope="col" ><span jhiTranslate="spiralErpApp.depense.entreprise">Entreprise</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let depense of depenses ;trackBy: trackId">
+                <td><a [routerLink]="['/depense', depense.id, 'view' ]">{{depense.id}}</a></td>
+                <td>{{depense.description}}</td>
+                <td>{{depense.typeDepense}}</td>
+                <td>{{depense.montant}}</td>
+                <td>
+                    <div *ngIf="depense.audit">
+                        <a [routerLink]="['/audit', depense.audit?.id, 'view' ]" >{{depense.audit?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="depense.entreprise">
+                        <a [routerLink]="['/entreprise', depense.entreprise?.id, 'view' ]" >{{depense.entreprise?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/depense', depense.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/depense', depense.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(depense)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

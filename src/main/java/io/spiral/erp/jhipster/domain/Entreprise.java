@@ -51,6 +51,14 @@ public class Entreprise implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Utilisateur> utilisateurs = new HashSet<>();
 
+    @OneToMany(mappedBy = "entreprise")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Depense> depenses = new HashSet<>();
+
+    @OneToMany(mappedBy = "entreprise")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Vente> ventes = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -197,6 +205,56 @@ public class Entreprise implements Serializable {
 
     public void setUtilisateurs(Set<Utilisateur> utilisateurs) {
         this.utilisateurs = utilisateurs;
+    }
+
+    public Set<Depense> getDepenses() {
+        return depenses;
+    }
+
+    public Entreprise depenses(Set<Depense> depenses) {
+        this.depenses = depenses;
+        return this;
+    }
+
+    public Entreprise addDepense(Depense depense) {
+        this.depenses.add(depense);
+        depense.setEntreprise(this);
+        return this;
+    }
+
+    public Entreprise removeDepense(Depense depense) {
+        this.depenses.remove(depense);
+        depense.setEntreprise(null);
+        return this;
+    }
+
+    public void setDepenses(Set<Depense> depenses) {
+        this.depenses = depenses;
+    }
+
+    public Set<Vente> getVentes() {
+        return ventes;
+    }
+
+    public Entreprise ventes(Set<Vente> ventes) {
+        this.ventes = ventes;
+        return this;
+    }
+
+    public Entreprise addVente(Vente vente) {
+        this.ventes.add(vente);
+        vente.setEntreprise(this);
+        return this;
+    }
+
+    public Entreprise removeVente(Vente vente) {
+        this.ventes.remove(vente);
+        vente.setEntreprise(null);
+        return this;
+    }
+
+    public void setVentes(Set<Vente> ventes) {
+        this.ventes = ventes;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

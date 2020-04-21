@@ -7,8 +7,8 @@ public class VenteDTO {
     private Long idVendeur;
     private String nomVendeur;
     private ZonedDateTime dateVente;
-    private String nomProduit;
-    private Long idProduit;
+    private String nomArticle;
+    private Long idArticle;
     private Double prixUnitaireVente;
     private Integer quantiteVendu;
     private Double tauxTVA;
@@ -45,20 +45,20 @@ public class VenteDTO {
         this.dateVente = dateVente;
     }
 
-    public String getNomProduit() {
-        return nomProduit;
+    public String getNomArticle() {
+        return nomArticle;
     }
 
-    public void setNomProduit(String nomProduit) {
-        this.nomProduit = nomProduit;
+    public void setNomArticle(String nomArticle) {
+        this.nomArticle = nomArticle;
     }
 
-    public Long getIdProduit() {
-        return idProduit;
+    public Long getIdArticle() {
+        return idArticle;
     }
 
-    public void setIdProduit(Long idProduit) {
-        this.idProduit = idProduit;
+    public void setIdArticle(Long idArticle) {
+        this.idArticle = idArticle;
     }
 
     public Double getPrixUnitaireVente() {
