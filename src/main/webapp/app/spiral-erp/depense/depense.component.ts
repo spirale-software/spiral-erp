@@ -1,19 +1,87 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DepenseErp } from 'app/spiral-erp/shared/domain/depense-erp';
+import { Subscription } from 'rxjs';
+import { JhiParseLinks } from 'ng-jhipster';
+import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
+import { HttpHeaders, HttpResponse } from '@angular/common/http';
+import { DepenseErpService } from 'app/spiral-erp/depense/depense-erp.service';
 
 @Component({
-  selector: 'erp-stock',
+  selector: 'erp-depense',
   templateUrl: './depense.component.html'
 })
-export class DepenseComponent {
-  depenseList: any[];
+export class DepenseComponent implements OnInit {
+  depenses: DepenseErp[] | null;
+  eventSubscriber?: Subscription;
+  itemsPerPage: number;
+  links: any;
+  page: number;
+  predicate: string;
+  ascending: boolean;
 
-  constructor() {
-    this.depenseList = [
-      { description: 'Achat matériel bureau', typeDepense: 'ORDINAIRE', montant: '10 000', dateDepense: '10/02/2020 à 18h00' },
-      { description: 'Loyer', typeDepense: 'ORDINAIRE', montant: '50 000', dateDepense: '03/02/2020 à 18h00' },
-      { description: "Réparation de l'électricité", typeDepense: 'EXTRAORDINAIRE', montant: '30 000', dateDepense: '07/06/2020 à 11h00' },
-      { description: 'Nettoyage des locaux', typeDepense: 'ORDINAIRE', montant: '13 000', dateDepense: '10/02/2020 à 18h00' },
-      { description: 'Achat diable', typeDepense: 'EXTRAORDINAIRE', montant: '15 000', dateDepense: '25/02/2020 à 18h00' }
-    ];
+  constructor(private depenseErpService: DepenseErpService, protected parseLinks: JhiParseLinks) {
+    this.depenses = null;
+    this.itemsPerPage = ITEMS_PER_PAGE;
+    this.page = 0;
+    this.links = {
+      last: 0
+    };
+    this.predicate = 'id';
+    this.ascending = true;
+  }
+
+  ngOnInit(): void {
+    this.loadAll();
+  }
+
+  loadAll(critereTransversal?: any): void {
+    this.depenses = null;
+    const req = {
+      page: this.page,
+      size: this.itemsPerPage,
+      sort: this.sort()
+    };
+    if (critereTransversal) {
+      req['critereTransversal'] = critereTransversal;
+    }
+    this.depenseErpService.query(req).subscribe((res: HttpResponse<DepenseErp[]>) => this.paginateDepenses(res.body, res.headers));
+  }
+
+  findAll(critereTransversal: any): void {
+    this.page = 0;
+    this.depenses = [];
+    this.loadAll(critereTransversal);
+  }
+
+  sort(): string[] {
+    const result = [this.predicate + ',' + (this.ascending ? 'asc' : 'desc')];
+    if (this.predicate !== 'id') {
+      result.push('id');
+    }
+    return result;
+  }
+
+  reset(): void {
+    this.page = 0;
+    this.depenses = [];
+    this.loadAll();
+  }
+
+  loadPage(page: number): void {
+    this.page = page;
+    this.loadAll();
+  }
+
+  protected paginateDepenses(data: DepenseErp[] | null, headers: HttpHeaders): void {
+    if (!this.depenses) {
+      this.depenses = [];
+    }
+    const headersLink = headers.get('link');
+    this.links = this.parseLinks.parse(headersLink ? headersLink : '');
+    if (data) {
+      for (let i = 0; i < data.length; i++) {
+        if (this.depenses) this.depenses.push(data[i]);
+      }
+    }
   }
 }

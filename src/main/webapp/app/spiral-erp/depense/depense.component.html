@@ -2,22 +2,37 @@
 -->
 <div class="div-component">
     <h4>Listes des dépenses</h4>
-    <p-dataView [value]="depenseList">
-        <p-header>
-            <div class="p-grid p-align-center vertical-container">
-                <div class="p-col-10"><input pInputText placeholder="Rechercher"></div>
-                <div class="p-col-2"><button pButton icon="pi pi-plus" routerLink="/depenses/creer"></button></div>
-            </div>
-        </p-header>
-        <ng-template let-depense pTemplate="listItem">
-            <div class="p-grid data-view-item" routerLink="/depenses/creer">
-                <div class="p-col-12">
-                    <span style="font-weight: bold;">{{ depense.description }} - {{ depense.montant }} FCFA</span><br>
-                    <span style="margin-right: 10px; display: inline-block"><strong>Type de dépense:</strong> {{ depense.typeDepense }}</span>
-                    <span style="margin-right: 10px; display: inline-block"><strong>Date:</strong> {{ depense.dateDepense }}</span>
-                </div>
-            </div>
-        </ng-template>
+    <ng-template [ngIf]="!depenses">
+        <div style="text-align: center; margin-top: 30%">
+            <p-progressSpinner [style]="{width: '33px', height: '33px'}">
+            </p-progressSpinner>
+        </div>
+    </ng-template>
+    <ng-template [ngIf]="depenses">
+        <div infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']"
+             [infiniteScrollDistance]="0">
+            <p-dataView [value]="depenses" [style]="{'width':'100%'}" emptyMessage="Aucun résultat">
+                <p-header>
+                    <div class="p-grid p-align-center vertical-container">
+                        <div class="p-col-10">
+                            <erp-recherche (onSearchClick)="findAll($event)"></erp-recherche>
+                        </div>
+                        <div class="p-col-2">
+                            <button pButton icon="pi pi-plus" routerLink="/depenses/creer"></button>
+                        </div>
+                    </div>
+                </p-header>
 
-    </p-dataView>
+                <ng-template let-depense pTemplate="listItem">
+                    <div class="p-grid data-view-item" routerLink="/depenses/creer">
+                        <div class="p-col-12">
+                            <span style="font-weight: bold;">{{ depense.description }} - {{ depense.montant }} FCFA</span><br>
+                            <span style="margin-right: 10px; display: inline-block"><strong>Type de dépense:</strong> {{ depense.typeDepense }}</span>
+                            <span style="margin-right: 10px; display: inline-block"><strong>Date:</strong> {{ depense.dateDepense }}</span>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-dataView>
+        </div>
+    </ng-template>
 </div>
