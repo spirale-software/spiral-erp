@@ -45,6 +45,9 @@ export class DepenseUpdateComponent implements OnInit {
         .then(httpResponse => {
           if (httpResponse.body) {
             this.depense = httpResponse.body;
+            if (this.depense.dateDepense) {
+              this.dateDepense = this.depense.dateDepense.format('DD/MM/YYYY');
+            }
             this.depenseForm.patchValue(this.depense);
           }
         });

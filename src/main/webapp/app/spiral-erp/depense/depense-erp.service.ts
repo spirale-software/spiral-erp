@@ -25,7 +25,9 @@ export class DepenseErpService {
   }
 
   find(id: number): Observable<EntityResponseType> {
-    return this.http.get<DepenseErp>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    return this.http
+      .get<DepenseErp>(`${this.resourceUrl}/${id}`, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {
