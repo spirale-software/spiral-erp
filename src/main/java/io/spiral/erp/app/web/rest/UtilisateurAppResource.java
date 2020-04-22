@@ -50,7 +50,7 @@ public class UtilisateurAppResource {
     @PutMapping("/utilisateurs")
     public ResponseEntity<UtilisateurDTO> updateUtilisateur(@RequestBody UtilisateurDTO utilisateurDTO) throws URISyntaxException {
         log.debug("Requête REST pour modifier un Utilisateur : {}", utilisateurDTO);
-        UtilisateurDTO resultat = utilisateurAppService.create(utilisateurDTO);
+        UtilisateurDTO resultat = utilisateurAppService.update(utilisateurDTO);
 
         return ResponseEntity.created(new URI("/api/erp/utilisateurs/" + resultat.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, resultat.getId().toString()))

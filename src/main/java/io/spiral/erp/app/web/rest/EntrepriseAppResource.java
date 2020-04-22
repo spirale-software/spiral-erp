@@ -50,7 +50,7 @@ public class EntrepriseAppResource {
     @PutMapping("/entreprises")
     public ResponseEntity<EntrepriseDTO> updateEntreprise(@RequestBody EntrepriseDTO entrepriseDTO) throws URISyntaxException {
         log.debug("Requête REST pour modifier un Entreprise : {}", entrepriseDTO);
-        EntrepriseDTO resultat = entrepriseAppService.create(entrepriseDTO);
+        EntrepriseDTO resultat = entrepriseAppService.update(entrepriseDTO);
 
         return ResponseEntity.created(new URI("/api/erp/entreprises/" + resultat.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, resultat.getId().toString()))

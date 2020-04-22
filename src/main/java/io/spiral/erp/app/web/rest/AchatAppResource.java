@@ -49,7 +49,7 @@ public class AchatAppResource {
     @PutMapping("/achats")
     public ResponseEntity<AchatDTO> updateAchat(@RequestBody AchatDTO achatDTO) throws URISyntaxException {
         log.debug("Requête REST pour modifier un Achat : {}", achatDTO);
-        AchatDTO resultat = achatAppService.create(achatDTO);
+        AchatDTO resultat = achatAppService.update(achatDTO);
 
         return ResponseEntity.created(new URI("/api/erp/achats/" + resultat.getId()))
 

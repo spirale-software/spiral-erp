@@ -4,6 +4,6 @@ export interface DepenseErp {
   id: number;
   description: string;
   typeDepense: string;
-  dateDepense: Moment;
+  dateDepense?: Moment;
   montant: number;
 }

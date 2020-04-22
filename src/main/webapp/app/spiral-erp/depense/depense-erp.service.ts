@@ -4,6 +4,8 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { DepenseErp } from 'app/spiral-erp/shared/domain/depense-erp';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
+import * as moment from 'moment';
 
 type EntityResponseType = HttpResponse<DepenseErp>;
 type EntityArrayResponseType = HttpResponse<DepenseErp[]>;
@@ -28,10 +30,28 @@ export class DepenseErpService {
 
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
-    return this.http.get<DepenseErp[]>(this.resourceUrl, { params: options, observe: 'response' });
+    return this.http
+      .get<DepenseErp[]>(this.resourceUrl, { params: options, observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
+  protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
+    if (res.body) {
+      res.body.dateDepense = res.body.dateDepense ? moment(res.body.dateDepense) : undefined;
+    }
+    return res;
+  }
+
+  protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
+    if (res.body) {
+      res.body.forEach((depense: DepenseErp) => {
+        depense.dateDepense = depense.dateDepense ? moment(depense.dateDepense) : undefined;
+      });
+    }
+    return res;
   }
 }

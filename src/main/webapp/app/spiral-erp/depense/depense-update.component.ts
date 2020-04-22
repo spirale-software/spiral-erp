@@ -73,7 +73,7 @@ export class DepenseUpdateComponent implements OnInit {
         .create(this.depense)
         .toPromise()
         .then(() => {
-          this.router.navigate(['admin/depenses']);
+          this.router.navigate(['depenses']);
           const summary = 'Sauvegarde réussie';
           const detail = "L'depense a bien été crée";
           this.showMessage('success', summary, detail);
@@ -84,9 +84,9 @@ export class DepenseUpdateComponent implements OnInit {
         .update(this.depense)
         .toPromise()
         .then(() => {
-          this.router.navigate(['admin/depenses']);
+          this.router.navigate(['depenses']);
           const summary = 'Mise à jour réussie.';
-          const detail = "L'depense a bien été mis à jour.";
+          const detail = 'La depense a bien été mis à jour.';
           this.showMessage('success', summary, detail);
         })
         .catch(httpError => console.log(httpError));

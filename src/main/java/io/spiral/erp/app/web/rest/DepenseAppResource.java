@@ -49,7 +49,7 @@ public class DepenseAppResource {
     @PutMapping("/depenses")
     public ResponseEntity<DepenseDTO> updateDepense(@RequestBody DepenseDTO depenseDTO) throws URISyntaxException {
         log.debug("Requête REST pour modifier un Depense : {}", depenseDTO);
-        DepenseDTO resultat = depenseAppService.create(depenseDTO);
+        DepenseDTO resultat = depenseAppService.update(depenseDTO);
 
         return ResponseEntity.created(new URI("/api/erp/depenses/" + resultat.getId()))
 

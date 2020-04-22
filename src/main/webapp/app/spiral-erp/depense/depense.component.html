@@ -24,7 +24,7 @@
                 </p-header>
 
                 <ng-template let-depense pTemplate="listItem">
-                    <div class="p-grid data-view-item" routerLink="/depenses/creer">
+                    <div class="p-grid data-view-item" [routerLink]="['/depenses', depense.id, 'modifier']">
                         <div class="p-col-12">
                             <span style="font-weight: bold;">{{ depense.description }} - {{ depense.montant }} FCFA</span><br>
                             <div>
@@ -33,7 +33,7 @@
                             </div>
                             <div>
                                 <em>Date:</em>
-                                <span>{{ depense.dateDepense }}</span>
+                                <span>{{ depense.dateDepense?.format('DD/MM/YYYY') }}</span>
                             </div>
                         </div>
                     </div>
